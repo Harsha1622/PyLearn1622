@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PyLearn | Introduction to Python</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="pystyle.css">
+
+</head>
+
+<body>
+
+<header>
+  <h2>PyLearn</h2>
+
+  <nav>
+    <a href="#" onclick="loadPage('home.html')">Home</a>
+    <a href="#" onclick="loadPage('course.html')">Courses</a>
+
+    <div class="profile" id="profileMenu">
+      <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png">
+
+      <div class="profile-menu">
+        <a href="#" onclick="loadPage('profile.html')">My Profile</a>
+        <a href="#" onclick="loadPage('dashboard.html')">Dashboard</a>
+        <button onclick="logout()">Logout</button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div class="container">
+
+  <div class="intro-box">
+    <h1>Introduction to Python Programming</h1>
+    <p>
+      Python is a powerful, easy-to-learn programming language widely used in
+      web development, data analysis, automation, and artificial intelligence.
+    </p>
+  </div>
+
+  <div class="topic-grid">
+
+    <div class="topic-card" onclick="loadPage('Pythonhistory.html')">
+      <h3>Introduction</h3>
+    </div>
+
+    <div class="topic-card" onclick="loadPage('PythonIDLE.html')">
+      <h3>Python IDLE & Program Editor</h3>
+    </div>
+
+    <div class="topic-card" onclick="loadPage('Pythonrunning.html')">
+      <h3>Running Python Programs</h3>
+    </div>
+
+    <div class="topic-card" onclick="loadPage('Pythonbasics.html')">
+      <h3>Python Basics</h3>
+    </div>
+
+    <div class="topic-card" onclick="loadPage('Pythondatatypes.html')">
+      <h3>Datatypes</h3>
+    </div>
+
+    <div class="topic-card" onclick="loadPage('Pythonoperators.html')">
+      <h3>Operators</h3>
+    </div>
+
+    <div class="topic-card" onclick="loadPage('PythonIO.html')">
+      <h3>Input & Output</h3>
+    </div>
+
+    <div class="topic-card" onclick="loadPage('Pythonmodulesintro.html')">
+      <h3>Purpose of Modules</h3>
+    </div>
+
+    <div class="topic-card" onclick="loadPage('Pythonoperatorspre.html')">
+      <h3>Operator Precedence</h3>
+    </div>
+
+  </div>
+
+  <div class="practice-box">
+
+    <h2>Practice Test</h2>
+
+    <p>Evaluate your understanding before moving forward.</p>
+
+    <button onclick="loadPage('PythonIntrotest.html')">
+      Start Test
+    </button>
+
+  </div>
+
+</div>
+
+<script src="pyapp.js"></script>
+
+</body>
+</html>
