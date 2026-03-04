@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<title>PyLearn – Online Learning</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PyLearn | Online Learning</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -14,55 +16,40 @@
 <body>
 
 <header>
-  <h2>PyLearn</h2>
 
-  <nav>
-    <a href="#">Home</a>
-    <a href="#" onclick="loadPage('course.html')">Courses</a>
+<h2>PyLearn</h2>
 
-    <div class="profile" id="profileMenu">
-      <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png">
+<nav>
 
-      <div class="profile-menu">
-        <a href="#" onclick="loadPage('profile.html')">My Profile</a>
-        <a href="#" onclick="loadPage('dashboard.html')">Dashboard</a>
-        <button onclick="logout()">Logout</button>
-      </div>
+<a onclick="loadPage('homecontent.html')">Home</a>
 
-    </div>
-  </nav>
+<a onclick="loadPage('course.html')">Courses</a>
+
+<div class="profile" id="profileMenu">
+
+<img src="https://cdn-icons-png.flaticon.com/512/847/847969.png">
+
+<div class="profile-menu">
+
+<a onclick="loadPage('profile.html')">My Profile</a>
+
+<a onclick="loadPage('dashboard.html')">Dashboard</a>
+
+<button onclick="logout()">Logout</button>
+
+</div>
+
+</div>
+
+</nav>
+
 </header>
 
-<section class="hero">
-
-  <div class="hero-text">
-    <h2>Learn Python with PyLearn</h2>
-    <p>Structured content, quizzes, and progress tracking for students.</p>
-
-    <button onclick="loadPage('course.html')">Start Learning</button>
-  </div>
-
-  <div class="login-card" id="loginCard">
-
-    <h3>Student Login</h3>
-
-    <form id="loginForm">
-
-      <input type="email" id="email" placeholder="Email" required>
-
-      <input type="password" id="password" placeholder="Password" required>
-
-      <button type="submit">Login</button>
-
-    </form>
-
-    <p>New here? <a href="#" onclick="loadPage('signup.html')">Create an account</a></p>
-
-  </div>
-
-</section>
+<!-- Dynamic Content Container -->
+<div id="app"></div>
 
 <script src="pyapp.js"></script>
 
 </body>
+
 </html>
