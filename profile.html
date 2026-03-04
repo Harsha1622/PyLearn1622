@@ -1,56 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>PyLearn | My Profile</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<main class="container">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<div class="profile-header">
 
-<link rel="stylesheet" href="pystyle.css">
+<img src="https://cdn-icons-png.flaticon.com/512/847/847969.png">
 
-</head>
+<div>
+<h3 id="studentName">Loading...</h3>
+<p id="studentEmail"></p>
+</div>
 
-<body>
+</div>
 
-<header>
-  <h2>PyLearn</h2>
 
-  <nav>
-    <a href="#" onclick="loadPage('home.html')">Home</a>
-    <a href="#" onclick="loadPage('course.html')">Courses</a>
+<div class="section">
 
-    <div class="profile" id="profileMenu">
-      <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png">
+<h4>Student Information</h4>
 
-      <div class="profile-menu">
-        <a href="#" onclick="loadPage('profile.html')">My Profile</a>
-        <a href="#" onclick="loadPage('dashboard.html')">Dashboard</a>
-        <button onclick="logout()">Logout</button>
-      </div>
+<div class="info-box">
+<strong>Course:</strong>
+<span id="courseName">Python Programming</span>
+</div>
 
-    </div>
-  </nav>
-</header>
+<div class="info-box">
+<strong>Joined:</strong>
+<span id="joinDate">Loading...</span>
+</div>
 
-<main>
+</div>
 
-  <div class="profile-header">
-    <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png">
 
-    <div>
-      <h3 id="studentName">Loading...</h3>
-      <p id="studentEmail"></p>
-    </div>
-  </div>
+<div class="section">
 
-  <div class="info-box" id="courseName">
-    Course: Python Programming
-  </div>
+<h4>Learning Progress</h4>
+
+<div class="info-box">
+<strong>Topics Completed:</strong>
+<span id="topicsCompleted">0</span>
+</div>
+
+<div class="info-box">
+<strong>Quizzes Attempted:</strong>
+<span id="quizCount">0</span>
+</div>
+
+<div class="info-box">
+<strong>Average Score:</strong>
+<span id="avgScore">0%</span>
+</div>
+
+</div>
+
+
+<div class="section">
+
+<h4>Quick Actions</h4>
+
+<div class="actions">
+
+<button class="action-btn" onclick="loadPage('course.html')">
+Continue Learning
+</button>
+
+<button class="action-btn" onclick="loadPage('dashboard.html')">
+View Dashboard
+</button>
+
+</div>
+
+</div>
 
 </main>
-
-<script src="pyapp.js"></script>
-
-</body>
-</html>
