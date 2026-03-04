@@ -1,96 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>PyLearn | Dashboard</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<main class="container">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<div class="dashboard-title">
+Python Learning Dashboard
+</div>
 
-<link rel="stylesheet" href="pystyle.css">
 
-</head>
+<div class="stats">
 
-<body>
+<div class="stat-card">
+<h3 id="topicCount">0</h3>
+<p>Topics Completed</p>
+</div>
 
-<header>
-  <h2>PyLearn</h2>
+<div class="stat-card">
+<h3 id="quizCount">0</h3>
+<p>Quizzes Attempted</p>
+</div>
 
-  <nav>
-    <a href="#" onclick="loadPage('home.html')">Home</a>
-    <a href="#" onclick="loadPage('course.html')">Courses</a>
+<div class="stat-card">
+<h3 id="avgScore">0%</h3>
+<p>Average Score</p>
+</div>
 
-    <div class="profile" id="profileMenu">
-      <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png">
+</div>
 
-      <div class="profile-menu">
-        <a href="#" onclick="loadPage('profile.html')">My Profile</a>
-        <a href="#" onclick="loadPage('dashboard.html')">Dashboard</a>
-        <button onclick="logout()">Logout</button>
-      </div>
-    </div>
 
-  </nav>
-</header>
+<section>
 
-<main>
+<h4>Python Learning Progress</h4>
 
-  <div class="dashboard-title">Python Learning Dashboard</div>
+<div class="progress-box">
 
-  <div class="stats">
+<span id="progressText">
+Python Programming – 0%
+</span>
 
-    <div class="stat-card">
-      <h3 id="topicCount">0</h3>
-      <p>Topics Completed</p>
-    </div>
+<div class="progress-bar">
+<div class="progress-fill" id="progressFill"></div>
+</div>
 
-    <div class="stat-card">
-      <h3 id="quizCount">0</h3>
-      <p>Quizzes Attempted</p>
-    </div>
+</div>
 
-    <div class="stat-card">
-      <h3 id="avgScore">0%</h3>
-      <p>Average Score</p>
-    </div>
+</section>
 
-  </div>
 
-  <section>
+<section>
 
-    <h4>Python Learning Progress</h4>
+<h4>Quick Actions</h4>
 
-    <div class="progress-box">
+<div class="actions">
 
-      <span id="progressText">Python Programming – 0%</span>
+<button class="action-btn" onclick="loadPage('course.html')">
+Continue Learning
+</button>
 
-      <div class="progress-bar">
-        <div class="progress-fill" id="progressFill"></div>
-      </div>
+<button class="action-btn" onclick="loadPage('profile.html')">
+View Profile
+</button>
 
-    </div>
+</div>
 
-  </section>
-
-  <section>
-
-    <h4>Quick Actions</h4>
-
-    <div class="actions">
-
-      <button class="action-btn">Continue Learning</button>
-
-      <button class="action-btn" onclick="loadPage('profile.html')">
-        View Profile
-      </button>
-
-    </div>
-
-  </section>
+</section>
 
 </main>
-
-<script src="pyapp.js"></script>
-
-</body>
-</html>
