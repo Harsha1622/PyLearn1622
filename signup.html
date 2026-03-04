@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PyLearn | Sign Up</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="pystyle.css">
+
+</head>
+
+<body>
+
+<header>
+  <h2>PyLearn</h2>
+  <nav>
+    <a href="#" onclick="loadPage('home.html')">Home</a>
+  </nav>
+</header>
+
+<div class="main">
+
+  <div class="signup-box">
+
+    <h3>Create Account</h3>
+
+    <form id="signupForm">
+
+      <input type="text" id="fullname" placeholder="Full Name" required>
+
+      <input type="email" id="email" placeholder="Email" required>
+
+      <input type="password" id="password" placeholder="Password" required>
+
+      <input type="password" id="confirm" placeholder="Confirm Password" required>
+
+      <button type="submit">Sign Up</button>
+
+    </form>
+
+    <p>
+      Already have an account?
+      <a href="#" onclick="loadPage('home.html')">Login</a>
+    </p>
+
+  </div>
+
+</div>
+
+<script src="pyapp.js"></script>
+
+</body>
+</html>
