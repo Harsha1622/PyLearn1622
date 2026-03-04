@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PyLearn | Introduction to Python</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="pystyle.css">
+
+</head>
+
+<body>
+
+<header>
+  <h2>PyLearn</h2>
+
+  <nav>
+    <a href="#" onclick="loadPage('home.html')">Home</a>
+    <a href="#" onclick="loadPage('course.html')">Courses</a>
+
+    <div class="profile" id="profileMenu">
+      <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Student">
+
+      <div class="profile-menu">
+        <a href="#" onclick="loadPage('profile.html')">My Profile</a>
+        <a href="#" onclick="loadPage('dashboard.html')">Dashboard</a>
+        <button onclick="logout()">Logout</button>
+      </div>
+    </div>
+
+  </nav>
+</header>
+
+<div class="container">
+
+  <h3>Introduction to Python</h3>
+
+  <div class="section">
+    <h4>About Python Language</h4>
+    <p>
+      Python is a high-level, object-oriented, interpreted scripting language.
+      It executes instructions line by line using an interpreter
+      without the need for a compiler.
+    </p>
+  </div>
+
+  <div class="section">
+    <h4>Programming Style</h4>
+    <p>
+      Python supports both
+      <strong>Procedural Oriented Programming (POP)</strong> and
+      <strong>Object Oriented Programming (OOP)</strong>.
+    </p>
+  </div>
+
+  <div class="section">
+    <h4>History of Python</h4>
+    <p>
+      Python was developed by <strong>Guido van Rossum</strong>.
+      The name was inspired by
+      <em>Monty Python's Flying Circus</em>.
+    </p>
+  </div>
+
+  <div class="section">
+    <h4>Sample Program</h4>
+
+<pre><code>print("Hello, World!")</code></pre>
+
+  </div>
+
+  <div class="section">
+    <h4>Output</h4>
+
+    <div class="output">
+      Hello, World!
+    </div>
+
+  </div>
+
+  <div class="section">
+    <h4>Features of Python</h4>
+    <p>
+      ✔ Easy to learn<br>
+      ✔ Open source<br>
+      ✔ Interpreted<br>
+      ✔ Portable<br>
+      ✔ Dynamically typed
+    </p>
+  </div>
+
+  <div class="section">
+    <h4>Applications of Python</h4>
+    <p>
+      ✔ Web development<br>
+      ✔ Data science<br>
+      ✔ AI & ML<br>
+      ✔ Automation<br>
+      ✔ Desktop apps
+    </p>
+  </div>
+
+  <div class="section">
+    <h4>File Extension</h4>
+    <p>Python programs use <strong>.py</strong></p>
+  </div>
+
+  <div class="page-nav">
+    <span></span>
+    <a onclick="loadPage('PythonIDLE.html')" class="nav-btn primary">
+      Next →
+    </a>
+  </div>
+
+</div>
+
+<script src="pyapp.js"></script>
+
+</body>
+</html>
