@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PyLearn | Data Types in Python</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="pystyle.css">
+
+</head>
+
+<body>
+
+<header>
+  <h2>PyLearn</h2>
+
+  <nav>
+    <a href="#" onclick="loadPage('home.html')">Home</a>
+    <a href="#" onclick="loadPage('course.html')">Courses</a>
+
+    <div class="profile" id="profileBox">
+      <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png">
+      <span>Student</span>
+
+      <div class="profile-menu">
+        <a onclick="loadPage('profile.html')">My Profile</a>
+        <a onclick="loadPage('dashboard.html')">Dashboard</a>
+        <button onclick="logout()">Logout</button>
+      </div>
+
+    </div>
+
+  </nav>
+</header>
+
+<div class="container">
+
+<h3>Data Types in Python</h3>
+
+<div class="section">
+
+<h4>What is a Data Type?</h4>
+
+<p>
+A <strong>data type</strong> specifies the type of value that a variable can store.
+In Python, the data type is automatically determined based on the value assigned
+to the variable, so explicit declaration is not required.
+</p>
+
+</div>
+
+<div class="section">
+
+<h4>1. Numeric Data Types</h4>
+
+<p>
+Numeric data types are used to store numerical values. Python supports
+integers, floating-point numbers, and complex numbers.
+</p>
+
+<pre><code>
+a = 10      # integer
+b = 3.5     # float
+c = 2 + 3j  # complex number
+</code></pre>
+
+</div>
+
+<div class="section">
+
+<h4>2. Sequence Data Types</h4>
+
+<p>
+Sequence data types store collections of values in an ordered form.
+Examples include strings, lists, and tuples.
+</p>
+
+<pre><code>
+lst = [1, 2, 3]
+tup = (10, 20)
+name = "Python"
+</code></pre>
+
+</div>
+
+<div class="section">
+
+<h4>3. Set Data Type</h4>
+
+<p>
+A set stores unordered and unique elements. Duplicate values are
+automatically removed.
+</p>
+
+<pre><code>
+s = {1, 2, 2, 3}
+print(s)
+</code></pre>
+
+</div>
+
+<div class="section">
+
+<h4>4. Mapping Data Type</h4>
+
+<p>
+Dictionaries store data as key–value pairs. Each key is unique and
+used to access its corresponding value.
+</p>
+
+<pre><code>
+student = {"name": "Harsha", "language": "Python"}
+</code></pre>
+
+</div>
+
+<div class="section">
+
+<h4>5. Boolean Data Type</h4>
+
+<p>
+The Boolean data type represents logical values. It has only two possible
+values: <strong>True</strong> and <strong>False</strong>.
+</p>
+
+<pre><code>
+x = True
+</code></pre>
+
+</div>
+
+<div class="section">
+
+<h4>6. None Data Type</h4>
+
+<p>
+The <strong>None</strong> data type represents the absence of a value.
+It is commonly used to initialize variables before assigning actual data.
+</p>
+
+<pre><code>
+value = None
+</code></pre>
+
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonbasics.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythonoperators.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
+
+<script src="pyapp.js"></script>
+
+</body>
+</html>
