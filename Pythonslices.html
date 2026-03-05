@@ -1,0 +1,125 @@
+<div class="container">
+
+<h3>List Slicing in Python</h3>
+
+<div class="section">
+<h4>What is List Slicing?</h4>
+<p>
+List slicing is used to access a specific range of elements from a list.
+It allows us to extract a portion of a list without modifying the original list.
+</p>
+</div>
+
+<div class="section">
+<h4>Syntax of List Slicing</h4>
+
+<pre><code>
+list[start : stop : step]
+</code></pre>
+
+<p>
+✔ <strong>start</strong> – starting index<br>
+✔ <strong>stop</strong> – ending index (not included)<br>
+✔ <strong>step</strong> – interval between elements
+</p>
+
+</div>
+
+<div class="section">
+<h4>Example: Basic Slicing</h4>
+
+<pre><code>
+numbers = [10, 20, 30, 40, 50]
+
+print(numbers[1:4])
+</code></pre>
+
+<div class="output">
+[20, 30, 40]
+</div>
+
+</div>
+
+<div class="section">
+<h4>Example: Slicing from Beginning</h4>
+
+<pre><code>
+numbers = [10, 20, 30, 40]
+
+print(numbers[:3])
+</code></pre>
+
+<div class="output">
+[10, 20, 30]
+</div>
+
+</div>
+
+<div class="section">
+<h4>Example: Slicing to End</h4>
+
+<pre><code>
+numbers = [10, 20, 30, 40]
+
+print(numbers[2:])
+</code></pre>
+
+<div class="output">
+[30, 40]
+</div>
+
+</div>
+
+<div class="section">
+<h4>Example: Using Step</h4>
+
+<pre><code>
+numbers = [1, 2, 3, 4, 5, 6]
+
+print(numbers[0:6:2])
+</code></pre>
+
+<div class="output">
+[1, 3, 5]
+</div>
+
+</div>
+
+<div class="section">
+<h4>Example: Negative Index Slicing</h4>
+
+<pre><code>
+numbers = [10, 20, 30, 40]
+
+print(numbers[-3:-1])
+</code></pre>
+
+<div class="output">
+[20, 30]
+</div>
+
+</div>
+
+<div class="section">
+<h4>Important Points</h4>
+<p>
+✔ Slicing extracts part of a list.<br>
+✔ The stop index is not included in the result.<br>
+✔ Step value controls the interval between elements.<br>
+✔ Negative indices allow slicing from the end.
+</p>
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonlistmethods.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythonlistloop.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
