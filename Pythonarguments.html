@@ -1,0 +1,150 @@
+<div class="container">
+
+<h3>Function Arguments in Python</h3>
+
+<div class="section">
+<h4>What are Function Arguments?</h4>
+<p>
+Function arguments are values passed to a function when it is called.
+They allow the function to receive data and perform operations on it.
+Arguments make functions flexible and reusable.
+</p>
+</div>
+
+<div class="section">
+<h4>Types of Function Arguments</h4>
+<p>
+Python supports the following types of arguments:
+<br><br>
+✔ Positional Arguments<br>
+✔ Keyword Arguments<br>
+✔ Default Arguments<br>
+✔ Variable-Length Arguments<br>
+✔ Keyword Variable-Length Arguments
+</p>
+</div>
+
+<div class="section">
+<h4>1. Positional Arguments</h4>
+
+<pre><code>
+def add(a, b):
+    print(a + b)
+
+add(10, 20)
+</code></pre>
+
+<div class="output">
+30
+</div>
+
+<p>
+Values are passed in the same order as parameters.
+</p>
+
+</div>
+
+<div class="section">
+<h4>2. Keyword Arguments</h4>
+
+<pre><code>
+def student(name, age):
+    print(name, age)
+
+student(name="Alex", age=21)
+</code></pre>
+
+<div class="output">
+Alex 21
+</div>
+
+<p>
+Arguments are passed using parameter names.
+</p>
+
+</div>
+
+<div class="section">
+<h4>3. Default Arguments</h4>
+
+<pre><code>
+def greet(name="Student"):
+    print("Hello", name)
+
+greet()
+</code></pre>
+
+<div class="output">
+Hello Student
+</div>
+
+<p>
+A default value is used if no argument is provided.
+</p>
+
+</div>
+
+<div class="section">
+<h4>4. Variable-Length Arguments (*args)</h4>
+
+<pre><code>
+def total(*numbers):
+    print(sum(numbers))
+
+total(10, 20, 30)
+</code></pre>
+
+<div class="output">
+60
+</div>
+
+<p>
+The * symbol allows passing multiple positional values.
+</p>
+
+</div>
+
+<div class="section">
+<h4>5. Keyword Variable-Length Arguments (**kwargs)</h4>
+
+<pre><code>
+def student_info(**data):
+    print(data)
+
+student_info(name="Alex", age=21)
+</code></pre>
+
+<div class="output">
+{'name': 'Alex', 'age': 21}
+</div>
+
+<p>
+The ** symbol allows passing multiple keyword arguments.
+</p>
+
+</div>
+
+<div class="section">
+<h4>Important Points</h4>
+<p>
+✔ Arguments pass data to functions.<br>
+✔ Positional arguments depend on order.<br>
+✔ Keyword arguments use parameter names.<br>
+✔ Default arguments provide fallback values.<br>
+✔ *args and **kwargs allow flexible input.
+</p>
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonudf.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythonlambda.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
