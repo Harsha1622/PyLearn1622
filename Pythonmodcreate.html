@@ -1,0 +1,88 @@
+<div class="container">
+
+<h3>Creation of Modules in Python</h3>
+
+<div class="section">
+<h4>What is a Module?</h4>
+<p>
+A module is a file that contains Python code such as functions,
+variables, and classes. Modules help organize programs into
+separate files and make code reusable.
+</p>
+</div>
+
+<div class="section">
+<h4>Why Use Modules?</h4>
+<p>
+✔ To organize large programs<br>
+✔ To reuse code in multiple programs<br>
+✔ To improve readability and maintainability<br>
+✔ To divide a program into smaller parts
+</p>
+</div>
+
+<div class="section">
+<h4>Creating a Module</h4>
+<p>
+A module is simply a Python file with a <strong>.py</strong> extension.
+We write functions or variables in the file and save it.
+</p>
+
+<pre><code>
+# file: mymodule.py
+
+def greet(name):
+    print("Hello", name)
+
+def add(a, b):
+    return a + b
+</code></pre>
+
+</div>
+
+<div class="section">
+<h4>Using the Module</h4>
+<p>
+After creating a module, it can be used in another Python program
+by importing it.
+</p>
+
+<pre><code>
+import mymodule
+
+mymodule.greet("Alex")
+
+result = mymodule.add(10, 20)
+print(result)
+</code></pre>
+
+<div class="output">
+Hello Alex  
+30
+</div>
+
+</div>
+
+<div class="section">
+<h4>Advantages of Modules</h4>
+<p>
+✔ Code reusability<br>
+✔ Better program organization<br>
+✔ Easy maintenance<br>
+✔ Reduces program complexity
+</p>
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonlambdause.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythonimportmod.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
