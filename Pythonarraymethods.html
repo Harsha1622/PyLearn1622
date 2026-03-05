@@ -1,0 +1,161 @@
+<div class="container">
+
+<h3>Array Methods in Python</h3>
+
+<div class="section">
+<h4>What are Array Methods?</h4>
+<p>
+Array methods are built-in functions used to perform operations
+on arrays such as adding elements, removing elements, or finding
+information about elements.
+</p>
+</div>
+
+<div class="section">
+<h4>1. append()</h4>
+<p>
+The <strong>append()</strong> method adds a new element at the end of the array.
+</p>
+
+<pre><code>
+import array
+
+arr = array.array('i', [10, 20, 30])
+
+arr.append(40)
+
+print(arr)
+</code></pre>
+
+<div class="output">
+array('i', [10, 20, 30, 40])
+</div>
+</div>
+
+<div class="section">
+<h4>2. insert()</h4>
+<p>
+The <strong>insert()</strong> method inserts an element at a specific position.
+</p>
+
+<pre><code>
+import array
+
+arr = array.array('i', [10, 20, 30])
+
+arr.insert(1, 15)
+
+print(arr)
+</code></pre>
+
+<div class="output">
+array('i', [10, 15, 20, 30])
+</div>
+</div>
+
+<div class="section">
+<h4>3. remove()</h4>
+<p>
+The <strong>remove()</strong> method removes the specified element from the array.
+</p>
+
+<pre><code>
+import array
+
+arr = array.array('i', [10, 20, 30])
+
+arr.remove(20)
+
+print(arr)
+</code></pre>
+
+<div class="output">
+array('i', [10, 30])
+</div>
+</div>
+
+<div class="section">
+<h4>4. pop()</h4>
+<p>
+The <strong>pop()</strong> method removes and returns the last element of the array.
+</p>
+
+<pre><code>
+import array
+
+arr = array.array('i', [10, 20, 30])
+
+arr.pop()
+
+print(arr)
+</code></pre>
+
+<div class="output">
+array('i', [10, 20])
+</div>
+</div>
+
+<div class="section">
+<h4>5. index()</h4>
+<p>
+The <strong>index()</strong> method returns the position of an element.
+</p>
+
+<pre><code>
+import array
+
+arr = array.array('i', [10, 20, 30])
+
+print(arr.index(20))
+</code></pre>
+
+<div class="output">
+1
+</div>
+</div>
+
+<div class="section">
+<h4>6. count()</h4>
+<p>
+The <strong>count()</strong> method returns the number of times
+an element appears in the array.
+</p>
+
+<pre><code>
+import array
+
+arr = array.array('i', [10, 20, 20, 30])
+
+print(arr.count(20))
+</code></pre>
+
+<div class="output">
+2
+</div>
+</div>
+
+<div class="section">
+<h4>Important Points</h4>
+<p>
+✔ append() adds an element at the end.<br>
+✔ insert() adds an element at a specific position.<br>
+✔ remove() deletes a specific element.<br>
+✔ pop() removes the last element.<br>
+✔ index() finds the position of an element.<br>
+✔ count() counts the occurrences of an element.
+</p>
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonarrayoperators.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythonstrings.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
