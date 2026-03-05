@@ -1,0 +1,91 @@
+<div class="container">
+
+<h3>Encapsulation in Python</h3>
+
+<div class="section">
+<h4>What is Encapsulation?</h4>
+<p>
+Encapsulation is the process of binding data (variables) and
+methods (functions) together inside a single unit called a class.
+It also helps protect data from unauthorized access.
+</p>
+</div>
+
+<div class="section">
+<h4>Why Encapsulation is Important?</h4>
+<p>
+✔ Protects data from direct modification<br>
+✔ Improves program security<br>
+✔ Makes code modular and organized<br>
+✔ Helps maintain data integrity
+</p>
+</div>
+
+<div class="section">
+<h4>Example: Encapsulation</h4>
+
+<pre><code>
+class Student:
+
+    def __init__(self, name, marks):
+        self.name = name
+        self.marks = marks
+
+    def display(self):
+        print(self.name, self.marks)
+
+s = Student("Alex", 90)
+s.display()
+</code></pre>
+
+<div class="output">
+Alex 90
+</div>
+
+</div>
+
+<div class="section">
+<h4>Encapsulation with Private Variable</h4>
+
+<pre><code>
+class Student:
+
+    def __init__(self):
+        self.__marks = 85
+
+    def showMarks(self):
+        print(self.__marks)
+
+s = Student()
+s.showMarks()
+</code></pre>
+
+<div class="output">
+85
+</div>
+
+</div>
+
+<div class="section">
+<h4>Important Points</h4>
+<p>
+✔ Encapsulation combines data and methods into one unit.<br>
+✔ It protects data from direct access.<br>
+✔ Private variables use double underscore <strong>__</strong>.<br>
+✔ Methods are used to access private data.
+</p>
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonobjects.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythonhiding.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
