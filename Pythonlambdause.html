@@ -1,0 +1,102 @@
+<div class="container">
+
+<h3>Lambda with map(), filter(), and reduce()</h3>
+
+<div class="section">
+<h4>Using Lambda with Built-in Functions</h4>
+<p>
+Lambda functions are commonly used with functions like
+<strong>map()</strong>, <strong>filter()</strong>, and <strong>reduce()</strong>
+to perform operations on sequences such as lists.
+</p>
+</div>
+
+<div class="section">
+<h4>1. map() Function</h4>
+<p>
+The <strong>map()</strong> function applies a given function to each
+item in a sequence and returns the result.
+</p>
+
+<pre><code>
+numbers = [1, 2, 3, 4]
+
+result = list(map(lambda x: x * 2, numbers))
+
+print(result)
+</code></pre>
+
+<div class="output">
+[2, 4, 6, 8]
+</div>
+
+</div>
+
+<div class="section">
+<h4>2. filter() Function</h4>
+<p>
+The <strong>filter()</strong> function selects elements from a sequence
+based on a condition.
+</p>
+
+<pre><code>
+numbers = [1, 2, 3, 4, 5, 6]
+
+result = list(filter(lambda x: x % 2 == 0, numbers))
+
+print(result)
+</code></pre>
+
+<div class="output">
+[2, 4, 6]
+</div>
+
+</div>
+
+<div class="section">
+<h4>3. reduce() Function</h4>
+<p>
+The <strong>reduce()</strong> function performs a cumulative operation
+on elements of a sequence and returns a single result.
+It requires the <strong>functools</strong> module.
+</p>
+
+<pre><code>
+from functools import reduce
+
+numbers = [1, 2, 3, 4]
+
+result = reduce(lambda a, b: a + b, numbers)
+
+print(result)
+</code></pre>
+
+<div class="output">
+10
+</div>
+
+</div>
+
+<div class="section">
+<h4>Important Points</h4>
+<p>
+✔ <strong>map()</strong> applies a function to each element.<br>
+✔ <strong>filter()</strong> selects elements based on a condition.<br>
+✔ <strong>reduce()</strong> combines elements into a single value.<br>
+✔ Lambda functions make these operations shorter and simpler.
+</p>
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonlambda.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythonmodcreate.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
