@@ -1,0 +1,107 @@
+<div class="container">
+
+<h3>Updating Dictionary in Python</h3>
+
+<div class="section">
+<h4>Updating Dictionary Values</h4>
+
+<p>
+Dictionary values can be modified by assigning a new value to an
+existing <strong>key</strong>. If the key already exists, its value will
+be updated.
+</p>
+
+</div>
+
+<div class="section">
+
+<h4>Example: Updating a Value</h4>
+
+<pre><code>
+student = {
+    "name": "Rahul",
+    "age": 20
+}
+
+student["age"] = 21
+
+print(student)
+</code></pre>
+
+<div class="output">
+{'name': 'Rahul', 'age': 21}
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Updating Multiple Values using update()</h4>
+
+<p>
+The <strong>update()</strong> method is used to modify one or more
+key–value pairs at once.
+</p>
+
+<pre><code>
+student = {
+    "name": "Rahul",
+    "age": 20
+}
+
+student.update({"age": 22, "course": "Python"})
+
+print(student)
+</code></pre>
+
+<div class="output">
+{'name': 'Rahul', 'age': 22, 'course': 'Python'}
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Example: Updating from Another Dictionary</h4>
+
+<pre><code>
+student = {"name":"Rahul","age":20}
+new_data = {"age":23,"course":"AI"}
+
+student.update(new_data)
+
+print(student)
+</code></pre>
+
+<div class="output">
+{'name': 'Rahul', 'age': 23, 'course': 'AI'}
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Important Points</h4>
+
+<p>
+✔ Existing dictionary values can be modified using keys.<br>
+✔ Assigning a new value replaces the old value.<br>
+✔ <strong>update()</strong> can modify multiple elements.<br>
+✔ update() can also merge another dictionary.
+</p>
+
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonaddingelements.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythondictoperations.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
