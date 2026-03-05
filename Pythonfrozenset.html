@@ -1,0 +1,99 @@
+<div class="container">
+
+<h3>Frozen Set in Python</h3>
+
+<div class="section">
+<h4>What is a Frozen Set?</h4>
+
+<p>
+A <strong>frozenset</strong> is an immutable version of a set in Python.
+Once a frozenset is created, its elements cannot be changed, added, or removed.
+It behaves like a normal set but does not allow modification.
+</p>
+
+</div>
+
+<div class="section">
+
+<h4>Creating a Frozen Set</h4>
+
+<p>
+A frozen set is created using the <strong>frozenset()</strong> function.
+</p>
+
+<pre><code>
+numbers = frozenset([10, 20, 30, 40])
+
+print(numbers)
+</code></pre>
+
+<div class="output">
+frozenset({10, 20, 30, 40})
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Example: Immutable Nature</h4>
+
+<p>
+Since frozensets are immutable, elements cannot be added or removed.
+</p>
+
+<pre><code>
+numbers = frozenset([1, 2, 3])
+
+numbers.add(4)   # This will raise an error
+</code></pre>
+
+</div>
+
+<div class="section">
+
+<h4>Frozen Set Operations</h4>
+
+<p>
+Frozen sets support set operations such as union, intersection,
+difference, and symmetric difference.
+</p>
+
+<pre><code>
+A = frozenset([1, 2, 3])
+B = frozenset([3, 4, 5])
+
+print(A.union(B))
+</code></pre>
+
+<div class="output">
+frozenset({1, 2, 3, 4, 5})
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Important Points</h4>
+
+<p>
+✔ Frozensets are immutable.<br>
+✔ They are created using the frozenset() function.<br>
+✔ Elements cannot be added or removed.<br>
+✔ They support set operations.
+</p>
+
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonsetmethods.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythonsetcomprehension.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
