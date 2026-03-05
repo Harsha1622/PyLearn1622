@@ -1,0 +1,100 @@
+<div class="container">
+
+<h3>File Processing in Python</h3>
+
+<div class="section">
+<h4>What is File Processing?</h4>
+
+<p>
+File processing refers to reading data from a file and performing
+operations such as counting, searching, or modifying the data.
+It is commonly used in applications that handle large amounts of
+stored information.
+</p>
+
+</div>
+
+<div class="section">
+
+<h4>Reading File Line by Line</h4>
+
+<p>
+Instead of reading the entire file at once, Python allows reading
+a file line by line using a loop.
+</p>
+
+<pre><code>
+file = open("data.txt","r")
+
+for line in file:
+    print(line)
+
+file.close()
+</code></pre>
+
+</div>
+
+<div class="section">
+
+<h4>Example: Counting Number of Lines</h4>
+
+<pre><code>
+file = open("data.txt","r")
+
+count = 0
+for line in file:
+    count += 1
+
+print("Total lines:", count)
+
+file.close()
+</code></pre>
+
+<div class="output">
+Total lines: 5
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Example: Searching a Word in File</h4>
+
+<pre><code>
+file = open("data.txt","r")
+
+for line in file:
+    if "Python" in line:
+        print(line)
+
+file.close()
+</code></pre>
+
+</div>
+
+<div class="section">
+
+<h4>Important Points</h4>
+
+<p>
+✔ File processing reads and analyzes file data.<br>
+✔ Loops are commonly used to process file content.<br>
+✔ Files can be searched, counted, or modified.<br>
+✔ Always close the file after processing.
+</p>
+
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonfileoperations.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythonexception.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
