@@ -1,50 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>PyLearn | Python Basics</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="pystyle.css">
-
-</head>
-
-<body>
-
-<header>
-  <h2>PyLearn</h2>
-
-  <nav>
-    <a href="#" onclick="loadPage('home.html')">Home</a>
-    <a href="#" onclick="loadPage('course.html')">Courses</a>
-
-    <div class="profile" id="profileMenu">
-      <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png">
-
-      <div class="profile-menu">
-        <a onclick="loadPage('profile.html')">My Profile</a>
-        <a onclick="loadPage('dashboard.html')">Dashboard</a>
-        <button onclick="logout()">Logout</button>
-      </div>
-    </div>
-
-  </nav>
-</header>
-
 <div class="container">
 
 <h3>Python Basics</h3>
 
-<!-- IDENTIFIERS -->
+
 <div class="section">
 
 <h4>Identifiers</h4>
 
 <p>
-Identifiers are names used to identify variables, functions, classes, modules,
-or other objects in a Python program.
+Identifiers are names used to identify variables, functions, classes,
+modules, or other objects in a Python program.
 </p>
 
 <pre><code>
@@ -56,26 +21,26 @@ user_name = "admin"
 ✔ Letters, digits, and underscore (_) are allowed<br>
 ✔ Must start with a letter or underscore<br>
 ✔ Cannot start with a digit<br>
-✔ Special symbols are not allowed except underscore<br>
-✔ Python keywords cannot be used as identifiers
+✔ No special symbols except underscore<br>
+✔ Python keywords cannot be used
 </p>
 
 <pre><code>
-2total      # ❌ Invalid
-total_2     # ✅ Valid
-total@value # ❌ Invalid
+2total      # Invalid
+total_2     # Valid
+total@value # Invalid
 </code></pre>
 
 </div>
 
-<!-- KEYWORDS -->
+
 <div class="section">
 
 <h4>Keywords</h4>
 
 <p>
 Keywords are reserved words in Python that have predefined meanings.
-They cannot be used as variable names or identifiers.
+They cannot be used as identifiers.
 </p>
 
 <pre><code>
@@ -85,14 +50,14 @@ if user_logged_in:
 
 </div>
 
-<!-- VARIABLES -->
+
 <div class="section">
 
 <h4>Variables</h4>
 
 <p>
-Variables are used to store data values. Python automatically determines the
-data type of a variable when a value is assigned.
+Variables store data values. Python automatically determines
+the data type when a value is assigned.
 </p>
 
 <pre><code>
@@ -103,21 +68,21 @@ account_balance = 2500.75
 
 <pre><code>
 status = "active"
-print(status)   # ✅ Correct
-print(Status)   # ❌ Error
+print(status)   # Correct
+print(Status)   # Error
 </code></pre>
 
 </div>
 
-<!-- INDENTATION -->
+
 <div class="section">
 
 <h4>Indentation</h4>
 
 <p>
-Indentation is used to define code blocks in Python. Unlike many other
-programming languages, Python uses indentation instead of braces to
-structure code. The standard indentation level is four spaces.
+Indentation defines blocks of code in Python. Instead of braces,
+Python uses indentation to organize statements.
+The standard indentation is four spaces.
 </p>
 
 <pre><code>
@@ -128,14 +93,14 @@ if account_balance > 0:
 
 </div>
 
-<!-- COMMENTS -->
+
 <div class="section">
 
 <h4>Comments</h4>
 
 <p>
-Comments are used to explain code and improve readability.
-They are ignored during program execution.
+Comments explain the code and improve readability.
+They are ignored during execution.
 </p>
 
 <pre><code>
@@ -153,6 +118,7 @@ print("Access granted")
 
 </div>
 
+
 <div class="page-nav">
 
 <a onclick="loadPage('Pythonrunning.html')" class="nav-btn secondary">
@@ -166,8 +132,3 @@ Next →
 </div>
 
 </div>
-
-<script src="pyapp.js"></script>
-
-</body>
-</html>
