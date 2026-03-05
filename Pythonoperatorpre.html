@@ -1,0 +1,140 @@
+<div class="container">
+
+<h3>Operator Precedence and Associativity</h3>
+
+
+<div class="section">
+
+<h4>Operator Precedence</h4>
+
+<p>
+Operator precedence determines which operator is evaluated first in an
+expression. Operators with higher precedence are executed before those
+with lower precedence.
+</p>
+
+<pre><code>
+result = 2 + 3 * 4
+print(result)
+</code></pre>
+
+<p>
+Multiplication has higher precedence than addition, so
+3 * 4 is evaluated first.
+</p>
+
+</div>
+
+
+<div class="section">
+
+<h4>Operator Associativity</h4>
+
+<p>
+Associativity determines the direction of evaluation when operators
+have the same precedence.
+</p>
+
+<pre><code>
+value = 10 - 5 - 2
+print(value)
+</code></pre>
+
+<p>
+Subtraction follows left-to-right associativity:
+(10 - 5) - 2
+</p>
+
+</div>
+
+
+<div class="section">
+
+<h4>Precedence Table (Highest to Lowest)</h4>
+
+<table>
+
+<tr>
+<th>Operator</th>
+<th>Description</th>
+<th>Associativity</th>
+</tr>
+
+<tr>
+<td>()</td>
+<td>Parentheses</td>
+<td>Left to Right</td>
+</tr>
+
+<tr>
+<td>**</td>
+<td>Exponentiation</td>
+<td>Right to Left</td>
+</tr>
+
+<tr>
+<td>+, -, ~</td>
+<td>Unary Operators</td>
+<td>Right to Left</td>
+</tr>
+
+<tr>
+<td>*, /, %, //</td>
+<td>Arithmetic</td>
+<td>Left to Right</td>
+</tr>
+
+<tr>
+<td>+, -</td>
+<td>Addition / Subtraction</td>
+<td>Left to Right</td>
+</tr>
+
+<tr>
+<td>&lt;, &gt;, &lt;=, &gt;=, ==, !=</td>
+<td>Comparison</td>
+<td>Left to Right</td>
+</tr>
+
+<tr>
+<td>not</td>
+<td>Logical NOT</td>
+<td>Right to Left</td>
+</tr>
+
+<tr>
+<td>and</td>
+<td>Logical AND</td>
+<td>Left to Right</td>
+</tr>
+
+<tr>
+<td>or</td>
+<td>Logical OR</td>
+<td>Left to Right</td>
+</tr>
+
+<tr>
+<td>lambda</td>
+<td>Lambda Expression</td>
+<td>N/A</td>
+</tr>
+
+</table>
+
+</div>
+
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonmodulesintro.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('PythonControlFlowIntro.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
