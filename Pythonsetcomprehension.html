@@ -1,0 +1,88 @@
+<div class="container">
+
+<h3>Set Comprehension in Python</h3>
+
+<div class="section">
+<h4>What is Set Comprehension?</h4>
+
+<p>
+Set comprehension is a concise way to create sets using a single line
+of code. It is similar to list comprehension but uses
+curly braces <strong>{ }</strong> to generate unique elements.
+</p>
+
+</div>
+
+<div class="section">
+
+<h4>Syntax</h4>
+
+<pre><code>
+{expression for item in iterable}
+</code></pre>
+
+<p>
+The expression is evaluated for each element in the iterable,
+and the results are stored as unique elements in a set.
+</p>
+
+</div>
+
+<div class="section">
+
+<h4>Example: Creating a Set using Comprehension</h4>
+
+<pre><code>
+numbers = {x for x in range(5)}
+
+print(numbers)
+</code></pre>
+
+<div class="output">
+{0, 1, 2, 3, 4}
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Example with Condition</h4>
+
+<pre><code>
+even_numbers = {x for x in range(10) if x % 2 == 0}
+
+print(even_numbers)
+</code></pre>
+
+<div class="output">
+{0, 2, 4, 6, 8}
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Important Points</h4>
+
+<p>
+✔ Set comprehension creates sets in a compact form.<br>
+✔ Curly braces { } are used.<br>
+✔ Duplicate values are automatically removed.<br>
+✔ Conditions can be applied to filter elements.
+</p>
+
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonfrozenset.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('PythonSetTest.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
