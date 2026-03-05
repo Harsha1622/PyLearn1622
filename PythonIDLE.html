@@ -1,99 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>PyLearn | Python IDLE & Program Editor</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="pystyle.css">
-
-</head>
-
-<body>
-
-<header>
-  <h2>PyLearn</h2>
-
-  <nav>
-    <a href="#" onclick="loadPage('home.html')">Home</a>
-    <a href="#" onclick="loadPage('course.html')">Courses</a>
-
-    <div class="profile" id="profileMenu">
-      <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png">
-
-      <div class="profile-menu">
-        <a href="#" onclick="loadPage('profile.html')">My Profile</a>
-        <a href="#" onclick="loadPage('dashboard.html')">Dashboard</a>
-        <button onclick="logout()">Logout</button>
-      </div>
-    </div>
-
-  </nav>
-</header>
-
 <div class="container">
 
-  <h3>Python IDLE & Program Editor</h3>
+<h3>Python IDLE & Program Editor</h3>
 
-  <div class="section">
-    <h4>What is IDLE?</h4>
-    <p>
-      IDLE stands for <strong>Integrated Development and Learning Environment</strong>.
-      It is the default programming environment that comes with Python.  
-      IDLE allows users to write, edit, run, and debug Python programs easily.
-    </p>
-  </div>
+<div class="section">
+<h4>What is IDLE?</h4>
+<p>
+IDLE stands for <strong>Integrated Development and Learning Environment</strong>.
+It is the default programming environment that comes with Python.
+IDLE allows users to write, edit, run, and debug Python programs easily.
+</p>
+</div>
 
-  <div class="section">
-    <h4>Python Shell (Interactive Mode)</h4>
+<div class="section">
+<h4>Python Shell (Interactive Mode)</h4>
 
 <pre><code>>> print("Hello")
-Hello</code></pre>
+Hello
+</code></pre>
 
-    <div class="output">
-      The Python shell executes commands immediately and displays the output
-      after each instruction.
-    </div>
+<div class="output">
+The Python shell executes commands immediately and displays the output
+after each instruction.
+</div>
 
-  </div>
+</div>
 
-  <div class="section">
-    <h4>Program Editor</h4>
-    <p>
-      The program editor in IDLE is used to write and save Python programs in
-      files. These files can later be executed multiple times without rewriting
-      the code.
-    </p>
-  </div>
+<div class="section">
+<h4>Program Editor</h4>
+<p>
+The program editor in IDLE is used to write and save Python programs in
+files. These files can later be executed multiple times without rewriting
+the code.
+</p>
+</div>
 
-  <div class="section">
-    <h4>Example Program</h4>
+<div class="section">
+<h4>Example Program</h4>
 
 <pre><code>print("Welcome to Python")</code></pre>
 
-    <div class="output">
-      Welcome to Python
-    </div>
+<div class="output">
+Welcome to Python
+</div>
 
-  </div>
+</div>
 
 <div class="page-nav">
 
-  <a onclick="loadPage('Pythonhistory.html')" class="nav-btn secondary">
-    ← Previous
-  </a>
+<a onclick="loadPage('Pythonhistory.html')" class="nav-btn secondary">
+← Previous
+</a>
 
-  <a onclick="loadPage('Pythonrunning.html')" class="nav-btn primary">
-    Next →
-  </a>
-
-</div>
+<a onclick="loadPage('Pythonrunning.html')" class="nav-btn primary">
+Next →
+</a>
 
 </div>
 
-<script src="pyapp.js"></script>
-
-</body>
-</html>
+</div>
