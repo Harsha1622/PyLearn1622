@@ -1,0 +1,130 @@
+<div class="container">
+
+<h3>Inheritance in Python</h3>
+
+<div class="section">
+<h4>What is Inheritance?</h4>
+<p>
+Inheritance is a feature of Object-Oriented Programming that allows
+one class to acquire the properties and methods of another class.
+The class that is inherited from is called the <strong>parent class</strong>
+or <strong>base class</strong>, and the class that inherits is called
+the <strong>child class</strong> or <strong>derived class</strong>.
+</p>
+</div>
+
+<div class="section">
+<h4>Why Inheritance is Used?</h4>
+<p>
+✔ Promotes code reusability<br>
+✔ Reduces code duplication<br>
+✔ Makes programs easier to maintain<br>
+✔ Represents real-world relationships
+</p>
+</div>
+
+<div class="section">
+<h4>Syntax of Inheritance</h4>
+
+<pre><code>
+class Parent:
+    # parent class code
+
+class Child(Parent):
+    # child class code
+</code></pre>
+
+</div>
+
+<div class="section">
+<h4>Example: Single Inheritance</h4>
+
+<pre><code>
+class Animal:
+
+    def speak(self):
+        print("Animal makes sound")
+
+class Dog(Animal):
+
+    def bark(self):
+        print("Dog barks")
+
+d = Dog()
+
+d.speak()
+d.bark()
+</code></pre>
+
+<div class="output">
+Animal makes sound<br>
+Dog barks
+</div>
+
+</div>
+
+<div class="section">
+<h4>Types of Inheritance in Python</h4>
+<p>
+✔ Single Inheritance<br>
+✔ Multiple Inheritance<br>
+✔ Multilevel Inheritance<br>
+✔ Hierarchical Inheritance<br>
+✔ Hybrid Inheritance
+</p>
+</div>
+
+<div class="section">
+<h4>Example: Multilevel Inheritance</h4>
+
+<pre><code>
+class A:
+    def showA(self):
+        print("Class A")
+
+class B(A):
+    def showB(self):
+        print("Class B")
+
+class C(B):
+    def showC(self):
+        print("Class C")
+
+obj = C()
+
+obj.showA()
+obj.showB()
+obj.showC()
+</code></pre>
+
+<div class="output">
+Class A<br>
+Class B<br>
+Class C
+</div>
+
+</div>
+
+<div class="section">
+<h4>Important Points</h4>
+<p>
+✔ Inheritance allows code reuse.<br>
+✔ Child classes inherit attributes and methods of parent classes.<br>
+✔ Python supports multiple types of inheritance.<br>
+✔ It helps build hierarchical class relationships.
+</p>
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonhiding.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythonpolymorphism.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
