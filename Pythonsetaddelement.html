@@ -1,0 +1,90 @@
+<div class="container">
+
+<h3>Adding Elements to a Set in Python</h3>
+
+<div class="section">
+<h4>Adding Elements to a Set</h4>
+
+<p>
+Elements can be added to a set using the <strong>add()</strong> method.
+This method inserts a single element into the set.
+</p>
+
+</div>
+
+<div class="section">
+
+<h4>Syntax</h4>
+
+<pre><code>
+set_name.add(element)
+</code></pre>
+
+</div>
+
+<div class="section">
+
+<h4>Example: Using add()</h4>
+
+<pre><code>
+numbers = {10, 20, 30}
+
+numbers.add(40)
+
+print(numbers)
+</code></pre>
+
+<div class="output">
+{10, 20, 30, 40}
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Adding Multiple Elements</h4>
+
+<p>
+Multiple elements can be added using the <strong>update()</strong> method.
+</p>
+
+<pre><code>
+numbers = {10, 20}
+
+numbers.update([30, 40, 50])
+
+print(numbers)
+</code></pre>
+
+<div class="output">
+{10, 20, 30, 40, 50}
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Important Points</h4>
+
+<p>
+✔ add() inserts a single element into a set.<br>
+✔ update() adds multiple elements.<br>
+✔ Duplicate elements are ignored.<br>
+✔ Sets automatically maintain unique values.
+</p>
+
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonsetmembership.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythonsetremove.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
