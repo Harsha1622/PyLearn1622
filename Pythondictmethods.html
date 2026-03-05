@@ -1,0 +1,157 @@
+<div class="container">
+
+<h3>Dictionary Methods in Python</h3>
+
+<div class="section">
+<h4>What are Dictionary Methods?</h4>
+
+<p>
+Dictionary methods are built-in functions used to perform operations
+such as retrieving keys, values, and key–value pairs from a dictionary.
+These methods make dictionary handling easier and more efficient.
+</p>
+
+</div>
+
+<div class="section">
+
+<h4>keys()</h4>
+
+<p>
+The <strong>keys()</strong> method returns all the keys present in the dictionary.
+</p>
+
+<pre><code>
+student = {
+    "name": "Rahul",
+    "age": 20
+}
+
+print(student.keys())
+</code></pre>
+
+<div class="output">
+dict_keys(['name', 'age'])
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>values()</h4>
+
+<p>
+The <strong>values()</strong> method returns all the values in the dictionary.
+</p>
+
+<pre><code>
+student = {
+    "name": "Rahul",
+    "age": 20
+}
+
+print(student.values())
+</code></pre>
+
+<div class="output">
+dict_values(['Rahul', 20])
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>items()</h4>
+
+<p>
+The <strong>items()</strong> method returns all key–value pairs in the dictionary.
+</p>
+
+<pre><code>
+student = {
+    "name": "Rahul",
+    "age": 20
+}
+
+print(student.items())
+</code></pre>
+
+<div class="output">
+dict_items([('name', 'Rahul'), ('age', 20)])
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>copy()</h4>
+
+<p>
+The <strong>copy()</strong> method creates a copy of the dictionary.
+</p>
+
+<pre><code>
+student = {
+    "name": "Rahul",
+    "age": 20
+}
+
+new_student = student.copy()
+
+print(new_student)
+</code></pre>
+
+</div>
+
+<div class="section">
+
+<h4>clear()</h4>
+
+<p>
+The <strong>clear()</strong> method removes all elements from the dictionary.
+</p>
+
+<pre><code>
+student = {
+    "name": "Rahul",
+    "age": 20
+}
+
+student.clear()
+
+print(student)
+</code></pre>
+
+<div class="output">
+{}
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Important Points</h4>
+
+<p>
+✔ keys() returns all dictionary keys.<br>
+✔ values() returns all dictionary values.<br>
+✔ items() returns key–value pairs.<br>
+✔ copy() creates a duplicate dictionary.<br>
+✔ clear() removes all elements.
+</p>
+
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythondictoperations.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythondictcomprehension.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
