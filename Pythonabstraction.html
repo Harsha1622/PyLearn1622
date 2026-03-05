@@ -1,0 +1,86 @@
+<div class="container">
+
+<h3>Abstraction in Python</h3>
+
+<div class="section">
+<h4>What is Abstraction?</h4>
+<p>
+Abstraction is the concept of hiding internal implementation
+details and showing only the necessary functionality to the user.
+It helps reduce program complexity and improves code readability.
+</p>
+</div>
+
+<div class="section">
+<h4>Why Abstraction is Used?</h4>
+<p>
+✔ Hides complex implementation details<br>
+✔ Shows only essential features<br>
+✔ Improves program security<br>
+✔ Makes programs easier to maintain
+</p>
+</div>
+
+<div class="section">
+<h4>Real-Life Example</h4>
+<p>
+When you drive a car, you use the steering wheel, brake,
+and accelerator. You do not need to understand the internal
+working of the engine. This is abstraction.
+</p>
+</div>
+
+<div class="section">
+<h4>Abstraction using Abstract Classes</h4>
+<p>
+Python provides abstraction using the <strong>ABC (Abstract Base Class)</strong>
+module.
+</p>
+
+<pre><code>
+from abc import ABC, abstractmethod
+
+class Shape(ABC):
+
+    @abstractmethod
+    def area(self):
+        pass
+
+class Square(Shape):
+
+    def area(self):
+        print("Area of square")
+
+s = Square()
+s.area()
+</code></pre>
+
+<div class="output">
+Area of square
+</div>
+
+</div>
+
+<div class="section">
+<h4>Important Points</h4>
+<p>
+✔ Abstraction hides internal implementation details.<br>
+✔ It focuses on what an object does rather than how it does it.<br>
+✔ Python uses the <strong>abc</strong> module to create abstract classes.<br>
+✔ Abstract methods must be implemented in child classes.
+</p>
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonoverloading.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('PythonOOPTest.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
