@@ -1,0 +1,88 @@
+<div class="container">
+
+<h3>Aliasing in Python Lists</h3>
+
+<div class="section">
+<h4>What is Aliasing?</h4>
+<p>
+Aliasing occurs when two variables refer to the same list object in memory.
+Instead of creating a new list, Python creates another reference to the same list.
+</p>
+</div>
+
+<div class="section">
+<h4>Example of Aliasing</h4>
+
+<pre><code>
+list1 = [10, 20, 30]
+
+list2 = list1
+
+print(list1)
+print(list2)
+</code></pre>
+
+<div class="output">
+[10, 20, 30]<br>
+[10, 20, 30]
+</div>
+
+</div>
+
+<div class="section">
+<h4>Effect of Aliasing</h4>
+<p>
+If one variable modifies the list, the change will also appear in the other variable,
+because both variables refer to the same object.
+</p>
+
+<pre><code>
+list1 = [10, 20, 30]
+
+list2 = list1
+
+list2[1] = 50
+
+print(list1)
+print(list2)
+</code></pre>
+
+<div class="output">
+[10, 50, 30]<br>
+[10, 50, 30]
+</div>
+
+</div>
+
+<div class="section">
+<h4>Why Aliasing Happens?</h4>
+<p>
+✔ Python variables store references to objects.<br>
+✔ Assigning one list variable to another creates a reference.<br>
+✔ No new list is created during simple assignment.
+</p>
+</div>
+
+<div class="section">
+<h4>Important Points</h4>
+<p>
+✔ Aliasing means two variables refer to the same list.<br>
+✔ Changes through one variable affect the other.<br>
+✔ Aliasing does not create a new list.<br>
+✔ To create a separate copy, list cloning is required.
+</p>
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonmutable.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythonlistclone.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
