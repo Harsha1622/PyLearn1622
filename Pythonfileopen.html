@@ -1,0 +1,102 @@
+<div class="container">
+
+<h3>Opening Files in Python</h3>
+
+<div class="section">
+<h4>Opening a File</h4>
+
+<p>
+In Python, a file must be opened before performing any operation such as
+reading or writing. The <strong>open()</strong> function is used to open a file.
+</p>
+
+</div>
+
+<div class="section">
+
+<h4>Syntax</h4>
+
+<pre><code>
+file_object = open("filename", "mode")
+</code></pre>
+
+<p>
+Here:
+<br>
+<strong>filename</strong> → Name of the file<br>
+<strong>mode</strong> → Specifies how the file will be used
+</p>
+
+</div>
+
+<div class="section">
+
+<h4>File Modes</h4>
+
+<p>
+<strong>r</strong> → Read mode (default)<br>
+<strong>w</strong> → Write mode (creates new file if not exists)<br>
+<strong>a</strong> → Append mode (adds data at the end)<br>
+<strong>r+</strong> → Read and write mode
+</p>
+
+</div>
+
+<div class="section">
+
+<h4>Example</h4>
+
+<pre><code>
+file = open("data.txt", "r")
+
+print(file)
+</code></pre>
+
+<div class="output">
+&lt;_io.TextIOWrapper name='data.txt' mode='r' encoding='utf-8'&gt;
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Opening File Using with Statement</h4>
+
+<p>
+Python provides the <strong>with</strong> statement to open files safely.
+It automatically closes the file after use.
+</p>
+
+<pre><code>
+with open("data.txt","r") as file:
+    print(file.read())
+</code></pre>
+
+</div>
+
+<div class="section">
+
+<h4>Important Points</h4>
+
+<p>
+✔ open() is used to open files.<br>
+✔ Different modes control how the file is used.<br>
+✔ Always close files after using them.<br>
+✔ The with statement automatically closes files.
+</p>
+
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonfileintro.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythonfileoperations.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
