@@ -1,0 +1,89 @@
+<div class="container">
+
+<h3>Objects in Python</h3>
+
+<div class="section">
+<h4>What is an Object?</h4>
+<p>
+An object is an instance of a class. When a class is defined,
+no memory is allocated. Memory is allocated only when an
+object of that class is created.
+</p>
+</div>
+
+<div class="section">
+<h4>Creating an Object</h4>
+
+<pre><code>
+class Student:
+    name = "Alex"
+
+s = Student()
+</code></pre>
+
+<p>
+Here, <strong>s</strong> is an object of the class <strong>Student</strong>.
+</p>
+
+</div>
+
+<div class="section">
+<h4>Accessing Object Attributes</h4>
+
+<pre><code>
+class Student:
+    name = "Alex"
+
+s = Student()
+
+print(s.name)
+</code></pre>
+
+<div class="output">
+Alex
+</div>
+
+</div>
+
+<div class="section">
+<h4>Example: Object with Method</h4>
+
+<pre><code>
+class Student:
+
+    def greet(self):
+        print("Hello Student")
+
+s = Student()
+s.greet()
+</code></pre>
+
+<div class="output">
+Hello Student
+</div>
+
+</div>
+
+<div class="section">
+<h4>Important Points</h4>
+<p>
+✔ An object is created from a class.<br>
+✔ Objects represent real-world entities.<br>
+✔ Objects can access class attributes and methods.<br>
+✔ Multiple objects can be created from a single class.
+</p>
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonclass.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythonencapsulation.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
