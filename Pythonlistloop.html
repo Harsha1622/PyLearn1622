@@ -1,0 +1,105 @@
+<div class="container">
+
+<h3>Looping Through a List in Python</h3>
+
+<div class="section">
+<h4>What is Looping Through a List?</h4>
+<p>
+Looping through a list means accessing each element of the list one by one.
+Loops allow us to process or display all elements in a list efficiently.
+</p>
+</div>
+
+<div class="section">
+<h4>Using for Loop</h4>
+<p>
+The <strong>for loop</strong> is the most common way to iterate through list elements.
+</p>
+
+<pre><code>
+numbers = [10, 20, 30, 40]
+
+for num in numbers:
+    print(num)
+</code></pre>
+
+<div class="output">
+10<br>
+20<br>
+30<br>
+40
+</div>
+
+</div>
+
+<div class="section">
+<h4>Using range() with Index</h4>
+<p>
+The <strong>range()</strong> function can be used to access list elements
+using their index positions.
+</p>
+
+<pre><code>
+numbers = [10, 20, 30, 40]
+
+for i in range(len(numbers)):
+    print(numbers[i])
+</code></pre>
+
+<div class="output">
+10<br>
+20<br>
+30<br>
+40
+</div>
+
+</div>
+
+<div class="section">
+<h4>Using while Loop</h4>
+<p>
+A <strong>while loop</strong> can also be used to iterate through list elements.
+</p>
+
+<pre><code>
+numbers = [10, 20, 30, 40]
+
+i = 0
+
+while i < len(numbers):
+    print(numbers[i])
+    i += 1
+</code></pre>
+
+<div class="output">
+10<br>
+20<br>
+30<br>
+40
+</div>
+
+</div>
+
+<div class="section">
+<h4>Important Points</h4>
+<p>
+✔ Loops help process all list elements easily.<br>
+✔ The <strong>for loop</strong> is commonly used for lists.<br>
+✔ The <strong>range()</strong> function helps access elements using index.<br>
+✔ The <strong>while loop</strong> can also iterate through lists.
+</p>
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonslices.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythonmutable.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
