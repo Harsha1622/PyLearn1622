@@ -1,0 +1,105 @@
+<div class="container">
+
+<h3>Scope of Variables in Python</h3>
+
+<div class="section">
+<h4>What is Variable Scope?</h4>
+<p>
+Variable scope refers to the region of a program where a variable
+can be accessed. In Python, variables can have either
+<strong>local scope</strong> or <strong>global scope</strong>.
+</p>
+</div>
+
+<div class="section">
+<h4>1. Local Variables</h4>
+<p>
+A local variable is defined inside a function and can be accessed
+only within that function.
+</p>
+
+<pre><code>
+def show():
+    x = 10
+    print(x)
+
+show()
+</code></pre>
+
+<div class="output">
+10
+</div>
+
+<p>
+The variable <strong>x</strong> exists only inside the function.
+</p>
+</div>
+
+<div class="section">
+<h4>2. Global Variables</h4>
+<p>
+A global variable is defined outside all functions and can be
+accessed anywhere in the program.
+</p>
+
+<pre><code>
+x = 20
+
+def show():
+    print(x)
+
+show()
+</code></pre>
+
+<div class="output">
+20
+</div>
+
+</div>
+
+<div class="section">
+<h4>Using the global Keyword</h4>
+<p>
+The <strong>global</strong> keyword is used to modify a global
+variable inside a function.
+</p>
+
+<pre><code>
+x = 5
+
+def change():
+    global x
+    x = 10
+
+change()
+print(x)
+</code></pre>
+
+<div class="output">
+10
+</div>
+
+</div>
+
+<div class="section">
+<h4>Important Points</h4>
+<p>
+✔ Local variables exist only inside functions.<br>
+✔ Global variables can be accessed throughout the program.<br>
+✔ The <strong>global</strong> keyword allows modification of global variables inside functions.
+</p>
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonstringmodules.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythonpackages.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
