@@ -1,0 +1,132 @@
+<div class="container">
+
+<h3>Jumping Statements in Python</h3>
+
+<div class="section">
+<h4>What are Jumping Statements?</h4>
+
+<p>
+Jumping statements alter the normal flow of execution in a program.
+Python provides <strong>break</strong>, <strong>continue</strong>,
+<strong>pass</strong>, and <strong>assert</strong>.
+</p>
+
+</div>
+
+
+<div class="section">
+<h4>break Statement</h4>
+
+<p>
+The <strong>break</strong> statement terminates the loop immediately.
+</p>
+
+<pre><code>
+for i in range(1,6):
+    if i == 4:
+        break
+    print(i)
+</code></pre>
+
+<div class="output">
+1<br>
+2<br>
+3
+</div>
+
+</div>
+
+
+<div class="section">
+<h4>continue Statement</h4>
+
+<p>
+The <strong>continue</strong> statement skips the current iteration.
+</p>
+
+<pre><code>
+for i in range(1,6):
+    if i == 3:
+        continue
+    print(i)
+</code></pre>
+
+<div class="output">
+1<br>
+2<br>
+4<br>
+5
+</div>
+
+</div>
+
+
+<div class="section">
+<h4>pass Statement</h4>
+
+<p>
+The <strong>pass</strong> statement does nothing and acts as a placeholder.
+</p>
+
+<pre><code>
+for i in range(3):
+    pass
+
+print("Loop completed")
+</code></pre>
+
+<div class="output">
+Loop completed
+</div>
+
+</div>
+
+
+<div class="section">
+<h4>assert Statement</h4>
+
+<p>
+The <strong>assert</strong> statement is used for debugging and testing conditions.
+</p>
+
+<pre><code>
+marks = 35
+
+assert marks >= 40, "Marks must be 40 or above"
+
+print("Pass")
+</code></pre>
+
+<div class="output">
+AssertionError: Marks must be 40 or above
+</div>
+
+</div>
+
+
+<div class="section">
+<h4>Important Points</h4>
+
+<p>
+✔ break exits the loop immediately.<br>
+✔ continue skips the current iteration.<br>
+✔ pass acts as an empty placeholder.<br>
+✔ assert helps detect logical errors during testing.
+</p>
+
+</div>
+
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonwhile.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('PythonFunctionsIntro.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
