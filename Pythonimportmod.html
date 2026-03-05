@@ -1,0 +1,112 @@
+<div class="container">
+
+<h3>Importing Modules in Python</h3>
+
+<div class="section">
+<h4>What is Importing a Module?</h4>
+<p>
+Importing a module means using the functions, variables, or classes
+defined in another Python file. Python provides the
+<strong>import</strong> statement to include modules in a program.
+</p>
+</div>
+
+<div class="section">
+<h4>1. Import Entire Module</h4>
+
+<pre><code>
+import math
+
+print(math.sqrt(16))
+</code></pre>
+
+<div class="output">
+4.0
+</div>
+
+<p>
+The entire module is imported and accessed using the module name.
+</p>
+
+</div>
+
+<div class="section">
+<h4>2. Import Specific Function</h4>
+
+<pre><code>
+from math import sqrt
+
+print(sqrt(25))
+</code></pre>
+
+<div class="output">
+5.0
+</div>
+
+<p>
+Only the required function is imported from the module.
+</p>
+
+</div>
+
+<div class="section">
+<h4>3. Import with Alias</h4>
+
+<pre><code>
+import math as m
+
+print(m.sqrt(36))
+</code></pre>
+
+<div class="output">
+6.0
+</div>
+
+<p>
+An alias provides a shorter name for the module.
+</p>
+
+</div>
+
+<div class="section">
+<h4>4. Import All Functions</h4>
+
+<pre><code>
+from math import *
+
+print(sqrt(49))
+</code></pre>
+
+<div class="output">
+7.0
+</div>
+
+<p>
+All functions from the module are imported.
+</p>
+
+</div>
+
+<div class="section">
+<h4>Important Points</h4>
+<p>
+✔ Modules allow code reuse.<br>
+✔ The <strong>import</strong> keyword is used to include modules.<br>
+✔ Specific functions can be imported using <strong>from</strong>.<br>
+✔ Aliases simplify long module names.
+</p>
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonmodcreate.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythonreturn.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
