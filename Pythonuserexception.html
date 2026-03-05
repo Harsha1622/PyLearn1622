@@ -1,0 +1,102 @@
+<div class="container">
+
+<h3>User Defined Exceptions in Python</h3>
+
+<div class="section">
+<h4>What is a User Defined Exception?</h4>
+
+<p>
+Python allows programmers to create their own exceptions.
+These are called <strong>User Defined Exceptions</strong>.
+They are useful when a program needs to raise specific errors
+based on custom conditions.
+</p>
+
+</div>
+
+<div class="section">
+
+<h4>Creating a User Defined Exception</h4>
+
+<p>
+To create a user defined exception, we define a new class
+that inherits from the built-in <strong>Exception</strong> class.
+</p>
+
+<pre><code>
+class MyError(Exception):
+    pass
+</code></pre>
+
+</div>
+
+<div class="section">
+
+<h4>Example</h4>
+
+<pre><code>
+class AgeError(Exception):
+    pass
+
+age = int(input("Enter age: "))
+
+if age < 18:
+    raise AgeError("Age must be 18 or above")
+else:
+    print("Eligible")
+</code></pre>
+
+<div class="output">
+AgeError: Age must be 18 or above
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Handling User Defined Exceptions</h4>
+
+<pre><code>
+class AgeError(Exception):
+    pass
+
+try:
+    age = int(input("Enter age: "))
+
+    if age < 18:
+        raise AgeError
+
+    print("Eligible")
+
+except AgeError:
+    print("Custom exception occurred")
+</code></pre>
+
+</div>
+
+<div class="section">
+
+<h4>Important Points</h4>
+
+<p>
+✔ User defined exceptions are created using classes.<br>
+✔ They inherit from the built-in Exception class.<br>
+✔ The raise statement is used to trigger the exception.<br>
+✔ Custom exceptions help control program errors better.
+</p>
+
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonraise.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('PythonFileExceptionTest.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
