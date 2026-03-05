@@ -1,0 +1,103 @@
+<div class="container">
+
+<h3>File Operations in Python</h3>
+
+<div class="section">
+<h4>Reading from a File</h4>
+
+<p>
+Python provides different methods to read data from a file.
+The most commonly used methods are <strong>read()</strong>,
+<strong>readline()</strong>, and <strong>readlines()</strong>.
+</p>
+
+<pre><code>
+file = open("data.txt","r")
+content = file.read()
+print(content)
+file.close()
+</code></pre>
+
+<div class="output">
+Displays the content of the file
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Writing to a File</h4>
+
+<p>
+The <strong>write()</strong> method is used to write data into a file.
+If the file does not exist, Python will create it.
+</p>
+
+<pre><code>
+file = open("data.txt","w")
+file.write("Welcome to Python")
+file.close()
+</code></pre>
+
+</div>
+
+<div class="section">
+
+<h4>Appending Data to a File</h4>
+
+<p>
+The <strong>append mode (a)</strong> allows new data to be added
+to the end of an existing file without removing the previous content.
+</p>
+
+<pre><code>
+file = open("data.txt","a")
+file.write(" Learning File Handling")
+file.close()
+</code></pre>
+
+</div>
+
+<div class="section">
+
+<h4>Closing a File</h4>
+
+<p>
+The <strong>close()</strong> method is used to close a file after
+performing operations. Closing the file frees system resources.
+</p>
+
+<pre><code>
+file = open("data.txt","r")
+print(file.read())
+file.close()
+</code></pre>
+
+</div>
+
+<div class="section">
+
+<h4>Important Points</h4>
+
+<p>
+✔ read() reads the entire file content.<br>
+✔ write() writes data to a file.<br>
+✔ append mode adds data without deleting existing content.<br>
+✔ close() should always be used after file operations.
+</p>
+
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonfileopen.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythonfileprocess.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
