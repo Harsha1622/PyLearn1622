@@ -1,0 +1,113 @@
+<div class="container">
+
+<h3>Array Operators in Python</h3>
+
+<div class="section">
+<h4>What are Array Operators?</h4>
+<p>
+Array operators are used to perform operations on arrays such as
+combining arrays, repeating elements, and checking membership.
+</p>
+</div>
+
+<div class="section">
+<h4>1. Concatenation Operator (+)</h4>
+<p>
+The <strong>+</strong> operator is used to combine two arrays.
+</p>
+
+<pre><code>
+import array
+
+a = array.array('i', [1, 2, 3])
+b = array.array('i', [4, 5, 6])
+
+c = a + b
+print(c)
+</code></pre>
+
+<div class="output">
+array('i', [1, 2, 3, 4, 5, 6])
+</div>
+</div>
+
+<div class="section">
+<h4>2. Repetition Operator (*)</h4>
+<p>
+The <strong>*</strong> operator repeats the array elements.
+</p>
+
+<pre><code>
+import array
+
+a = array.array('i', [2, 4, 6])
+
+print(a * 2)
+</code></pre>
+
+<div class="output">
+array('i', [2, 4, 6, 2, 4, 6])
+</div>
+</div>
+
+<div class="section">
+<h4>3. Membership Operator (in)</h4>
+<p>
+The <strong>in</strong> operator checks whether an element exists in the array.
+</p>
+
+<pre><code>
+import array
+
+a = array.array('i', [10, 20, 30])
+
+print(20 in a)
+</code></pre>
+
+<div class="output">
+True
+</div>
+</div>
+
+<div class="section">
+<h4>4. Non-membership Operator (not in)</h4>
+<p>
+The <strong>not in</strong> operator checks if an element is not present in the array.
+</p>
+
+<pre><code>
+import array
+
+a = array.array('i', [10, 20, 30])
+
+print(40 not in a)
+</code></pre>
+
+<div class="output">
+True
+</div>
+</div>
+
+<div class="section">
+<h4>Important Points</h4>
+<p>
+✔ + operator combines arrays.<br>
+✔ * operator repeats elements.<br>
+✔ in operator checks membership.<br>
+✔ not in checks absence of elements.
+</p>
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonaccessarray.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythonarraymethods.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
