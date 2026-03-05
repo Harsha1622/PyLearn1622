@@ -1,0 +1,72 @@
+<div class="container">
+
+<h3>Tuple Methods in Python</h3>
+
+<div class="section">
+<h4>Tuple Methods</h4>
+
+<p>
+Unlike lists, tuples are immutable. Because of this, Python provides only a few built-in methods for tuples. The two commonly used tuple methods are <strong>count()</strong> and <strong>index()</strong>.
+</p>
+</div>
+
+<div class="section">
+<h4>count() Method</h4>
+
+<p>
+The <strong>count()</strong> method returns the number of times a specified value appears in a tuple.
+</p>
+
+<pre><code>
+numbers = (1, 2, 3, 2, 4, 2)
+
+print(numbers.count(2))
+</code></pre>
+
+<div class="output">
+3
+</div>
+</div>
+
+<div class="section">
+<h4>index() Method</h4>
+
+<p>
+The <strong>index()</strong> method returns the index of the first occurrence of a specified element in a tuple.
+</p>
+
+<pre><code>
+numbers = (10, 20, 30, 40)
+
+print(numbers.index(30))
+</code></pre>
+
+<div class="output">
+2
+</div>
+</div>
+
+<div class="section">
+<h4>Important Points</h4>
+
+<p>
+✔ Tuples are immutable, so methods that modify data are not available.<br>
+✔ count() returns how many times an element appears.<br>
+✔ index() returns the position of the first matching element.<br>
+✔ If the element is not found, index() raises a ValueError.
+</p>
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythontupleoperations.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythonassignment.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
