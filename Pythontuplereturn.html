@@ -1,0 +1,86 @@
+<div class="container">
+
+<h3>Tuple as Return Value in Python</h3>
+
+<div class="section">
+<h4>Returning Multiple Values</h4>
+
+<p>
+A function in Python can return multiple values at once.
+When multiple values are returned, Python automatically packs
+them into a tuple.
+</p>
+
+</div>
+
+<div class="section">
+
+<h4>Example: Returning a Tuple</h4>
+
+<pre><code>
+def get_numbers():
+    return 10, 20, 30
+
+result = get_numbers()
+
+print(result)
+</code></pre>
+
+<div class="output">
+(10, 20, 30)
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Accessing Returned Tuple</h4>
+
+<p>
+The returned tuple can be accessed using indexing or by unpacking it
+into multiple variables.
+</p>
+
+<pre><code>
+def get_data():
+    return "Python", 3.11
+
+name, version = get_data()
+
+print(name)
+print(version)
+</code></pre>
+
+<div class="output">
+Python<br>
+3.11
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Important Points</h4>
+
+<p>
+✔ Python functions can return multiple values.<br>
+✔ Returned values are automatically packed into a tuple.<br>
+✔ Tuple unpacking can be used to store returned values in variables.<br>
+✔ This feature improves code readability and efficiency.
+</p>
+
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonassignment.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythontuplecomprehension.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
