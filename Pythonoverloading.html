@@ -1,0 +1,98 @@
+<div class="container">
+
+<h3>Method Overloading and Method Overriding in Python</h3>
+
+<div class="section">
+<h4>Method Overloading</h4>
+<p>
+Method overloading means defining multiple methods with the
+same name but different parameters. Python does not support
+traditional method overloading like some other languages,
+but it can be achieved using default arguments.
+</p>
+</div>
+
+<div class="section">
+<h4>Example: Method Overloading</h4>
+
+<pre><code>
+class Math:
+
+    def add(self, a, b, c = 0):
+        print(a + b + c)
+
+m = Math()
+
+m.add(5, 3)
+m.add(5, 3, 2)
+</code></pre>
+
+<div class="output">
+8<br>
+10
+</div>
+
+<p>
+Here the same method <strong>add()</strong> works with different
+numbers of arguments.
+</p>
+
+</div>
+
+
+<div class="section">
+<h4>Method Overriding</h4>
+<p>
+Method overriding occurs when a child class provides its own
+implementation of a method that already exists in the parent class.
+</p>
+</div>
+
+<div class="section">
+<h4>Example: Method Overriding</h4>
+
+<pre><code>
+class Animal:
+
+    def sound(self):
+        print("Animal makes sound")
+
+class Dog(Animal):
+
+    def sound(self):
+        print("Dog barks")
+
+d = Dog()
+d.sound()
+</code></pre>
+
+<div class="output">
+Dog barks
+</div>
+
+</div>
+
+<div class="section">
+<h4>Important Points</h4>
+<p>
+✔ Method overloading uses the same method name with different parameters.<br>
+✔ Python handles overloading using default arguments.<br>
+✔ Method overriding occurs in inheritance.<br>
+✔ The child class replaces the parent class method implementation.
+</p>
+</div>
+
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonpolymorphism.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythonabstraction.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
