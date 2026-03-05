@@ -1,0 +1,111 @@
+<div class="container">
+
+<h3>List Comprehension in Python</h3>
+
+<div class="section">
+<h4>What is List Comprehension?</h4>
+<p>
+List comprehension is a short and efficient way to create lists in Python.
+It allows generating a new list using a single line of code.
+</p>
+</div>
+
+<div class="section">
+<h4>Syntax of List Comprehension</h4>
+
+<pre><code>
+new_list = [expression for item in iterable]
+</code></pre>
+
+<p>
+✔ <strong>expression</strong> – operation performed on each element<br>
+✔ <strong>item</strong> – variable representing each element<br>
+✔ <strong>iterable</strong> – list or sequence being processed
+</p>
+
+</div>
+
+<div class="section">
+<h4>Example: Creating a List of Squares</h4>
+
+<pre><code>
+numbers = [1, 2, 3, 4, 5]
+
+squares = [x*x for x in numbers]
+
+print(squares)
+</code></pre>
+
+<div class="output">
+[1, 4, 9, 16, 25]
+</div>
+
+</div>
+
+<div class="section">
+<h4>Example: List Comprehension with Condition</h4>
+
+<pre><code>
+numbers = [1, 2, 3, 4, 5, 6]
+
+even_numbers = [x for x in numbers if x % 2 == 0]
+
+print(even_numbers)
+</code></pre>
+
+<div class="output">
+[2, 4, 6]
+</div>
+
+</div>
+
+<div class="section">
+<h4>Example: Converting Words to Uppercase</h4>
+
+<pre><code>
+words = ["python", "list", "code"]
+
+upper_words = [word.upper() for word in words]
+
+print(upper_words)
+</code></pre>
+
+<div class="output">
+['PYTHON', 'LIST', 'CODE']
+</div>
+
+</div>
+
+<div class="section">
+<h4>Advantages of List Comprehension</h4>
+<p>
+✔ Makes code shorter and cleaner.<br>
+✔ Improves readability.<br>
+✔ Faster than traditional loops in many cases.<br>
+✔ Useful for creating lists with conditions.
+</p>
+</div>
+
+<div class="section">
+<h4>Important Points</h4>
+<p>
+✔ Used to generate lists efficiently.<br>
+✔ Can include conditions using <strong>if</strong>.<br>
+✔ Replaces multiple lines of loop code.<br>
+✔ Commonly used in Python data processing.
+</p>
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonlistparameters.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('PythonListtest.html')" class="nav-btn primary">
+Start Test →
+</a>
+
+</div>
+
+</div>
