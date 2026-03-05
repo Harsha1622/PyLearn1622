@@ -1,0 +1,128 @@
+<div class="container">
+
+<h3>Set Methods in Python</h3>
+
+<div class="section">
+<h4>Common Set Methods</h4>
+
+<p>
+Python provides several built-in methods to work with sets.
+These methods help add, remove, and manipulate elements efficiently.
+</p>
+
+</div>
+
+<div class="section">
+
+<h4>add()</h4>
+
+<p>
+The <strong>add()</strong> method inserts a single element into a set.
+</p>
+
+<pre><code>
+numbers = {1, 2, 3}
+
+numbers.add(4)
+
+print(numbers)
+</code></pre>
+
+<div class="output">
+{1, 2, 3, 4}
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>update()</h4>
+
+<p>
+The <strong>update()</strong> method adds multiple elements to a set.
+</p>
+
+<pre><code>
+numbers = {1, 2}
+
+numbers.update([3, 4, 5])
+
+print(numbers)
+</code></pre>
+
+<div class="output">
+{1, 2, 3, 4, 5}
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>clear()</h4>
+
+<p>
+The <strong>clear()</strong> method removes all elements from the set.
+</p>
+
+<pre><code>
+numbers = {1, 2, 3}
+
+numbers.clear()
+
+print(numbers)
+</code></pre>
+
+<div class="output">
+set()
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>copy()</h4>
+
+<p>
+The <strong>copy()</strong> method creates a shallow copy of a set.
+</p>
+
+<pre><code>
+A = {1, 2, 3}
+
+B = A.copy()
+
+print(B)
+</code></pre>
+
+<div class="output">
+{1, 2, 3}
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Important Points</h4>
+
+<p>
+✔ add() inserts one element.<br>
+✔ update() adds multiple elements.<br>
+✔ clear() removes all elements from the set.<br>
+✔ copy() creates a duplicate set.
+</p>
+
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonsetoperations.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythonfrozenset.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
