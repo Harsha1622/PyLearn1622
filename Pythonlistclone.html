@@ -1,0 +1,98 @@
+<div class="container">
+
+<h3>List Cloning in Python</h3>
+
+<div class="section">
+<h4>What is List Cloning?</h4>
+<p>
+List cloning means creating a new list that contains the same elements
+as the original list. Unlike aliasing, cloning creates a separate copy
+so changes in one list do not affect the other.
+</p>
+</div>
+
+<div class="section">
+<h4>Why List Cloning is Needed?</h4>
+<p>
+When we assign one list to another using <strong>=</strong>,
+both variables refer to the same list (aliasing).  
+To avoid this and create an independent list, cloning is used.
+</p>
+</div>
+
+<div class="section">
+<h4>Cloning Using Slicing</h4>
+
+<pre><code>
+list1 = [10, 20, 30]
+
+list2 = list1[:]
+
+print(list1)
+print(list2)
+</code></pre>
+
+<div class="output">
+[10, 20, 30]<br>
+[10, 20, 30]
+</div>
+
+</div>
+
+<div class="section">
+<h4>Cloning Using list() Function</h4>
+
+<pre><code>
+list1 = [10, 20, 30]
+
+list2 = list(list1)
+
+print(list2)
+</code></pre>
+
+<div class="output">
+[10, 20, 30]
+</div>
+
+</div>
+
+<div class="section">
+<h4>Cloning Using copy() Method</h4>
+
+<pre><code>
+list1 = [10, 20, 30]
+
+list2 = list1.copy()
+
+print(list2)
+</code></pre>
+
+<div class="output">
+[10, 20, 30]
+</div>
+
+</div>
+
+<div class="section">
+<h4>Important Points</h4>
+<p>
+✔ List cloning creates a new independent list.<br>
+✔ Changes in the cloned list do not affect the original list.<br>
+✔ Cloning can be done using slicing, list(), or copy().<br>
+✔ Cloning avoids problems caused by aliasing.
+</p>
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonaliasing.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythonlistparameters.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
