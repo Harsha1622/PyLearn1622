@@ -1,0 +1,89 @@
+<div class="container">
+
+<h3>Python Packages</h3>
+
+<div class="section">
+<h4>What is a Package?</h4>
+<p>
+A package in Python is a collection of modules organized in a directory.
+Packages help structure large Python projects by grouping related modules
+together.
+</p>
+</div>
+
+<div class="section">
+<h4>Why Use Packages?</h4>
+<p>
+✔ Organize large programs into smaller parts.<br>
+✔ Avoid naming conflicts between modules.<br>
+✔ Improve code readability and maintainability.<br>
+✔ Allow reuse of modules across different programs.
+</p>
+</div>
+
+<div class="section">
+<h4>Creating a Package</h4>
+<p>
+A package is created by making a folder that contains Python modules.
+The folder usually contains a special file called <strong>__init__.py</strong>.
+</p>
+
+<pre><code>
+mypackage/
+│
+├── __init__.py
+├── module1.py
+└── module2.py
+</code></pre>
+
+</div>
+
+<div class="section">
+<h4>Importing a Module from a Package</h4>
+
+<pre><code>
+from mypackage import module1
+
+module1.function_name()
+</code></pre>
+
+</div>
+
+<div class="section">
+<h4>Example</h4>
+
+<pre><code>
+from math import sqrt
+
+print(sqrt(16))
+</code></pre>
+
+<div class="output">
+4.0
+</div>
+
+</div>
+
+<div class="section">
+<h4>Important Points</h4>
+<p>
+✔ A package is a collection of modules.<br>
+✔ It helps organize large Python programs.<br>
+✔ Modules inside packages can be imported using the <strong>import</strong> statement.<br>
+✔ Packages improve code reuse and structure.
+</p>
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonscope.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('PythonArraystest.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
