@@ -1,0 +1,129 @@
+<div class="container">
+
+<h3>Set Operations in Python</h3>
+
+<div class="section">
+<h4>What are Set Operations?</h4>
+
+<p>
+Python sets support mathematical operations such as union,
+intersection, difference, and symmetric difference.
+These operations help compare and combine sets.
+</p>
+
+</div>
+
+<div class="section">
+
+<h4>Union</h4>
+
+<p>
+The <strong>union()</strong> method returns a new set containing
+all unique elements from both sets.
+</p>
+
+<pre><code>
+A = {1, 2, 3}
+B = {3, 4, 5}
+
+print(A.union(B))
+</code></pre>
+
+<div class="output">
+{1, 2, 3, 4, 5}
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Intersection</h4>
+
+<p>
+The <strong>intersection()</strong> method returns the common
+elements between two sets.
+</p>
+
+<pre><code>
+A = {1, 2, 3}
+B = {2, 3, 4}
+
+print(A.intersection(B))
+</code></pre>
+
+<div class="output">
+{2, 3}
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Difference</h4>
+
+<p>
+The <strong>difference()</strong> method returns elements
+present in the first set but not in the second.
+</p>
+
+<pre><code>
+A = {1, 2, 3}
+B = {2, 4}
+
+print(A.difference(B))
+</code></pre>
+
+<div class="output">
+{1, 3}
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Symmetric Difference</h4>
+
+<p>
+The <strong>symmetric_difference()</strong> method returns
+elements that are in either set but not in both.
+</p>
+
+<pre><code>
+A = {1, 2, 3}
+B = {3, 4, 5}
+
+print(A.symmetric_difference(B))
+</code></pre>
+
+<div class="output">
+{1, 2, 4, 5}
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Important Points</h4>
+
+<p>
+✔ Union combines elements from both sets.<br>
+✔ Intersection returns common elements.<br>
+✔ Difference returns unique elements from one set.<br>
+✔ Symmetric difference returns non-common elements.
+</p>
+
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonsetremove.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythonsetmethods.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
