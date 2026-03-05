@@ -1,0 +1,121 @@
+<div class="container">
+
+<h3>Dictionary Operations in Python</h3>
+
+<div class="section">
+<h4>What are Dictionary Operations?</h4>
+
+<p>
+Dictionary operations are used to perform various tasks such as
+checking elements, counting items, and iterating through key–value pairs.
+These operations help in manipulating and managing dictionary data.
+</p>
+
+</div>
+
+<div class="section">
+
+<h4>Finding Length of Dictionary</h4>
+
+<p>
+The <strong>len()</strong> function returns the number of key–value pairs in a dictionary.
+</p>
+
+<pre><code>
+student = {
+    "name": "Rahul",
+    "age": 20,
+    "course": "Python"
+}
+
+print(len(student))
+</code></pre>
+
+<div class="output">
+3
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Checking if Key Exists</h4>
+
+<p>
+The <strong>in</strong> operator checks whether a key exists in the dictionary.
+</p>
+
+<pre><code>
+student = {
+    "name": "Rahul",
+    "age": 20
+}
+
+print("name" in student)
+</code></pre>
+
+<div class="output">
+True
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Looping Through Dictionary</h4>
+
+<pre><code>
+student = {
+    "name": "Rahul",
+    "age": 20,
+    "course": "Python"
+}
+
+for key in student:
+    print(key)
+</code></pre>
+
+</div>
+
+<div class="section">
+
+<h4>Looping Through Key–Value Pairs</h4>
+
+<pre><code>
+student = {
+    "name": "Rahul",
+    "age": 20
+}
+
+for key, value in student.items():
+    print(key, value)
+</code></pre>
+
+</div>
+
+<div class="section">
+
+<h4>Important Points</h4>
+
+<p>
+✔ <strong>len()</strong> returns number of elements in dictionary.<br>
+✔ <strong>in</strong> operator checks key existence.<br>
+✔ Dictionary elements can be accessed using loops.<br>
+✔ <strong>items()</strong> returns key–value pairs for iteration.
+</p>
+
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonremovedict.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythondictmethods.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
