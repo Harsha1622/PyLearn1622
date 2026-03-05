@@ -1,0 +1,110 @@
+<div class="container">
+
+<h3>Polymorphism in Python</h3>
+
+<div class="section">
+<h4>What is Polymorphism?</h4>
+<p>
+Polymorphism means <strong>"many forms"</strong>. In Object-Oriented
+Programming, polymorphism allows the same method name to behave
+differently depending on the object that calls it.
+</p>
+</div>
+
+<div class="section">
+<h4>Why Polymorphism is Used?</h4>
+<p>
+✔ Allows one interface to be used for different data types<br>
+✔ Improves flexibility in programs<br>
+✔ Makes code reusable and scalable
+</p>
+</div>
+
+<div class="section">
+<h4>Example: Function Polymorphism</h4>
+
+<pre><code>
+print(len("Python"))
+print(len([10,20,30,40]))
+</code></pre>
+
+<div class="output">
+6<br>
+4
+</div>
+
+<p>
+The same function <strong>len()</strong> works with different data types.
+</p>
+
+</div>
+
+<div class="section">
+<h4>Example: Method Polymorphism</h4>
+
+<pre><code>
+class Dog:
+    def sound(self):
+        print("Dog barks")
+
+class Cat:
+    def sound(self):
+        print("Cat meows")
+
+d = Dog()
+c = Cat()
+
+d.sound()
+c.sound()
+</code></pre>
+
+<div class="output">
+Dog barks<br>
+Cat meows
+</div>
+
+</div>
+
+<div class="section">
+<h4>Operator Polymorphism</h4>
+
+<pre><code>
+print(5 + 3)
+print("Py" + "Learn")
+</code></pre>
+
+<div class="output">
+8<br>
+PyLearn
+</div>
+
+<p>
+The <strong>+</strong> operator performs addition for numbers
+and concatenation for strings.
+</p>
+
+</div>
+
+<div class="section">
+<h4>Important Points</h4>
+<p>
+✔ Polymorphism means one interface with many behaviors.<br>
+✔ Same function can work with different data types.<br>
+✔ Python supports polymorphism through functions,
+methods, and operators.
+</p>
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythoninheritance.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythonoverloading.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
