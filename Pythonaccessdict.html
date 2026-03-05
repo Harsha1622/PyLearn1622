@@ -1,0 +1,143 @@
+<div class="container">
+
+<h3>Accessing Dictionary Elements</h3>
+
+<div class="section">
+<h4>Accessing Values in a Dictionary</h4>
+
+<p>
+Dictionary values are accessed using their <strong>keys</strong>.  
+The key is placed inside square brackets <strong>[ ]</strong>.
+</p>
+
+</div>
+
+<div class="section">
+
+<h4>Example: Accessing Value using Key</h4>
+
+<pre><code>
+student = {
+    "name": "Rahul",
+    "age": 20,
+    "course": "Python"
+}
+
+print(student["name"])
+</code></pre>
+
+<div class="output">
+Rahul
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Using get() Method</h4>
+
+<p>
+The <strong>get()</strong> method is another way to access dictionary values.
+It avoids errors if the key does not exist.
+</p>
+
+<pre><code>
+student = {
+    "name": "Rahul",
+    "age": 20
+}
+
+print(student.get("age"))
+</code></pre>
+
+<div class="output">
+20
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Accessing All Keys</h4>
+
+<pre><code>
+student = {
+    "name": "Rahul",
+    "age": 20
+}
+
+print(student.keys())
+</code></pre>
+
+<div class="output">
+dict_keys(['name', 'age'])
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Accessing All Values</h4>
+
+<pre><code>
+student = {
+    "name": "Rahul",
+    "age": 20
+}
+
+print(student.values())
+</code></pre>
+
+<div class="output">
+dict_values(['Rahul', 20])
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Accessing Key-Value Pairs</h4>
+
+<pre><code>
+student = {
+    "name": "Rahul",
+    "age": 20
+}
+
+print(student.items())
+</code></pre>
+
+<div class="output">
+dict_items([('name', 'Rahul'), ('age', 20)])
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Important Points</h4>
+
+<p>
+✔ Dictionary elements are accessed using keys.<br>
+✔ Square brackets <strong>[ ]</strong> retrieve the value of a key.<br>
+✔ <strong>get()</strong> method avoids key errors.<br>
+✔ <strong>keys()</strong> returns all keys.<br>
+✔ <strong>values()</strong> returns all values.<br>
+✔ <strong>items()</strong> returns key-value pairs.
+</p>
+
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythoncreatedict.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythondictoperations.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
