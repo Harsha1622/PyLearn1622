@@ -1,0 +1,101 @@
+<div class="container">
+
+<h3>Return Statement in Python</h3>
+
+<div class="section">
+<h4>What is Return Statement?</h4>
+<p>
+The <strong>return</strong> statement is used in a function to send a value
+back to the place where the function was called. It ends the execution
+of the function and returns the result.
+</p>
+</div>
+
+<div class="section">
+<h4>Syntax of Return Statement</h4>
+
+<pre><code>
+def function_name():
+    statements
+    return value
+</code></pre>
+
+</div>
+
+<div class="section">
+<h4>Example: Function with Return Value</h4>
+
+<pre><code>
+def add(a, b):
+    return a + b
+
+result = add(10, 20)
+print(result)
+</code></pre>
+
+<div class="output">
+30
+</div>
+
+</div>
+
+<div class="section">
+<h4>Example: Returning Multiple Values</h4>
+
+<pre><code>
+def calculate(a, b):
+    return a + b, a * b
+
+sum_value, product = calculate(5, 3)
+
+print(sum_value)
+print(product)
+</code></pre>
+
+<div class="output">
+8<br>
+15
+</div>
+
+</div>
+
+<div class="section">
+<h4>Example: Return Without Value</h4>
+
+<pre><code>
+def message():
+    print("Hello Python")
+    return
+
+message()
+</code></pre>
+
+<div class="output">
+Hello Python
+</div>
+
+</div>
+
+<div class="section">
+<h4>Important Points</h4>
+<p>
+✔ The return statement sends a value back from a function.<br>
+✔ It stops the execution of the function.<br>
+✔ A function can return single or multiple values.<br>
+✔ If no return statement is used, the function returns <strong>None</strong>.
+</p>
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonimportmod.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('PythonFunctionstest.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
