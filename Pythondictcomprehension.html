@@ -1,0 +1,101 @@
+<div class="container">
+
+<h3>Dictionary Comprehension in Python</h3>
+
+<div class="section">
+<h4>What is Dictionary Comprehension?</h4>
+
+<p>
+Dictionary comprehension is a short and efficient way to create a
+dictionary using a single line of code. It is similar to list
+comprehension but creates key–value pairs.
+</p>
+
+</div>
+
+<div class="section">
+
+<h4>Syntax</h4>
+
+<pre><code>
+{key : value for item in iterable}
+</code></pre>
+
+</div>
+
+<div class="section">
+
+<h4>Example: Creating Dictionary</h4>
+
+<pre><code>
+numbers = {x: x*x for x in range(5)}
+
+print(numbers)
+</code></pre>
+
+<div class="output">
+{0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Example with Condition</h4>
+
+<pre><code>
+even_numbers = {x: x*x for x in range(10) if x % 2 == 0}
+
+print(even_numbers)
+</code></pre>
+
+<div class="output">
+{0: 0, 2: 4, 4: 16, 6: 36, 8: 64}
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Example: Converting List to Dictionary</h4>
+
+<pre><code>
+keys = ["a","b","c"]
+
+dictionary = {key: len(key) for key in keys}
+
+print(dictionary)
+</code></pre>
+
+<div class="output">
+{'a': 1, 'b': 1, 'c': 1}
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Important Points</h4>
+
+<p>
+✔ Dictionary comprehension creates dictionaries in one line.<br>
+✔ Uses curly braces <strong>{ }</strong>.<br>
+✔ Can include conditions.<br>
+✔ Makes code shorter and cleaner.
+</p>
+
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythondictmethods.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('PythonDictionaryTest.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
