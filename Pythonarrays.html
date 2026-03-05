@@ -1,0 +1,104 @@
+<div class="container">
+
+<h3>Arrays in Python</h3>
+
+<div class="section">
+<h4>What is an Array?</h4>
+<p>
+An array is a data structure used to store multiple values of the
+same data type in a single variable. Arrays allow efficient storage
+and access to a collection of elements.
+</p>
+</div>
+
+<div class="section">
+<h4>Array Module in Python</h4>
+<p>
+Python provides the <strong>array</strong> module to create arrays.
+Before using arrays, the module must be imported.
+</p>
+
+<pre><code>
+import array
+</code></pre>
+</div>
+
+<div class="section">
+<h4>Creating an Array</h4>
+
+<pre><code>
+import array
+
+numbers = array.array('i', [10, 20, 30, 40])
+
+print(numbers)
+</code></pre>
+
+<div class="output">
+array('i', [10, 20, 30, 40])
+</div>
+
+<p>
+Here <strong>'i'</strong> represents integer type elements.
+</p>
+
+</div>
+
+<div class="section">
+<h4>Common Array Type Codes</h4>
+
+<p>
+✔ 'i' → Integer<br>
+✔ 'f' → Floating point number<br>
+✔ 'd' → Double precision float<br>
+✔ 'b' → Signed integer
+</p>
+
+</div>
+
+<div class="section">
+<h4>Advantages of Arrays</h4>
+
+<p>
+✔ Store multiple values in a single variable.<br>
+✔ Efficient memory usage.<br>
+✔ Easy access to elements using index.<br>
+✔ Useful for numerical data processing.
+</p>
+
+</div>
+
+<div class="section">
+<h4>Example Program</h4>
+
+<pre><code>
+import array
+
+arr = array.array('i', [5, 10, 15, 20])
+
+for i in arr:
+    print(i)
+</code></pre>
+
+<div class="output">
+5<br>
+10<br>
+15<br>
+20
+</div>
+
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Arraysstrings.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythonaccessarray.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
