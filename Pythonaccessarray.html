@@ -1,0 +1,102 @@
+<div class="container">
+
+<h3>Accessing Array Elements in Python</h3>
+
+<div class="section">
+<h4>Accessing Array Elements</h4>
+<p>
+Array elements can be accessed using an index value.
+The index starts from <strong>0</strong>, which means the first element
+is stored at position 0.
+</p>
+</div>
+
+<div class="section">
+<h4>Example: Accessing Elements</h4>
+
+<pre><code>
+import array
+
+arr = array.array('i', [10, 20, 30, 40])
+
+print(arr[0])
+print(arr[2])
+</code></pre>
+
+<div class="output">
+10<br>
+30
+</div>
+
+<p>
+Here <strong>arr[0]</strong> accesses the first element and
+<strong>arr[2]</strong> accesses the third element.
+</p>
+
+</div>
+
+<div class="section">
+<h4>Accessing Elements using Loop</h4>
+
+<pre><code>
+import array
+
+arr = array.array('i', [5, 10, 15, 20])
+
+for i in range(len(arr)):
+    print(arr[i])
+</code></pre>
+
+<div class="output">
+5<br>
+10<br>
+15<br>
+20
+</div>
+
+</div>
+
+<div class="section">
+<h4>Accessing Elements using for-each Loop</h4>
+
+<pre><code>
+import array
+
+arr = array.array('i', [1, 2, 3, 4])
+
+for element in arr:
+    print(element)
+</code></pre>
+
+<div class="output">
+1<br>
+2<br>
+3<br>
+4
+</div>
+
+</div>
+
+<div class="section">
+<h4>Important Points</h4>
+<p>
+✔ Array indexing starts from 0.<br>
+✔ Elements can be accessed using index numbers.<br>
+✔ Loops can be used to access all elements.<br>
+✔ Index must be within array size.
+</p>
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonarrays.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythonarrayoperators.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
