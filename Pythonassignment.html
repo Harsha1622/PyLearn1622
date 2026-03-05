@@ -1,0 +1,102 @@
+<div class="container">
+
+<h3>Tuple Packing and Unpacking</h3>
+
+<div class="section">
+<h4>Tuple Packing</h4>
+
+<p>
+Tuple packing refers to the process of placing multiple values into a single tuple.
+When values are separated by commas, Python automatically creates a tuple.
+</p>
+
+<pre><code>
+numbers = (10, 20, 30)
+
+print(numbers)
+</code></pre>
+
+<div class="output">
+(10, 20, 30)
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Tuple Unpacking</h4>
+
+<p>
+Tuple unpacking is the process of assigning tuple elements to individual variables.
+Each variable receives one value from the tuple.
+</p>
+
+<pre><code>
+numbers = (10, 20, 30)
+
+a, b, c = numbers
+
+print(a)
+print(b)
+print(c)
+</code></pre>
+
+<div class="output">
+10<br>
+20<br>
+30
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Example: Swapping Variables using Tuple</h4>
+
+<p>
+Python allows swapping two variables easily using tuple unpacking.
+</p>
+
+<pre><code>
+x = 5
+y = 10
+
+x, y = y, x
+
+print(x)
+print(y)
+</code></pre>
+
+<div class="output">
+10<br>
+5
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Important Points</h4>
+
+<p>
+✔ Tuple packing groups multiple values into one tuple.<br>
+✔ Tuple unpacking assigns tuple values to variables.<br>
+✔ The number of variables must match the number of tuple elements.<br>
+✔ Tuple unpacking is commonly used for swapping values.
+</p>
+
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythontuplemethods.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythontuplereturn.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
