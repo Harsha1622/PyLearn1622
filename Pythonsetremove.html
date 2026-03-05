@@ -1,0 +1,106 @@
+<div class="container">
+
+<h3>Removing Elements from a Set in Python</h3>
+
+<div class="section">
+<h4>Removing Elements</h4>
+
+<p>
+Elements can be removed from a set using methods such as
+<strong>remove()</strong>, <strong>discard()</strong>, and <strong>pop()</strong>.
+These methods help delete elements from a set.
+</p>
+
+</div>
+
+<div class="section">
+
+<h4>Using remove()</h4>
+
+<p>
+The <strong>remove()</strong> method deletes a specified element.
+If the element is not found, it raises an error.
+</p>
+
+<pre><code>
+numbers = {10, 20, 30, 40}
+
+numbers.remove(20)
+
+print(numbers)
+</code></pre>
+
+<div class="output">
+{10, 30, 40}
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Using discard()</h4>
+
+<p>
+The <strong>discard()</strong> method removes an element without raising
+an error if the element does not exist.
+</p>
+
+<pre><code>
+numbers = {10, 20, 30}
+
+numbers.discard(20)
+
+print(numbers)
+</code></pre>
+
+<div class="output">
+{10, 30}
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Using pop()</h4>
+
+<p>
+The <strong>pop()</strong> method removes and returns a random element
+from the set because sets are unordered.
+</p>
+
+<pre><code>
+numbers = {10, 20, 30}
+
+numbers.pop()
+
+print(numbers)
+</code></pre>
+
+</div>
+
+<div class="section">
+
+<h4>Important Points</h4>
+
+<p>
+✔ remove() deletes a specific element.<br>
+✔ discard() removes an element without error if it is absent.<br>
+✔ pop() removes a random element.<br>
+✔ clear() removes all elements from the set.
+</p>
+
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonsetaddelement.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythonsetoperations.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
