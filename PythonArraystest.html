@@ -1,0 +1,143 @@
+<div class="wrapper">
+<div class="quiz-card">
+
+<div class="quiz-top">
+<h3>Arrays and Strings in Python Test</h3>
+<div id="progress"></div>
+</div>
+
+<div id="quizArea">
+<div class="question" id="questionText"></div>
+<div class="options" id="options"></div>
+
+<div class="buttons">
+<button id="prevBtn" onclick="prevQ()">Previous</button>
+<button id="nextBtn" onclick="nextQ()">Next</button>
+</div>
+</div>
+
+<div id="result" class="result"></div>
+
+</div>
+</div>
+
+<script>
+
+const quiz=[
+
+{q:"Which module is used to create arrays in Python?",o:["array","math","list","random"],a:0,e:"The array module is used to create arrays."},
+
+{q:"Which symbol represents integer array type?",o:["'i'","'f'","'d'","'b'"],a:0,e:"'i' represents integer type."},
+
+{q:"Array index starts from?",o:["0","1","-1","2"],a:0,e:"Indexing starts from 0."},
+
+{q:"Which method adds element at end?",o:["insert()","append()","add()","push()"],a:1,e:"append() adds element at end."},
+
+{q:"Which method inserts element at position?",o:["append()","insert()","replace()","add()"],a:1,e:"insert() adds element at a specific index."},
+
+{q:"Which method removes element?",o:["delete()","remove()","pop()","clear()"],a:1,e:"remove() deletes a specified value."},
+
+{q:"Which method removes last element?",o:["remove()","pop()","delete()","drop()"],a:1,e:"pop() removes last element."},
+
+{q:"Which method returns position of element?",o:["find()","locate()","index()","search()"],a:2,e:"index() returns position."},
+
+{q:"Which method counts occurrences?",o:["count()","sum()","total()","find()"],a:0,e:"count() returns occurrences."},
+
+{q:"Which operator combines arrays?",o:["*","+","/","%"],a:1,e:"+ operator concatenates arrays."},
+
+{q:"Which operator repeats array?",o:["*","+","-","/"],a:0,e:"* repeats elements."},
+
+{q:"Which operator checks membership?",o:["in","is","has","with"],a:0,e:"in checks presence."},
+
+{q:"Which keyword checks absence?",o:["not in","without","except","none"],a:0,e:"not in checks absence."},
+
+{q:"A string is a?",o:["Number","Sequence of characters","Array","Operator"],a:1,e:"Strings are sequences of characters."},
+
+{q:"Strings are written inside?",o:["Quotes","Brackets","Braces","Parentheses"],a:0,e:"Strings use quotes."},
+
+{q:"Which function finds string length?",o:["size()","len()","length()","count()"],a:1,e:"len() returns string length."},
+
+{q:"Which operator combines strings?",o:["*","+","/","%"],a:1,e:"+ concatenates strings."},
+
+{q:"Which method converts text to uppercase?",o:["upper()","big()","large()","up()"],a:0,e:"upper() converts text to uppercase."},
+
+{q:"Which method converts text to lowercase?",o:["lower()","down()","small()","case()"],a:0,e:"lower() converts text to lowercase."},
+
+{q:"Which method replaces text?",o:["replace()","change()","modify()","switch()"],a:0,e:"replace() substitutes words."},
+
+{q:"Which method splits a string?",o:["break()","split()","divide()","cut()"],a:1,e:"split() divides string into list."},
+
+{q:"Which method removes extra spaces?",o:["trim()","strip()","remove()","clean()"],a:1,e:"strip() removes spaces."},
+
+{q:"Which method finds substring position?",o:["search()","find()","locate()","index()"],a:1,e:"find() returns substring position."},
+
+{q:"Which module provides letters and digits constants?",o:["text","string","letters","char"],a:1,e:"string module contains constants."},
+
+{q:"Variable defined inside function is?",o:["Local variable","Global variable","Constant","Parameter"],a:0,e:"Local variables exist inside functions."}
+
+];
+
+let cur=0;
+let ans=new Array(quiz.length).fill(null);
+
+function load(){
+progress.innerText=`Question ${cur+1} of ${quiz.length}`;
+questionText.innerText=`${cur+1}. ${quiz[cur].q}`;
+
+options.innerHTML=quiz[cur].o.map((op,i)=>
+`<div class="${ans[cur]===i?'selected':''}" onclick="selectOpt(${i})">${op}</div>`
+).join("");
+
+prevBtn.disabled=cur===0;
+nextBtn.innerText=cur===quiz.length-1?"Submit":"Next";
+}
+
+function selectOpt(i){
+ans[cur]=i;
+load();
+}
+
+function nextQ(){
+if(cur===quiz.length-1){
+if(ans.includes(null)){
+alert("Please answer all questions");
+return;
+}
+showResult();
+}else{
+cur++;
+load();
+}
+}
+
+function prevQ(){
+cur--;
+load();
+}
+
+function showResult(){
+let score=0;
+let out="";
+
+quiz.forEach((q,i)=>{
+if(ans[i]===q.a) score++;
+else out+=`
+<div class="wrong">
+<strong>Question:</strong> ${q.q}<br>
+<strong>Your Answer:</strong> ${q.o[ans[i]]}<br>
+<strong>Correct Answer:</strong> ${q.o[q.a]}
+<div class="explain"><strong>Explanation:</strong> ${q.e}</div>
+</div>`;
+});
+
+quizArea.style.display="none";
+
+result.innerHTML=
+`<h3>Your Score: ${score} / ${quiz.length}</h3>`+
+(out||`<div class="correct">Excellent! All answers are correct 🎉</div>`) +
+`<br><button onclick="location.reload()">Restart Quiz</button>`;
+}
+
+load();
+
+  </script>
