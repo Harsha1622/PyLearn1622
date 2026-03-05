@@ -1,0 +1,110 @@
+<div class="container">
+
+<h3>Adding Elements to a Dictionary</h3>
+
+<div class="section">
+<h4>Adding New Elements</h4>
+
+<p>
+New elements can be added to a dictionary by specifying a new
+<strong>key–value pair</strong>.
+If the key does not exist, Python will create a new entry in the dictionary.
+</p>
+
+</div>
+
+<div class="section">
+
+<h4>Example: Adding a New Element</h4>
+
+<pre><code>
+student = {
+    "name": "Rahul",
+    "age": 20
+}
+
+student["course"] = "Python"
+
+print(student)
+</code></pre>
+
+<div class="output">
+{'name': 'Rahul', 'age': 20, 'course': 'Python'}
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Adding Multiple Elements</h4>
+
+<p>
+Multiple elements can be added one by one by assigning new keys.
+</p>
+
+<pre><code>
+student = {}
+
+student["name"] = "Anita"
+student["age"] = 22
+student["course"] = "Data Science"
+
+print(student)
+</code></pre>
+
+<div class="output">
+{'name': 'Anita', 'age': 22, 'course': 'Data Science'}
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Using update() Method</h4>
+
+<p>
+The <strong>update()</strong> method can also add multiple key–value pairs.
+</p>
+
+<pre><code>
+student = {
+    "name": "Rahul"
+}
+
+student.update({"age": 21, "course": "Python"})
+
+print(student)
+</code></pre>
+
+<div class="output">
+{'name': 'Rahul', 'age': 21, 'course': 'Python'}
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Important Points</h4>
+
+<p>
+✔ New elements are added using <strong>dictionary[key] = value</strong>.<br>
+✔ If the key does not exist, a new pair is created.<br>
+✔ <strong>update()</strong> can add multiple key–value pairs.<br>
+✔ Dictionaries automatically expand when new elements are added.
+</p>
+
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonaccessdict.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythonupdatedict.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
