@@ -1,0 +1,134 @@
+<div class="container">
+
+<h3>Removing Elements from Dictionary</h3>
+
+<div class="section">
+<h4>Removing Dictionary Elements</h4>
+
+<p>
+Elements in a dictionary can be removed using methods like
+<strong>pop()</strong>, <strong>popitem()</strong>, <strong>del</strong>,
+and <strong>clear()</strong>.
+</p>
+
+</div>
+
+<div class="section">
+
+<h4>Using pop()</h4>
+
+<p>
+The <strong>pop()</strong> method removes the element with the specified key.
+</p>
+
+<pre><code>
+student = {
+    "name": "Rahul",
+    "age": 20,
+    "course": "Python"
+}
+
+student.pop("age")
+
+print(student)
+</code></pre>
+
+<div class="output">
+{'name': 'Rahul', 'course': 'Python'}
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Using popitem()</h4>
+
+<p>
+The <strong>popitem()</strong> method removes the last inserted key–value pair.
+</p>
+
+<pre><code>
+student = {
+    "name": "Rahul",
+    "age": 20
+}
+
+student.popitem()
+
+print(student)
+</code></pre>
+
+</div>
+
+<div class="section">
+
+<h4>Using del Keyword</h4>
+
+<pre><code>
+student = {
+    "name": "Rahul",
+    "age": 20
+}
+
+del student["age"]
+
+print(student)
+</code></pre>
+
+<div class="output">
+{'name': 'Rahul'}
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Using clear()</h4>
+
+<p>
+The <strong>clear()</strong> method removes all elements from the dictionary.
+</p>
+
+<pre><code>
+student = {
+    "name": "Rahul",
+    "age": 20
+}
+
+student.clear()
+
+print(student)
+</code></pre>
+
+<div class="output">
+{}
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Important Points</h4>
+
+<p>
+✔ pop() removes a specific key.<br>
+✔ popitem() removes the last inserted pair.<br>
+✔ del removes a specific key.<br>
+✔ clear() removes all elements.
+</p>
+
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonupdatedict.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythondictoperations.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
