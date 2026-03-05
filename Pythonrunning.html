@@ -1,38 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>PyLearn | Process of Running a Python Script</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="pystyle.css">
-
-</head>
-
-<body>
-
-<header>
-  <h2>PyLearn</h2>
-
-  <nav>
-    <a href="#" onclick="loadPage('home.html')">Home</a>
-    <a href="#" onclick="loadPage('course.html')">Courses</a>
-
-    <div class="profile" id="profileMenu">
-      <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png">
-
-      <div class="profile-menu">
-        <a href="#" onclick="loadPage('profile.html')">My Profile</a>
-        <a href="#" onclick="loadPage('dashboard.html')">Dashboard</a>
-        <button onclick="logout()">Logout</button>
-      </div>
-    </div>
-
-  </nav>
-</header>
-
 <div class="container">
 
 <h3>Process of Running a Python Script</h3>
@@ -41,12 +6,13 @@
 <h4>What is a Python Script?</h4>
 
 <p>
-A Python script is a file that contains Python instructions.
-It is saved using the <strong>.py</strong> file extension and executed
+A Python script is a file containing Python instructions.
+It is saved with the <strong>.py</strong> extension and executed
 by the Python interpreter.
 </p>
 
 </div>
+
 
 <div class="section">
 <h4>Step 1: Write the Python Program</h4>
@@ -57,15 +23,17 @@ print("Python script executed successfully")
 
 </div>
 
+
 <div class="section">
 <h4>Step 2: Save the File</h4>
 
 <p>
-Save the program with a <strong>.py</strong> extension.
+Save the program using the <strong>.py</strong> extension.
 Example: <strong>script.py</strong>
 </p>
 
 </div>
+
 
 <div class="section">
 <h4>Step 3: Run the Script</h4>
@@ -73,7 +41,7 @@ Example: <strong>script.py</strong>
 <p>You can run a Python script in several ways:</p>
 
 <pre><code>
-# Using Command Prompt / Terminal
+# Using Terminal or Command Prompt
 python script.py
 </code></pre>
 
@@ -85,6 +53,7 @@ python script.py
 
 </div>
 
+
 <div class="section">
 <h4>Step 4: Output Display</h4>
 
@@ -94,29 +63,32 @@ Python script executed successfully
 
 </div>
 
+
 <div class="section">
 <h4>Behind the Execution Process</h4>
 
 <p>
-✔ Python source code (.py) is first checked for syntax errors<br>
-✔ It is then converted into bytecode (.pyc)<br>
-✔ The bytecode is executed by the Python Virtual Machine (PVM)<br>
-✔ Finally, the output or error message is displayed
+✔ Python source code (.py) is checked for syntax errors<br>
+✔ It is converted into bytecode (.pyc)<br>
+✔ The bytecode runs in the Python Virtual Machine (PVM)<br>
+✔ The program output or error message is displayed
 </p>
 
 </div>
+
 
 <div class="section">
 <h4>Advantages</h4>
 
 <p>
-✔ No separate compilation step is required<br>
-✔ Easy to debug and modify programs<br>
-✔ Platform independent<br>
-✔ Suitable for automation and scripting tasks
+✔ No separate compilation step required<br>
+✔ Easy debugging and modification<br>
+✔ Platform independent execution<br>
+✔ Suitable for automation and scripting
 </p>
 
 </div>
+
 
 <div class="page-nav">
 
@@ -131,8 +103,3 @@ Next →
 </div>
 
 </div>
-
-<script src="pyapp.js"></script>
-
-</body>
-</html>
