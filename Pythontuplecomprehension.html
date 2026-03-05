@@ -1,0 +1,88 @@
+<div class="container">
+
+<h3>Tuple Comprehension in Python</h3>
+
+<div class="section">
+<h4>What is Tuple Comprehension?</h4>
+
+<p>
+Tuple comprehension is a concise way of creating tuples using a single line
+of code. It is similar to list comprehension but uses parentheses
+instead of square brackets.
+</p>
+
+</div>
+
+<div class="section">
+
+<h4>Syntax</h4>
+
+<pre><code>
+(expression for item in iterable)
+</code></pre>
+
+<p>
+The expression is evaluated for each element in the iterable and the
+results are stored in a tuple.
+</p>
+
+</div>
+
+<div class="section">
+
+<h4>Example: Creating a Tuple using Comprehension</h4>
+
+<pre><code>
+numbers = tuple(i for i in range(5))
+
+print(numbers)
+</code></pre>
+
+<div class="output">
+(0, 1, 2, 3, 4)
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Example with Condition</h4>
+
+<pre><code>
+even_numbers = tuple(i for i in range(10) if i % 2 == 0)
+
+print(even_numbers)
+</code></pre>
+
+<div class="output">
+(0, 2, 4, 6, 8)
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Important Points</h4>
+
+<p>
+✔ Tuple comprehension uses parentheses.<br>
+✔ It creates tuples in a compact and readable way.<br>
+✔ Conditions can be applied to filter elements.<br>
+✔ Often used with the <strong>tuple()</strong> function.
+</p>
+
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythontuplereturn.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('PythonTupleTest.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
