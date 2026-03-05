@@ -1,0 +1,102 @@
+<div class="container">
+
+<h3>List as Function Parameter in Python</h3>
+
+<div class="section">
+<h4>What is List as Function Parameter?</h4>
+<p>
+In Python, lists can be passed as arguments to functions.
+This allows functions to process multiple values stored inside a list.
+</p>
+</div>
+
+<div class="section">
+<h4>Example: Passing List to Function</h4>
+
+<pre><code>
+def show_list(items):
+    for item in items:
+        print(item)
+
+numbers = [10, 20, 30, 40]
+
+show_list(numbers)
+</code></pre>
+
+<div class="output">
+10<br>
+20<br>
+30<br>
+40
+</div>
+
+</div>
+
+<div class="section">
+<h4>Example: Calculating Sum of List Elements</h4>
+
+<pre><code>
+def total(values):
+    return sum(values)
+
+numbers = [5, 10, 15]
+
+result = total(numbers)
+
+print(result)
+</code></pre>
+
+<div class="output">
+30
+</div>
+
+</div>
+
+<div class="section">
+<h4>Modifying List Inside Function</h4>
+
+<pre><code>
+def add_value(lst):
+    lst.append(100)
+
+numbers = [10, 20, 30]
+
+add_value(numbers)
+
+print(numbers)
+</code></pre>
+
+<div class="output">
+[10, 20, 30, 100]
+</div>
+
+<p>
+Since lists are <strong>mutable</strong>, changes inside the function
+affect the original list.
+</p>
+
+</div>
+
+<div class="section">
+<h4>Important Points</h4>
+<p>
+✔ Lists can be passed as arguments to functions.<br>
+✔ Functions can read or modify list elements.<br>
+✔ Lists are mutable, so changes affect the original list.<br>
+✔ Functions help process list data efficiently.
+</p>
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonlistclone.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythonlistcomprehension.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
