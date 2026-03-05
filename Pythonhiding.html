@@ -1,0 +1,125 @@
+<div class="container">
+
+<h3>Data Hiding in Python</h3>
+
+<div class="section">
+<h4>What is Data Hiding?</h4>
+<p>
+Data hiding is the concept of restricting direct access to certain
+variables and methods of a class. It protects the internal data of
+an object and prevents accidental modification.
+</p>
+</div>
+
+<div class="section">
+<h4>Private Variables</h4>
+<p>
+In Python, private variables are created using a double underscore
+(<strong>__</strong>) before the variable name.
+</p>
+
+<pre><code>
+class Student:
+
+    def __init__(self):
+        self.__marks = 90
+
+s = Student()
+
+print(s.__marks)
+</code></pre>
+
+<div class="output">
+AttributeError: 'Student' object has no attribute '__marks'
+</div>
+
+</div>
+
+
+<div class="section">
+<h4>Name Mangling</h4>
+<p>
+Python does not completely hide private variables. Instead,
+it changes the variable name internally. This mechanism is
+called <strong>Name Mangling</strong>.
+</p>
+
+<pre><code>
+class Student:
+
+    def __init__(self):
+        self.__marks = 90
+
+s = Student()
+
+print(s._Student__marks)
+</code></pre>
+
+<div class="output">
+90
+</div>
+
+<p>
+Python internally converts <strong>__marks</strong> to
+<strong>_Student__marks</strong>.
+</p>
+
+</div>
+
+
+<div class="section">
+<h4>Getter and Setter Methods</h4>
+<p>
+Getter and setter methods are used to safely access and modify
+private variables.
+</p>
+
+<pre><code>
+class Student:
+
+    def __init__(self):
+        self.__marks = 0
+
+    def getMarks(self):
+        return self.__marks
+
+    def setMarks(self, m):
+        self.__marks = m
+
+s = Student()
+
+s.setMarks(85)
+print(s.getMarks())
+</code></pre>
+
+<div class="output">
+85
+</div>
+
+</div>
+
+
+<div class="section">
+<h4>Advantages of Data Hiding</h4>
+<p>
+✔ Protects internal data of objects<br>
+✔ Prevents accidental modification<br>
+✔ Improves program security<br>
+✔ Supports encapsulation
+</p>
+</div>
+
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonencapsulation.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythoninheritance.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
