@@ -1,0 +1,103 @@
+<div class="container">
+
+<h3>try and except in Python</h3>
+
+<div class="section">
+<h4>What is try-except?</h4>
+
+<p>
+The <strong>try</strong> and <strong>except</strong> blocks are used to
+handle exceptions in Python. The code that may cause an error is placed
+inside the <strong>try</strong> block, and the error is handled inside
+the <strong>except</strong> block.
+</p>
+
+</div>
+
+<div class="section">
+
+<h4>Syntax</h4>
+
+<pre><code>
+try:
+    statements
+except:
+    statements
+</code></pre>
+
+<p>
+If an exception occurs inside the try block, the control immediately
+moves to the except block.
+</p>
+
+</div>
+
+<div class="section">
+
+<h4>Example</h4>
+
+<pre><code>
+try:
+    num1 = 10
+    num2 = 0
+    result = num1 / num2
+    print(result)
+
+except:
+    print("Error occurred")
+</code></pre>
+
+<div class="output">
+Error occurred
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Handling Specific Exceptions</h4>
+
+<p>
+Python allows handling specific types of exceptions.
+</p>
+
+<pre><code>
+try:
+    x = int("abc")
+
+except ValueError:
+    print("Invalid value")
+</code></pre>
+
+<div class="output">
+Invalid value
+</div>
+
+</div>
+
+<div class="section">
+
+<h4>Important Points</h4>
+
+<p>
+✔ try block contains code that may cause an error.<br>
+✔ except block handles the error.<br>
+✔ Specific exceptions can also be handled.<br>
+✔ Programs continue running even after errors.
+</p>
+
+</div>
+
+<div class="page-nav">
+
+<a onclick="loadPage('Pythonexception.html')" class="nav-btn secondary">
+← Previous
+</a>
+
+<a onclick="loadPage('Pythonraise.html')" class="nav-btn primary">
+Next →
+</a>
+
+</div>
+
+</div>
