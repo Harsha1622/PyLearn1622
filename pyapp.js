@@ -1,4 +1,4 @@
-/* ================= API BASE URL ================= */
+/* ================= API BASE ================= */
 const API = "http://127.0.0.1:5000";
 
 
@@ -11,8 +11,10 @@ fetch(page)
 
 document.getElementById("app").innerHTML = html;
 
-/* reset scroll position */
 window.scrollTo(0,0);
+
+loadDashboard();
+loadProfile();
 
 })
 .catch(()=>{
@@ -23,7 +25,7 @@ document.getElementById("app").innerHTML =
 }
 
 
-/* ================= CHECK LOGIN STATUS ================= */
+/* ================= CHECK LOGIN ================= */
 function checkLogin(){
 
 fetch(API + "/dashboard",{
@@ -46,7 +48,7 @@ profile.style.display = "flex";
 }
 
 
-/* ================= LOGIN FORM ================= */
+/* ================= LOGIN ================= */
 document.addEventListener("submit", function(e){
 
 if(e.target && e.target.id === "loginForm"){
@@ -96,14 +98,14 @@ alert("Invalid email or password");
 });
 
 
-/* ================= SIGNUP FORM ================= */
+/* ================= SIGNUP ================= */
 document.addEventListener("submit", function(e){
 
 if(e.target && e.target.id === "signupForm"){
 
 e.preventDefault();
 
-const name = document.getElementById("name").value;
+const name = document.getElementById("fullname").value;
 const email = document.getElementById("email").value;
 const password = document.getElementById("password").value;
 
@@ -144,6 +146,45 @@ alert("Signup failed");
 });
 
 
+/* ================= DASHBOARD ================= */
+function loadDashboard(){
+
+if(!document.getElementById("quizCount")) return;
+
+fetch(API + "/dashboard",{
+credentials:"include"
+})
+.then(res => res.json())
+.then(data => {
+
+document.getElementById("quizCount").innerText = data.quizCount;
+document.getElementById("avgScore").innerText = data.avgScore + "%";
+
+});
+
+}
+
+
+/* ================= PROFILE ================= */
+function loadProfile(){
+
+if(!document.getElementById("studentName")) return;
+
+fetch(API + "/dashboard",{
+credentials:"include"
+})
+.then(res => res.json())
+.then(data => {
+
+document.getElementById("studentName").innerText = data.name;
+document.getElementById("studentEmail").innerText = data.email;
+document.getElementById("joinDate").innerText = data.joined;
+
+});
+
+}
+
+
 /* ================= LOGOUT ================= */
 function logout(){
 
@@ -166,7 +207,7 @@ loadPage("homecontent.html");
 }
 
 
-/* ================= INITIAL PAGE LOAD ================= */
+/* ================= INITIAL LOAD ================= */
 window.onload = function(){
 
 loadPage("homecontent.html");
