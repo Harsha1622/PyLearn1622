@@ -23,57 +23,59 @@
 
 <script>
 
-const quiz = [
+const API="http://127.0.0.1:5000";
 
-{q:"Which function is used to open a file?",o:["file()","open()","read()","write()"],a:1,e:"open() is used to open files."},
+const quiz=[
 
-{q:"Which mode is used to read a file?",o:["w","r","a","x"],a:1,e:"r mode is used for reading."},
+{q:"Which function is used to open a file?",o:["file()","open()","read()"],a:1,e:"open() is used to open files."},
 
-{q:"Which mode is used to write a file?",o:["r","a","w","rw"],a:2,e:"w mode writes data to a file."},
+{q:"Which mode is used to read a file?",o:["w","r","a"],a:1,e:"r mode is used for reading."},
 
-{q:"Which mode appends data to a file?",o:["r","a","w","rw"],a:1,e:"a mode adds data at the end."},
+{q:"Which mode is used to write a file?",o:["r","w","a"],a:1,e:"w mode writes data to a file."},
 
-{q:"Which function reads entire file content?",o:["read()","write()","open()","close()"],a:0,e:"read() reads full content."},
+{q:"Which mode appends data to a file?",o:["r","a","w"],a:1,e:"a mode adds data at the end."},
 
-{q:"Which function reads one line at a time?",o:["read()","readline()","readlines()","write()"],a:1,e:"readline() reads a single line."},
+{q:"Which function reads entire file content?",o:["read()","write()","close()"],a:0,e:"read() reads full content."},
 
-{q:"Which function closes a file?",o:["exit()","stop()","close()","end()"],a:2,e:"close() closes the file."},
+{q:"Which function reads one line at a time?",o:["read()","readline()","readlines()"],a:1,e:"readline() reads a single line."},
 
-{q:"Which keyword automatically closes files?",o:["with","open","close","read"],a:0,e:"with statement auto-closes files."},
+{q:"Which function closes a file?",o:["exit()","close()","stop()"],a:1,e:"close() closes the file."},
 
-{q:"Which error occurs if file not found?",o:["TypeError","FileNotFoundError","ValueError","IndexError"],a:1,e:"FileNotFoundError occurs."},
+{q:"Which keyword automatically closes files?",o:["with","open","close"],a:0,e:"with statement auto-closes files."},
 
-{q:"What is an exception?",o:["Loop","Error during execution","Function","Variable"],a:1,e:"Exception is runtime error."},
+{q:"Which error occurs if file not found?",o:["TypeError","FileNotFoundError","IndexError"],a:1,e:"FileNotFoundError occurs."},
 
-{q:"Which block contains risky code?",o:["except","try","finally","raise"],a:1,e:"try block contains risky code."},
+{q:"What is an exception?",o:["Loop","Error during execution","Function"],a:1,e:"Exception is runtime error."},
 
-{q:"Which block handles exceptions?",o:["try","catch","except","error"],a:2,e:"except handles exceptions."},
+{q:"Which block contains risky code?",o:["except","try","finally"],a:1,e:"try block contains risky code."},
 
-{q:"Which keyword is used to raise exception?",o:["throw","raise","error","stop"],a:1,e:"raise triggers an exception."},
+{q:"Which block handles exceptions?",o:["try","except","error"],a:1,e:"except handles exceptions."},
 
-{q:"Which block always executes?",o:["except","try","finally","raise"],a:2,e:"finally block always runs."},
+{q:"Which keyword is used to raise exception?",o:["throw","raise","error"],a:1,e:"raise triggers an exception."},
 
-{q:"Which error occurs when dividing by zero?",o:["ValueError","TypeError","ZeroDivisionError","IndexError"],a:2,e:"Division by zero raises ZeroDivisionError."},
+{q:"Which block always executes?",o:["except","finally","raise"],a:1,e:"finally block always runs."},
 
-{q:"Which error occurs for wrong data type?",o:["ValueError","TypeError","FileError","IndexError"],a:1,e:"TypeError occurs."},
+{q:"Which error occurs when dividing by zero?",o:["ValueError","TypeError","ZeroDivisionError"],a:2,e:"Division by zero raises ZeroDivisionError."},
 
-{q:"Which keyword handles multiple exceptions?",o:["elif","except","multi","case"],a:1,e:"Multiple except blocks can be used."},
+{q:"Which error occurs for wrong data type?",o:["ValueError","TypeError","IndexError"],a:1,e:"TypeError occurs."},
 
-{q:"User defined exceptions inherit from?",o:["Error","Exception","Object","Type"],a:1,e:"They inherit from Exception class."},
+{q:"Which keyword handles multiple exceptions?",o:["elif","except","case"],a:1,e:"Multiple except blocks can be used."},
 
-{q:"Custom exceptions are created using?",o:["loop","class","function","method"],a:1,e:"Classes create custom exceptions."},
+{q:"User defined exceptions inherit from?",o:["Error","Exception","Object"],a:1,e:"They inherit from Exception class."},
 
-{q:"Which keyword triggers custom exception?",o:["throw","raise","stop","error"],a:1,e:"raise triggers it."},
+{q:"Custom exceptions are created using?",o:["loop","class","function"],a:1,e:"Classes create custom exceptions."},
 
-{q:"Which function writes to file?",o:["read()","write()","open()","close()"],a:1,e:"write() adds data."},
+{q:"Which keyword triggers custom exception?",o:["throw","raise","stop"],a:1,e:"raise triggers it."},
 
-{q:"Which function reads multiple lines?",o:["readlines()","read()","line()","write()"],a:0,e:"readlines() returns list of lines."},
+{q:"Which function writes to file?",o:["read()","write()","open()"],a:1,e:"write() adds data."},
 
-{q:"Which block runs if no exception occurs?",o:["except","else","finally","raise"],a:1,e:"else runs when no error occurs."},
+{q:"Which function reads multiple lines?",o:["readlines()","read()","line()"],a:0,e:"readlines() returns list of lines."},
 
-{q:"Which keyword handles errors safely?",o:["try","safe","handle","catch"],a:0,e:"try handles risky code."},
+{q:"Which block runs if no exception occurs?",o:["except","else","finally"],a:1,e:"else runs when no error occurs."},
 
-{q:"Why exception handling is used?",o:["Stop program","Ignore errors","Handle errors","Delete errors"],a:2,e:"It handles runtime errors."}
+{q:"Which keyword handles errors safely?",o:["try","safe","catch"],a:0,e:"try handles risky code."},
+
+{q:"Why exception handling is used?",o:["Stop program","Handle errors","Delete errors"],a:1,e:"It handles runtime errors."}
 
 ];
 
@@ -81,45 +83,65 @@ let cur=0;
 let ans=new Array(quiz.length).fill(null);
 
 function load(){
+
 progress.innerText=`Question ${cur+1} of ${quiz.length}`;
+
 questionText.innerText=`${cur+1}. ${quiz[cur].q}`;
+
 options.innerHTML=quiz[cur].o.map((op,i)=>
 `<div class="${ans[cur]===i?'selected':''}" onclick="selectOpt(${i})">${op}</div>`
 ).join("");
 
 prevBtn.disabled=cur===0;
+
 nextBtn.innerText=cur===quiz.length-1?"Submit":"Next";
+
 }
 
 function selectOpt(i){
+
 ans[cur]=i;
+
 load();
+
 }
 
 function nextQ(){
+
 if(cur===quiz.length-1){
 
 if(ans.includes(null)){
+
 alert("Please answer all questions");
+
 return;
+
 }
 
 showResult();
 
 }else{
+
 cur++;
+
 load();
+
 }
+
 }
 
 function prevQ(){
+
 cur--;
+
 load();
+
 }
 
 function showResult(){
 
 let score=0;
+
 let out="";
 
 quiz.forEach((q,i)=>{
@@ -133,7 +155,29 @@ else out+=`
 <strong>Correct Answer:</strong> ${q.o[q.a]}
 <div class="explain"><strong>Explanation:</strong> ${q.e}</div>
 </div>`;
+
 });
+
+
+/* SAVE RESULT TO BACKEND */
+
+fetch(API + "/save-quiz",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+credentials:"include",
+
+body:JSON.stringify({
+score:score,
+total:quiz.length
+})
+
+});
+
 
 quizArea.style.display="none";
 
@@ -141,6 +185,7 @@ result.innerHTML=
 `<h3>Your Score: ${score} / ${quiz.length}</h3>` +
 (out || `<div class="correct">Excellent! All answers are correct 🎉</div>`) +
 `<br><button onclick="location.reload()">Restart Test</button>`;
+
 }
 
 load();
