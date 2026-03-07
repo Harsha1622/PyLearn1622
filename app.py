@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, session
 from flask_cors import CORS
 from werkzeug.security import generate_password_hash, check_password_hash
-import sqlite3
+from database import get_db, init_db
 import datetime
 
 app = Flask(__name__)
@@ -9,52 +9,7 @@ app.secret_key = "pylearn-secret-key"
 
 CORS(app, supports_credentials=True)
 
-DATABASE = "pylearn.db"
-
-
-# =========================
-# DATABASE CONNECTION
-# =========================
-def get_db():
-    conn = sqlite3.connect(DATABASE)
-    conn.row_factory = sqlite3.Row
-    return conn
-
-
-# =========================
-# CREATE TABLES
-# =========================
-def init_db():
-
-    conn = get_db()
-    cur = conn.cursor()
-
-    # USERS TABLE
-    cur.execute("""
-    CREATE TABLE IF NOT EXISTS users(
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL,
-        email TEXT UNIQUE NOT NULL,
-        password TEXT NOT NULL,
-        joined TEXT
-    )
-    """)
-
-    # QUIZ RESULTS TABLE
-    cur.execute("""
-    CREATE TABLE IF NOT EXISTS quiz_results(
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        user_id INTEGER,
-        score INTEGER,
-        total INTEGER,
-        date TEXT
-    )
-    """)
-
-    conn.commit()
-    conn.close()
-
-
+# initialize database
 init_db()
 
 
@@ -71,7 +26,10 @@ def signup():
     password = data.get("password")
 
     if not name or not email or not password:
-        return jsonify({"success": False, "message": "Missing fields"})
+        return jsonify({
+            "success": False,
+            "message": "Missing fields"
+        })
 
     hashed_password = generate_password_hash(password)
 
@@ -89,7 +47,7 @@ def signup():
 
         return jsonify({"success": True})
 
-    except sqlite3.IntegrityError:
+    except:
 
         return jsonify({
             "success": False,
@@ -127,7 +85,7 @@ def login():
 
     return jsonify({
         "success": False,
-        "message": "Invalid credentials"
+        "message": "Invalid email or password"
     })
 
 
@@ -223,4 +181,4 @@ if __name__ == "__main__":
         debug=True,
         host="127.0.0.1",
         port=5000
-  )
+    )
