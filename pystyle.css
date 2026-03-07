@@ -1481,3 +1481,36 @@ background:#333;
 .sidebar.active{
 left:0;
 }
+/* DARK MODE */
+
+body.dark{
+background:#121212;
+color:#e5e5e5;
+}
+
+body.dark header{
+background:#1f1f1f;
+}
+
+body.dark .container{
+background:#1e1e1e;
+color:#e5e5e5;
+}
+
+body.dark .quiz-card{
+background:#1e1e1e;
+}
+
+body.dark textarea{
+background:#1e1e1e;
+color:white;
+border:1px solid #444;
+}
+
+body.dark .sidebar{
+background:#111;
+}
+
+body.dark .sidebar a:hover{
+background:#333;
+}
