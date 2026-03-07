@@ -23,57 +23,59 @@
 
 <script>
 
+const API="http://127.0.0.1:5000";
+
 const quiz=[
 
-{q:"What is a function in Python?",o:["Block of reusable code","Loop structure","Variable","Operator"],a:0,e:"Functions are reusable blocks of code."},
+{q:"What is a function in Python?",o:["Block of reusable code","Loop structure","Variable"],a:0,e:"Functions are reusable blocks of code."},
 
-{q:"Which keyword is used to define a function?",o:["function","def","create","fun"],a:1,e:"Functions are defined using def keyword."},
+{q:"Which keyword is used to define a function?",o:["function","def","create"],a:1,e:"Functions are defined using def keyword."},
 
-{q:"Which function displays output?",o:["input()","print()","len()","type()"],a:1,e:"print() displays output."},
+{q:"Which function displays output?",o:["input()","print()","len()"],a:1,e:"print() displays output."},
 
-{q:"Which function receives user input?",o:["print()","input()","type()","len()"],a:1,e:"input() reads user input."},
+{q:"Which function receives user input?",o:["print()","input()","type()"],a:1,e:"input() reads user input."},
 
-{q:"Which function finds length?",o:["size()","length()","len()","count()"],a:2,e:"len() returns length."},
+{q:"Which function finds length?",o:["size()","length()","len()"],a:2,e:"len() returns length."},
 
-{q:"Which type of function is already defined in Python?",o:["User function","Built-in function","Anonymous","Loop"],a:1,e:"Built-in functions exist in Python."},
+{q:"Which type of function is already defined in Python?",o:["User function","Built-in function","Anonymous"],a:1,e:"Built-in functions exist in Python."},
 
-{q:"Which function returns datatype?",o:["type()","data()","kind()","check()"],a:0,e:"type() returns datatype."},
+{q:"Which function returns datatype?",o:["type()","data()","check()"],a:0,e:"type() returns datatype."},
 
-{q:"User defined functions are created by?",o:["Python","Programmer","Compiler","Interpreter"],a:1,e:"Programmers create them."},
+{q:"User defined functions are created by?",o:["Python","Programmer","Interpreter"],a:1,e:"Programmers create them."},
 
-{q:"Which statement sends value from function?",o:["return","print","pass","continue"],a:0,e:"return sends value back."},
+{q:"Which statement sends value from function?",o:["return","print","pass"],a:0,e:"return sends value back."},
 
-{q:"If no return statement is used, function returns?",o:["0","None","Error","Null"],a:1,e:"Default return value is None."},
+{q:"If no return statement is used, function returns?",o:["0","None","Error"],a:1,e:"Default return value is None."},
 
-{q:"Which argument depends on position?",o:["Keyword","Default","Positional","Variable"],a:2,e:"Positional arguments depend on order."},
+{q:"Which argument depends on position?",o:["Keyword","Default","Positional"],a:2,e:"Positional arguments depend on order."},
 
-{q:"Arguments passed with parameter names are?",o:["Default","Keyword","Variable","Position"],a:1,e:"Keyword arguments use names."},
+{q:"Arguments passed with parameter names are?",o:["Default","Keyword","Variable"],a:1,e:"Keyword arguments use names."},
 
-{q:"Default arguments provide?",o:["Input","Fallback value","Output","Datatype"],a:1,e:"Default arguments give default values."},
+{q:"Default arguments provide?",o:["Input","Fallback value","Datatype"],a:1,e:"Default arguments give default values."},
 
-{q:"Which symbol is used for variable arguments?",o:["#","*","&","@"],a:1,e:"*args allows multiple inputs."},
+{q:"Which symbol is used for variable arguments?",o:["#","*","&"],a:1,e:"*args allows multiple inputs."},
 
-{q:"Which keyword is used for anonymous functions?",o:["fun","lambda","def","anon"],a:1,e:"lambda defines anonymous functions."},
+{q:"Which keyword is used for anonymous functions?",o:["fun","lambda","def"],a:1,e:"lambda defines anonymous functions."},
 
-{q:"Lambda functions contain how many expressions?",o:["One","Two","Three","Unlimited"],a:0,e:"Lambda functions have one expression."},
+{q:"Lambda functions contain how many expressions?",o:["One","Two","Unlimited"],a:0,e:"Lambda functions have one expression."},
 
-{q:"Which function applies operation to each element?",o:["map()","filter()","reduce()","apply()"],a:0,e:"map() applies function to elements."},
+{q:"Which function applies operation to each element?",o:["map()","filter()","reduce()"],a:0,e:"map() applies function to elements."},
 
-{q:"Which function selects elements by condition?",o:["map()","reduce()","filter()","list()"],a:2,e:"filter() selects elements."},
+{q:"Which function selects elements by condition?",o:["map()","reduce()","filter()"],a:2,e:"filter() selects elements."},
 
-{q:"Which function combines list values into one result?",o:["filter()","map()","reduce()","sum()"],a:2,e:"reduce() combines values."},
+{q:"Which function combines list values into one result?",o:["filter()","map()","reduce()"],a:2,e:"reduce() combines values."},
 
-{q:"reduce() is available in which module?",o:["math","functools","random","sys"],a:1,e:"reduce() comes from functools."},
+{q:"reduce() is available in which module?",o:["math","functools","random"],a:1,e:"reduce() comes from functools."},
 
-{q:"What is a module?",o:["Loop","Python file","Function","Variable"],a:1,e:"A module is a Python file."},
+{q:"What is a module?",o:["Loop","Python file","Variable"],a:1,e:"A module is a Python file."},
 
-{q:"Which keyword imports module?",o:["include","import","use","load"],a:1,e:"import keyword loads module."},
+{q:"Which keyword imports module?",o:["include","import","load"],a:1,e:"import keyword loads module."},
 
-{q:"Which method imports specific function?",o:["import *","from module import name","load module","module use"],a:1,e:"Used to import specific functions."},
+{q:"Which method imports specific function?",o:["import *","from module import name","load module"],a:1,e:"Used to import specific functions."},
 
-{q:"Alias in module import is created using?",o:["alias","as","rename","ref"],a:1,e:"as keyword creates alias."},
+{q:"Alias in module import is created using?",o:["alias","as","rename"],a:1,e:"as keyword creates alias."},
 
-{q:"Modules help in?",o:["Code reuse","Large code","Loops","Errors"],a:0,e:"Modules improve code reuse."}
+{q:"Modules help in?",o:["Code reuse","Loops","Errors"],a:0,e:"Modules improve code reuse."}
 
 ];
 
@@ -81,7 +83,9 @@ let cur=0;
 let ans=new Array(quiz.length).fill(null);
 
 function load(){
+
 progress.innerText=`Question ${cur+1} of ${quiz.length}`;
+
 questionText.innerText=`${cur+1}. ${quiz[cur].q}`;
 
 options.innerHTML=quiz[cur].o.map((op,i)=>
@@ -89,38 +93,61 @@ options.innerHTML=quiz[cur].o.map((op,i)=>
 ).join("");
 
 prevBtn.disabled=cur===0;
+
 nextBtn.innerText=cur===quiz.length-1?"Submit":"Next";
+
 }
 
 function selectOpt(i){
+
 ans[cur]=i;
+
 load();
+
 }
 
 function nextQ(){
+
 if(cur===quiz.length-1){
+
 if(ans.includes(null)){
+
 alert("Please answer all questions");
+
 return;
+
 }
+
 showResult();
+
 }else{
+
 cur++;
+
 load();
+
 }
+
 }
 
 function prevQ(){
+
 cur--;
+
 load();
+
 }
 
 function showResult(){
+
 let score=0;
+
 let out="";
 
 quiz.forEach((q,i)=>{
+
 if(ans[i]===q.a) score++;
+
 else out+=`
 <div class="wrong">
 <strong>Question:</strong> ${q.q}<br>
@@ -128,16 +155,42 @@ else out+=`
 <strong>Correct Answer:</strong> ${q.o[q.a]}
 <div class="explain"><strong>Explanation:</strong> ${q.e}</div>
 </div>`;
+
 });
+
+
+/* SAVE RESULT TO BACKEND */
+
+fetch(API + "/save-quiz",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+credentials:"include",
+
+body:JSON.stringify({
+score:score,
+total:quiz.length
+})
+
+});
+
 
 quizArea.style.display="none";
 
 result.innerHTML=
+
 `<h3>Your Score: ${score} / ${quiz.length}</h3>`+
-(out||`<div class="correct">Excellent! All answers are correct 🎉</div>`) +
+
+(out||`<div class="correct">Excellent! All answers are correct 🎉</div>`)+
+
 `<br><button onclick="location.reload()">Restart Quiz</button>`;
+
 }
 
 load();
 
-</script>
+                                                       </script>
