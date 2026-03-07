@@ -28,6 +28,8 @@
 
 <script>
 
+const API="http://127.0.0.1:5000";
+
 const quiz = [
 
 {q:"Which statement is used for decision making?",o:["for","if","while"],a:1,e:"if is used for decision making."},
@@ -86,19 +88,27 @@ let cur=0;
 let ans=new Array(quiz.length).fill(null);
 
 function load(){
+
 progress.innerText=`Question ${cur+1} of ${quiz.length}`;
+
 questionText.innerText=`${cur+1}. ${quiz[cur].q}`;
+
 options.innerHTML=quiz[cur].o.map((op,i)=>
 `<div class="${ans[cur]===i?'selected':''}" onclick="selectOpt(${i})">${op}</div>`
 ).join("");
 
 prevBtn.disabled=cur===0;
+
 nextBtn.innerText=cur===quiz.length-1?"Submit":"Next";
+
 }
 
 function selectOpt(i){
+
 ans[cur]=i;
+
 load();
+
 }
 
 function nextQ(){
@@ -106,8 +116,11 @@ function nextQ(){
 if(cur===quiz.length-1){
 
 if(ans.includes(null)){
+
 alert("Please answer all questions");
+
 return;
+
 }
 
 showResult();
@@ -115,6 +128,7 @@ showResult();
 }else{
 
 cur++;
+
 load();
 
 }
@@ -122,13 +136,17 @@ load();
 }
 
 function prevQ(){
+
 cur--;
+
 load();
+
 }
 
 function showResult(){
 
 let score=0;
+
 let out="";
 
 quiz.forEach((q,i)=>{
@@ -145,11 +163,35 @@ else out+=`
 
 });
 
+
+/* SAVE RESULT TO BACKEND */
+
+fetch(API + "/save-quiz",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+credentials:"include",
+
+body:JSON.stringify({
+score:score,
+total:quiz.length
+})
+
+});
+
+
 quizArea.style.display="none";
 
 result.innerHTML=
-`<h3>Your Score: ${score} / ${quiz.length}</h3>` +
+
+`<h3>Your Score: ${score} / ${quiz.length}</h3>`+
+
 (out || `<div class="correct">Excellent! All answers are correct 🎉</div>`) +
+
 `<br><button onclick="location.reload()">Restart Quiz</button>`;
 
 }
