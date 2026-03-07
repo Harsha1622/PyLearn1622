@@ -1,6 +1,7 @@
 /* ================= API BASE ================= */
 
-const API = "http://127.0.0.1:5000";
+/* empty means same server after deployment */
+const API = "";
 
 /* ================= PAGE CACHE ================= */
 
@@ -10,8 +11,6 @@ let pageCache = {};
 /* ================= SPA PAGE LOADER ================= */
 
 function loadPage(page){
-
-/* Use cache if page already loaded */
 
 if(pageCache[page]){
 document.getElementById("app").innerHTML = pageCache[page];
