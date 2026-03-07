@@ -1,5 +1,4 @@
 /* ================= API BASE ================= */
-
 /* empty means same server after deployment */
 const API = "";
 
@@ -20,7 +19,7 @@ loadProfile();
 return;
 }
 
-fetch(page)
+fetch("./" + page)
 .then(res => {
 
 if(!res.ok){
@@ -191,7 +190,10 @@ alert("Server error");
 
 function loadDashboard(){
 
-if(!document.getElementById("quizCount")) return;
+const quiz = document.getElementById("quizCount");
+const score = document.getElementById("avgScore");
+
+if(!quiz || !score) return;
 
 fetch(API + "/dashboard",{
 credentials:"include"
@@ -200,11 +202,11 @@ credentials:"include"
 .then(data => {
 
 if(data.quizCount !== undefined){
-document.getElementById("quizCount").innerText = data.quizCount;
+quiz.innerText = data.quizCount;
 }
 
 if(data.avgScore !== undefined){
-document.getElementById("avgScore").innerText = data.avgScore + "%";
+score.innerText = data.avgScore + "%";
 }
 
 })
@@ -217,7 +219,11 @@ document.getElementById("avgScore").innerText = data.avgScore + "%";
 
 function loadProfile(){
 
-if(!document.getElementById("studentName")) return;
+const name = document.getElementById("studentName");
+const email = document.getElementById("studentEmail");
+const join = document.getElementById("joinDate");
+
+if(!name) return;
 
 fetch(API + "/dashboard",{
 credentials:"include"
@@ -226,15 +232,15 @@ credentials:"include"
 .then(data => {
 
 if(data.name){
-document.getElementById("studentName").innerText = data.name;
+name.innerText = data.name;
 }
 
 if(data.email){
-document.getElementById("studentEmail").innerText = data.email;
+email.innerText = data.email;
 }
 
 if(data.joined){
-document.getElementById("joinDate").innerText = data.joined;
+join.innerText = data.joined;
 }
 
 })
