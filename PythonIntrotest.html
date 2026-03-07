@@ -26,12 +26,13 @@
 
 </div>
 
-
 <script>
+
+const API="http://127.0.0.1:5000";
 
 /* QUIZ DATA */
 
-const quiz = [
+const quiz=[
 
 {q:"Who developed Python?",o:["Guido van Rossum","Dennis Ritchie","James Gosling"],a:0,e:"Python was developed by Guido van Rossum."},
 
@@ -85,90 +86,134 @@ const quiz = [
 
 ];
 
-
-let cur = 0;
-let ans = new Array(quiz.length).fill(null);
-
+let cur=0;
+let ans=new Array(quiz.length).fill(null);
 
 function load(){
 
-document.getElementById("progress").innerText = `Question ${cur+1} of ${quiz.length}`;
+document.getElementById("progress").innerText=`Question ${cur+1} of ${quiz.length}`;
 
-document.getElementById("questionText").innerText = `${cur+1}. ${quiz[cur].q}`;
+document.getElementById("questionText").innerText=`${cur+1}. ${quiz[cur].q}`;
 
-document.getElementById("options").innerHTML =
+document.getElementById("options").innerHTML=
+
 quiz[cur].o.map((op,i)=>
+
 `<div class="${ans[cur]===i?'selected':''}" onclick="selectOpt(${i})">${op}</div>`
+
 ).join("");
 
-document.getElementById("prevBtn").disabled = cur === 0;
+document.getElementById("prevBtn").disabled=cur===0;
 
-document.getElementById("nextBtn").innerText =
-cur === quiz.length-1 ? "Submit" : "Next";
+document.getElementById("nextBtn").innerText=
+
+cur===quiz.length-1?"Submit":"Next";
 
 }
-
 
 function selectOpt(i){
-ans[cur] = i;
-load();
-}
 
+ans[cur]=i;
+
+load();
+
+}
 
 function nextQ(){
 
-if(cur === quiz.length-1){
+if(cur===quiz.length-1){
 
 if(ans.includes(null)){
+
 alert("Please answer all questions");
+
 return;
+
 }
 
 showResult();
 
 }else{
+
 cur++;
+
 load();
-}
 
 }
 
+}
 
 function prevQ(){
-cur--;
-load();
-}
 
+cur--;
+
+load();
+
+}
 
 function showResult(){
 
-let score = 0;
-let out = "";
+let score=0;
+
+let out="";
 
 quiz.forEach((q,i)=>{
 
-if(ans[i] === q.a) score++;
+if(ans[i]===q.a) score++;
 
-else out +=
-`<div class="wrong">
+else out+=`
+
+<div class="wrong">
+
 <strong>Question:</strong> ${q.q}<br>
+
 <strong>Your Answer:</strong> ${q.o[ans[i]]}<br>
+
 <strong>Correct Answer:</strong> ${q.o[q.a]}
+
 <div class="explain"><strong>Explanation:</strong> ${q.e}</div>
+
 </div>`;
+
+});
+
+
+/* SAVE RESULT TO BACKEND */
+
+fetch(API+"/save-quiz",{
+
+method:"POST",
+
+headers:{
+
+"Content-Type":"application/json"
+
+},
+
+credentials:"include",
+
+body:JSON.stringify({
+
+score:score,
+
+total:quiz.length
+
+})
 
 });
 
 
 document.getElementById("quizArea").style.display="none";
 
-document.getElementById("result").innerHTML =
-`<h3>Your Score: ${score} / ${quiz.length}</h3>` +
-(out || `<div class="correct">Excellent! All answers correct 🎉</div>`) +
+document.getElementById("result").innerHTML=
+
+`<h3>Your Score: ${score} / ${quiz.length}</h3>`+
+
+(out||`<div class="correct">Excellent! All answers correct 🎉</div>`)+
+
 `<br><button onclick="location.reload()">Restart Quiz</button>`;
 
 }
-
 
 load();
 
