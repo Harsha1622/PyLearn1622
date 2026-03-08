@@ -15,48 +15,41 @@
 
 <body>
 
-<header class="header">
+<header>
 
-<button class="menu-btn" onclick="toggleSidebar()">☰</button>
+<h2>PyLearn</h2>
 
-<h2 class="logo">PyLearn</h2>
-
-<div class="header-right">
-
-<button class="signin-btn" onclick="loadPage('login.html')">
-Sign In
-</button>
-
-</div>
-
-</header>
-
-
-<!-- SIDEBAR -->
-
-<aside class="sidebar" id="sidebar">
-
-<h3 class="sidebar-title">Menu</h3>
+<nav>
 
 <a onclick="loadPage('homecontent.html')">Home</a>
 
 <a onclick="loadPage('course.html')">Courses</a>
 
-<a onclick="loadPage('dashboard.html')">Dashboard</a>
+<div class="profile" id="profileMenu">
+
+<img src="https://cdn-icons-png.flaticon.com/512/847/847969.png">
+
+<div class="profile-menu">
 
 <a onclick="loadPage('profile.html')">My Profile</a>
 
+<a onclick="loadPage('dashboard.html')">Dashboard</a>
+
 <button onclick="logout()">Logout</button>
 
-</aside>
+</div>
 
+</div>
 
-<!-- MAIN CONTENT -->
+</nav>
 
-<main id="app"></main>
+</header>
 
+<!-- Dynamic Content Container -->
+<div id="app"></div>
 
 <script src="pyapp.js"></script>
 
 </body>
+
 </html>
