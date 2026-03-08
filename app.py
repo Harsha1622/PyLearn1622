@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, session
+from flask import Flask, request, jsonify, session, render_template
 from flask_cors import CORS
 from werkzeug.security import generate_password_hash, check_password_hash
 from database import get_db, init_db
@@ -14,13 +14,11 @@ init_db()
 
 
 # =========================
-# HOME ROUTE (IMPORTANT)
+# HOME ROUTE
 # =========================
 @app.route("/")
 def home():
-    return jsonify({
-        "message": "PyLearn backend is running"
-    })
+    return render_template("index.html")
 
 
 # =========================
@@ -200,4 +198,4 @@ if __name__ == "__main__":
     app.run(
         host="0.0.0.0",
         port=5000
-    )
+)
