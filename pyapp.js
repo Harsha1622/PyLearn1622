@@ -1,6 +1,7 @@
 /* ================= API BASE ================= */
-/* empty means same server after deployment */
-const API = "";
+
+const API = "https://pylearn-8niw.onrender.com";
+
 
 /* ================= PAGE CACHE ================= */
 
@@ -151,6 +152,8 @@ method: "POST",
 headers:{
 "Content-Type":"application/json"
 },
+
+credentials:"include",
 
 body: JSON.stringify({
 name: name,
