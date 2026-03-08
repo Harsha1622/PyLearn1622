@@ -11,8 +11,8 @@
 <div class="options" id="options"></div>
 
 <div class="buttons">
-<button id="prevBtn" onclick="prevQ()">Previous</button>
-<button id="nextBtn" onclick="nextQ()">Next</button>
+<button id="prevBtn">Previous</button>
+<button id="nextBtn">Next</button>
 </div>
 </div>
 
@@ -23,58 +23,34 @@
 
 <script>
 
-const API="http://127.0.0.1:5000";
+const API="https://pylearn-8niw.onrender.com";
 
 const quiz=[
 
 {q:"What is a tuple in Python?",o:["Mutable collection","Immutable collection","Loop"],a:1,e:"Tuples are immutable collections."},
-
 {q:"Which symbol is used to create a tuple?",o:["[]","()","{}"],a:1,e:"Tuples are created using parentheses."},
-
 {q:"Are tuples mutable?",o:["Yes","No","Sometimes"],a:1,e:"Tuples cannot be modified after creation."},
-
-{q:"Which function returns tuple length?",o:["count()","len()","index()"],a:1,e:"len() returns the number of elements."},
-
+{q:"Which function returns tuple length?",o:["count()","len()","index()"],a:1,e:"len() returns number of elements."},
 {q:"Tuple elements are accessed using?",o:["Index","Loop","Function"],a:0,e:"Elements are accessed using indexes."},
-
 {q:"Index of first element?",o:["0","1","-1"],a:0,e:"Python indexing starts at 0."},
-
-{q:"Negative index -1 refers to?",o:["First element","Second element","Last element"],a:2,e:"-1 represents the last element."},
-
+{q:"Negative index -1 refers to?",o:["First element","Second element","Last element"],a:2,e:"-1 refers to last element."},
 {q:"Which operator joins two tuples?",o:["*","+","/"],a:1,e:"+ concatenates tuples."},
-
 {q:"Which operator repeats tuple elements?",o:["*","+","-"],a:0,e:"* repeats elements."},
-
 {q:"Which keyword checks membership?",o:["in","check","exists"],a:0,e:"in checks membership."},
-
 {q:"Which method counts element occurrence?",o:["index()","count()","len()"],a:1,e:"count() counts occurrences."},
-
 {q:"Which method returns position of element?",o:["count()","index()","find()"],a:1,e:"index() returns element position."},
-
 {q:"Which of these allows duplicate values?",o:["Tuple","Set","Dictionary key"],a:0,e:"Tuples allow duplicates."},
-
 {q:"Which is correct tuple?",o:["(1,2,3)","[1,2,3]","{1,2,3}"],a:0,e:"Tuples use parentheses."},
-
 {q:"Single element tuple requires?",o:["Comma","Colon","Semicolon"],a:0,e:"A comma is required."},
-
 {q:"Example of single tuple?",o:["(5)","(5,)","[5]"],a:1,e:"(5,) creates a single-element tuple."},
-
 {q:"Tuple slicing extracts?",o:["Multiple elements","Single element","Nothing"],a:0,e:"Slicing extracts multiple elements."},
-
-{q:"Tuple packing means?",o:["Combining values","Deleting values","Sorting values"],a:0,e:"Packing groups values into a tuple."},
-
-{q:"Tuple unpacking means?",o:["Assigning values","Deleting tuple","Sorting tuple"],a:0,e:"Unpacking assigns tuple values to variables."},
-
+{q:"Tuple packing means?",o:["Combining values","Deleting values","Sorting values"],a:0,e:"Packing groups values into tuple."},
+{q:"Tuple unpacking means?",o:["Assigning values","Deleting tuple","Sorting tuple"],a:0,e:"Unpacking assigns values to variables."},
 {q:"Which feature swaps variables easily?",o:["Tuple unpacking","Loop","Condition"],a:0,e:"Tuple unpacking allows swapping."},
-
 {q:"Functions returning multiple values use?",o:["List","Tuple","Dictionary"],a:1,e:"Returned values form a tuple."},
-
 {q:"Which converts generator result to tuple?",o:["list()","tuple()","set()"],a:1,e:"tuple() converts generator result."},
-
-{q:"Tuple comprehension often uses?",o:["tuple()","list()","set()"],a:0,e:"tuple() wraps the generator."},
-
+{q:"Tuple comprehension often uses?",o:["tuple()","list()","set()"],a:0,e:"tuple() wraps generator expression."},
 {q:"Which statement about tuples is correct?",o:["Mutable","Immutable","Dynamic"],a:1,e:"Tuples are immutable."},
-
 {q:"Which structure is faster for fixed data?",o:["List","Tuple","Dictionary"],a:1,e:"Tuples are faster for fixed data."}
 
 ];
@@ -82,10 +58,17 @@ const quiz=[
 let cur=0;
 let ans=new Array(quiz.length).fill(null);
 
+const progress=document.getElementById("progress");
+const questionText=document.getElementById("questionText");
+const options=document.getElementById("options");
+const prevBtn=document.getElementById("prevBtn");
+const nextBtn=document.getElementById("nextBtn");
+const quizArea=document.getElementById("quizArea");
+const result=document.getElementById("result");
+
 function load(){
 
 progress.innerText=`Question ${cur+1} of ${quiz.length}`;
-
 questionText.innerText=`${cur+1}. ${quiz[cur].q}`;
 
 options.innerHTML=quiz[cur].o.map((op,i)=>
@@ -93,55 +76,39 @@ options.innerHTML=quiz[cur].o.map((op,i)=>
 ).join("");
 
 prevBtn.disabled=cur===0;
-
 nextBtn.innerText=cur===quiz.length-1?"Submit":"Next";
 
 }
 
 function selectOpt(i){
-
 ans[cur]=i;
-
 load();
-
 }
 
 function nextQ(){
 
-if(cur===quiz.length-1){
-
-if(ans.includes(null)){
-
-alert("Please answer all questions");
-
+if(ans[cur]===null){
+alert("Select an answer first");
 return;
-
 }
 
+if(cur===quiz.length-1){
 showResult();
-
 }else{
-
 cur++;
-
 load();
-
 }
 
 }
 
 function prevQ(){
-
 cur--;
-
 load();
-
 }
 
 function showResult(){
 
 let score=0;
-
 let out="";
 
 quiz.forEach((q,i)=>{
@@ -153,41 +120,31 @@ else out+=`
 <strong>Question:</strong> ${q.q}<br>
 <strong>Your Answer:</strong> ${q.o[ans[i]]}<br>
 <strong>Correct Answer:</strong> ${q.o[q.a]}
-<div class="explain"><strong>Explanation:</strong> ${q.e}</div>
+<div><strong>Explanation:</strong> ${q.e}</div>
 </div>`;
 
 });
 
-
-/* SAVE RESULT TO BACKEND */
-
 fetch(API+"/save-quiz",{
-
 method:"POST",
-
-headers:{
-"Content-Type":"application/json"
-},
-
+headers:{"Content-Type":"application/json"},
 credentials:"include",
-
-body:JSON.stringify({
-score:score,
-total:quiz.length
-})
-
+body:JSON.stringify({score:score,total:quiz.length})
 });
-
 
 quizArea.style.display="none";
 
 result.innerHTML=
-`<h3>Your Score: ${score} / ${quiz.length}</h3>` +
-(out || `<div class="correct">Excellent! All answers are correct 🎉</div>`) +
+`<h3>Your Score: ${score} / ${quiz.length}</h3>`+
+(out||`<div class="correct">Excellent! All answers are correct 🎉</div>`)+
 `<br><button onclick="location.reload()">Restart Test</button>`;
 
 }
 
-load();
+nextBtn.onclick=nextQ;
+prevBtn.onclick=prevQ;
+
+/* safe start for SPA */
+setTimeout(load,100);
 
 </script>
