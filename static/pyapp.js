@@ -13,15 +13,12 @@ let pageCache = {};
 function loadPage(page){
 
 if(pageCache[page]){
-document.getElementById("app").innerHTML = pageCache[page];
-window.scrollTo(0,0);
-checkLogin();
-loadDashboard();
-loadProfile();
+renderPage(pageCache[page]);
 return;
 }
 
 fetch("/static/pages/" + page)
+
 .then(res => {
 
 if(!res.ok){
@@ -31,11 +28,32 @@ throw new Error("Page not found");
 return res.text();
 
 })
+
 .then(html => {
 
 pageCache[page] = html;
 
-document.getElementById("app").innerHTML = html;
+renderPage(html);
+
+})
+
+.catch(()=>{
+
+document.getElementById("app").innerHTML =
+"<p style='padding:40px;text-align:center;'>Page not found.</p>";
+
+});
+
+}
+
+
+/* ================= RENDER PAGE ================= */
+
+function renderPage(html){
+
+const app = document.getElementById("app");
+
+app.innerHTML = html;
 
 window.scrollTo(0,0);
 
@@ -43,11 +61,21 @@ checkLogin();
 loadDashboard();
 loadProfile();
 
-})
-.catch(()=>{
+/* execute scripts inside loaded page */
 
-document.getElementById("app").innerHTML =
-"<p style='padding:40px;text-align:center;'>Page not found.</p>";
+const scripts = app.querySelectorAll("script");
+
+scripts.forEach(oldScript => {
+
+const newScript = document.createElement("script");
+
+if(oldScript.src){
+newScript.src = oldScript.src;
+}else{
+newScript.textContent = oldScript.textContent;
+}
+
+document.body.appendChild(newScript);
 
 });
 
@@ -61,6 +89,7 @@ function checkLogin(){
 fetch(API + "/dashboard",{
 credentials:"include"
 })
+
 .then(res => {
 
 const profile = document.getElementById("profileMenu");
@@ -68,27 +97,18 @@ const loginCard = document.getElementById("loginCard");
 
 if(res.ok){
 
-if(profile){
-profile.style.display = "flex";
-}
-
-if(loginCard){
-loginCard.style.display = "none";
-}
+if(profile) profile.style.display = "flex";
+if(loginCard) loginCard.style.display = "none";
 
 }else{
 
-if(profile){
-profile.style.display = "none";
-}
-
-if(loginCard){
-loginCard.style.display = "block";
-}
+if(profile) profile.style.display = "none";
+if(loginCard) loginCard.style.display = "block";
 
 }
 
 })
+
 .catch(()=>{});
 
 }
@@ -121,13 +141,14 @@ password: password
 })
 
 })
+
 .then(res => res.json())
+
 .then(data => {
 
 if(data.success){
 
 checkLogin();
-
 loadPage("profile.html");
 
 }else{
@@ -137,6 +158,7 @@ alert("Invalid email or password");
 }
 
 })
+
 .catch(()=>{
 
 alert("Server error");
@@ -177,7 +199,9 @@ password: password
 })
 
 })
+
 .then(res => res.json())
+
 .then(data => {
 
 if(data.success){
@@ -193,6 +217,7 @@ alert("Signup failed");
 }
 
 })
+
 .catch(()=>{
 
 alert("Server error");
@@ -216,7 +241,9 @@ if(!quiz || !score) return;
 fetch(API + "/dashboard",{
 credentials:"include"
 })
+
 .then(res => res.json())
+
 .then(data => {
 
 if(data.quizCount !== undefined){
@@ -228,6 +255,7 @@ score.innerText = data.avgScore + "%";
 }
 
 })
+
 .catch(()=>{});
 
 }
@@ -246,22 +274,17 @@ if(!name) return;
 fetch(API + "/dashboard",{
 credentials:"include"
 })
+
 .then(res => res.json())
+
 .then(data => {
 
-if(data.name){
-name.innerText = data.name;
-}
-
-if(data.email){
-email.innerText = data.email;
-}
-
-if(data.joined){
-join.innerText = data.joined;
-}
+if(data.name) name.innerText = data.name;
+if(data.email) email.innerText = data.email;
+if(data.joined) join.innerText = data.joined;
 
 })
+
 .catch(()=>{});
 
 }
@@ -275,23 +298,19 @@ fetch(API + "/logout",{
 method:"POST",
 credentials:"include"
 })
+
 .then(()=>{
 
 const profile = document.getElementById("profileMenu");
-
-if(profile){
-profile.style.display = "none";
-}
-
 const loginCard = document.getElementById("loginCard");
 
-if(loginCard){
-loginCard.style.display = "block";
-}
+if(profile) profile.style.display = "none";
+if(loginCard) loginCard.style.display = "block";
 
 loadPage("homecontent.html");
 
 })
+
 .catch(()=>{
 
 alert("Logout failed");
@@ -306,7 +325,6 @@ alert("Logout failed");
 window.onload = function(){
 
 loadPage("homecontent.html");
-
 checkLogin();
 
 };
