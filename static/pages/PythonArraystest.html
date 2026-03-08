@@ -81,7 +81,13 @@ const quiz=[
 
 let cur=0;
 let ans=new Array(quiz.length).fill(null);
-
+const progress = document.getElementById("progress");
+const questionText = document.getElementById("questionText");
+const options = document.getElementById("options");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+const quizArea = document.getElementById("quizArea");
+const result = document.getElementById("result");
 function load(){
 
 progress.innerText=`Question ${cur+1} of ${quiz.length}`;
