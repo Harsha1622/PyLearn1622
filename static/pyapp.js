@@ -2,9 +2,11 @@
 
 const API = "https://pylearn-8niw.onrender.com";
 
+
 /* ================= PAGE CACHE ================= */
 
 let pageCache = {};
+
 
 /* ================= SPA PAGE LOADER ================= */
 
@@ -13,6 +15,7 @@ function loadPage(page){
 if(pageCache[page]){
 document.getElementById("app").innerHTML = pageCache[page];
 window.scrollTo(0,0);
+checkLogin();
 loadDashboard();
 loadProfile();
 return;
@@ -36,6 +39,7 @@ document.getElementById("app").innerHTML = html;
 
 window.scrollTo(0,0);
 
+checkLogin();
 loadDashboard();
 loadProfile();
 
@@ -49,6 +53,7 @@ document.getElementById("app").innerHTML =
 
 }
 
+
 /* ================= CHECK LOGIN ================= */
 
 function checkLogin(){
@@ -58,12 +63,27 @@ credentials:"include"
 })
 .then(res => {
 
-if(res.ok){
-
 const profile = document.getElementById("profileMenu");
+const loginCard = document.getElementById("loginCard");
+
+if(res.ok){
 
 if(profile){
 profile.style.display = "flex";
+}
+
+if(loginCard){
+loginCard.style.display = "none";
+}
+
+}else{
+
+if(profile){
+profile.style.display = "none";
+}
+
+if(loginCard){
+loginCard.style.display = "block";
 }
 
 }
@@ -72,6 +92,7 @@ profile.style.display = "flex";
 .catch(()=>{});
 
 }
+
 
 /* ================= LOGIN ================= */
 
@@ -105,17 +126,7 @@ password: password
 
 if(data.success){
 
-const loginCard = document.getElementById("loginCard");
-
-if(loginCard){
-loginCard.style.display = "none";
-}
-
-const profile = document.getElementById("profileMenu");
-
-if(profile){
-profile.style.display = "flex";
-}
+checkLogin();
 
 loadPage("profile.html");
 
@@ -135,6 +146,7 @@ alert("Server error");
 }
 
 });
+
 
 /* ================= SIGNUP ================= */
 
@@ -191,6 +203,7 @@ alert("Server error");
 
 });
 
+
 /* ================= DASHBOARD ================= */
 
 function loadDashboard(){
@@ -218,6 +231,7 @@ score.innerText = data.avgScore + "%";
 .catch(()=>{});
 
 }
+
 
 /* ================= PROFILE ================= */
 
@@ -252,6 +266,7 @@ join.innerText = data.joined;
 
 }
 
+
 /* ================= LOGOUT ================= */
 
 function logout(){
@@ -284,6 +299,7 @@ alert("Logout failed");
 });
 
 }
+
 
 /* ================= INITIAL LOAD ================= */
 
