@@ -20,7 +20,7 @@ loadProfile();
 return;
 }
 
-fetch("./" + page)
+fetch("/static/pages/" + page)
 .then(res => {
 
 if(!res.ok){
