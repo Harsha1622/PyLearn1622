@@ -15,38 +15,46 @@
 
 <body>
 
-<header>
+<header class="header">
 
-<h2>PyLearn</h2>
+<button class="menu-btn" onclick="toggleSidebar()">☰</button>
 
-<nav>
+<h2 class="logo">PyLearn</h2>
 
-<a href="#" onclick="loadPage('homecontent.html')">Home</a>
+<div class="header-right">
 
-<a href="#" onclick="loadPage('course.html')">Courses</a>
-
-<div class="profile" id="profileMenu" style="display:none;">
-
-<img src="https://cdn-icons-png.flaticon.com/512/847/847969.png">
-
-<div class="profile-menu">
-
-<a href="#" onclick="loadPage('profile.html')">My Profile</a>
-
-<a href="#" onclick="loadPage('dashboard.html')">Dashboard</a>
-
-<button onclick="logout()">Logout</button>
+<button class="signin-btn" onclick="loadPage('login.html')">
+Sign In
+</button>
 
 </div>
-
-</div>
-
-</nav>
 
 </header>
 
-<!-- SPA CONTENT AREA -->
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar" id="sidebar">
+
+<h3 class="sidebar-title">Menu</h3>
+
+<a onclick="loadPage('homecontent.html')">Home</a>
+
+<a onclick="loadPage('course.html')">Courses</a>
+
+<a onclick="loadPage('dashboard.html')">Dashboard</a>
+
+<a onclick="loadPage('profile.html')">My Profile</a>
+
+<button onclick="logout()">Logout</button>
+
+</aside>
+
+
+<!-- MAIN CONTENT -->
+
 <main id="app"></main>
+
 
 <script src="pyapp.js"></script>
 
