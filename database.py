@@ -4,7 +4,7 @@ DATABASE = "database.db"
 
 
 def get_db():
-    conn = sqlite3.connect(DATABASE)
+    conn = sqlite3.connect(DATABASE, check_same_thread=False)
     conn.row_factory = sqlite3.Row
 
     # Enable foreign keys
@@ -18,7 +18,7 @@ def init_db():
     conn = get_db()
     cur = conn.cursor()
 
-    # Users table
+    # ================= USERS TABLE =================
     cur.execute("""
     CREATE TABLE IF NOT EXISTS users(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -29,7 +29,7 @@ def init_db():
     )
     """)
 
-    # Quiz results table
+    # ================= QUIZ RESULTS TABLE =================
     cur.execute("""
     CREATE TABLE IF NOT EXISTS quiz_results(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -41,7 +41,7 @@ def init_db():
     )
     """)
 
-    # Index for faster queries
+    # ================= INDEX FOR PERFORMANCE =================
     cur.execute("""
     CREATE INDEX IF NOT EXISTS idx_user_quiz
     ON quiz_results(user_id)
