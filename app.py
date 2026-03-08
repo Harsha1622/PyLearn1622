@@ -14,6 +14,16 @@ init_db()
 
 
 # =========================
+# HOME ROUTE (IMPORTANT)
+# =========================
+@app.route("/")
+def home():
+    return jsonify({
+        "message": "PyLearn backend is running"
+    })
+
+
+# =========================
 # SIGNUP
 # =========================
 @app.route("/signup", methods=["POST"])
@@ -46,8 +56,7 @@ def signup():
 
         return jsonify({"success": True})
 
-    except Exception as e:
-
+    except:
         return jsonify({
             "success": False,
             "message": "Email already exists"
