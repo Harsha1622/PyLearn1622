@@ -7,13 +7,16 @@
 </div>
 
 <div id="quizArea">
+
 <div class="question" id="questionText"></div>
+
 <div class="options" id="options"></div>
 
 <div class="buttons">
 <button id="prevBtn" onclick="prevQ()">Previous</button>
 <button id="nextBtn" onclick="nextQ()">Next</button>
 </div>
+
 </div>
 
 <div id="result" class="result"></div>
@@ -21,9 +24,11 @@
 </div>
 </div>
 
+
 <script>
 
-const API="http://127.0.0.1:5000";
+const API="https://pylearn-8niw.onrender.com";
+
 
 const quiz=[
 
@@ -35,19 +40,19 @@ const quiz=[
 
 {q:"List index starts from?",o:["1","0","-1"],a:1,e:"Indexing starts from 0."},
 
-{q:"Lists in Python are?",o:["Mutable","Immutable","Constant"],a:0,e:"Lists are mutable, meaning they can change."},
+{q:"Lists in Python are?",o:["Mutable","Immutable","Constant"],a:0,e:"Lists are mutable."},
 
 {q:"Which operator combines two lists?",o:["*","+","/"],a:1,e:"+ operator concatenates lists."},
 
 {q:"Which operator repeats list elements?",o:["*","+","-"],a:0,e:"* repeats list elements."},
 
-{q:"Which keyword checks membership?",o:["in","is","with"],a:0,e:"'in' checks if an element exists in list."},
+{q:"Which keyword checks membership?",o:["in","is","with"],a:0,e:"'in' checks if element exists."},
 
 {q:"Which keyword checks absence?",o:["without","not in","except"],a:1,e:"'not in' checks absence."},
 
 {q:"Which method adds element to list?",o:["append()","insert()","add()"],a:0,e:"append() adds element at end."},
 
-{q:"Which method inserts element at specific position?",o:["append()","insert()","replace()"],a:1,e:"insert() adds element at given index."},
+{q:"Which method inserts element at specific position?",o:["append()","insert()","replace()"],a:1,e:"insert() adds element at index."},
 
 {q:"Which method removes element by value?",o:["delete()","remove()","pop()"],a:1,e:"remove() deletes specified value."},
 
@@ -57,91 +62,90 @@ const quiz=[
 
 {q:"Which method sorts list?",o:["order()","arrange()","sort()"],a:2,e:"sort() arranges elements."},
 
-{q:"Which method reverses list?",o:["reverse()","flip()","back()"],a:0,e:"reverse() reverses elements."},
+{q:"Which method reverses list?",o:["reverse()","flip()","back()"],a:0,e:"reverse() reverses list."},
 
 {q:"Which method counts occurrences?",o:["count()","sum()","total()"],a:0,e:"count() counts occurrences."},
 
-{q:"Which operation extracts part of list?",o:["Slicing","Indexing","Looping"],a:0,e:"Slicing extracts portion."},
+{q:"Which operation extracts part of list?",o:["Slicing","Indexing","Looping"],a:0,e:"Slicing extracts part."},
 
 {q:"Example of slicing syntax?",o:["list[1:3]","list(1:3)","list{1:3}"],a:0,e:"Slicing uses colon."},
 
-{q:"Which loop is commonly used to traverse list?",o:["if","for","switch"],a:1,e:"for loop iterates through list."},
+{q:"Which loop is commonly used to traverse list?",o:["if","for","switch"],a:1,e:"for loop traverses list."},
 
 {q:"Which property allows list modification?",o:["Mutability","Immutability","Fixity"],a:0,e:"Lists are mutable."},
 
-{q:"Aliasing means?",o:["Copying list","Two variables referencing same list","Deleting list"],a:1,e:"Aliasing refers to same memory reference."},
+{q:"Aliasing means?",o:["Copying list","Two variables referencing same list","Deleting list"],a:1,e:"Aliasing refers to same memory."},
 
 {q:"Which method copies a list?",o:["clone()","copy()","duplicate()"],a:1,e:"copy() creates list copy."},
 
 {q:"Which feature creates list in one line?",o:["Loop","Function","List comprehension"],a:2,e:"List comprehension creates list quickly."},
 
-{q:"Example of list comprehension?",o:["[x for x in range(5)]","x in range(5)","for x list"],a:0,e:"List comprehension syntax example."}
+{q:"Example of list comprehension?",o:["[x for x in range(5)]","x in range(5)","for x list"],a:0,e:"List comprehension example."}
 
 ];
+
 
 let cur=0;
 let ans=new Array(quiz.length).fill(null);
 
+
 function load(){
 
-progress.innerText=`Question ${cur+1} of ${quiz.length}`;
+document.getElementById("progress").innerText=
+`Question ${cur+1} of ${quiz.length}`;
 
-questionText.innerText=`${cur+1}. ${quiz[cur].q}`;
+document.getElementById("questionText").innerText=
+`${cur+1}. ${quiz[cur].q}`;
 
-options.innerHTML=quiz[cur].o.map((op,i)=>
+document.getElementById("options").innerHTML=
+quiz[cur].o.map((op,i)=>
 `<div class="${ans[cur]===i?'selected':''}" onclick="selectOpt(${i})">${op}</div>`
 ).join("");
 
-prevBtn.disabled=cur===0;
+document.getElementById("prevBtn").disabled=cur===0;
 
-nextBtn.innerText=cur===quiz.length-1?"Submit":"Next";
+document.getElementById("nextBtn").innerText=
+cur===quiz.length-1?"Submit":"Next";
 
 }
+
 
 function selectOpt(i){
 
 ans[cur]=i;
-
 load();
 
 }
+
 
 function nextQ(){
 
-if(cur===quiz.length-1){
-
-if(ans.includes(null)){
-
-alert("Please answer all questions");
-
+if(ans[cur]===null){
+alert("Select an answer first");
 return;
-
 }
 
+if(cur===quiz.length-1){
 showResult();
-
 }else{
-
 cur++;
-
 load();
-
 }
 
 }
+
 
 function prevQ(){
 
 cur--;
-
 load();
 
 }
 
+
 function showResult(){
 
 let score=0;
-
 let out="";
 
 quiz.forEach((q,i)=>{
@@ -153,15 +157,13 @@ else out+=`
 <strong>Question:</strong> ${q.q}<br>
 <strong>Your Answer:</strong> ${q.o[ans[i]]}<br>
 <strong>Correct Answer:</strong> ${q.o[q.a]}
-<div class="explain"><strong>Explanation:</strong> ${q.e}</div>
+<div><strong>Explanation:</strong> ${q.e}</div>
 </div>`;
 
 });
 
 
-/* SAVE RESULT TO BACKEND */
-
-fetch(API + "/save-quiz",{
+fetch(API+"/save-quiz",{
 
 method:"POST",
 
@@ -179,15 +181,18 @@ total:quiz.length
 });
 
 
-quizArea.style.display="none";
+document.getElementById("quizArea").style.display="none";
 
-result.innerHTML=
+document.getElementById("result").innerHTML=
 `<h3>Your Score: ${score} / ${quiz.length}</h3>`+
 (out||`<div class="correct">Excellent! All answers are correct 🎉</div>`)+
 `<br><button onclick="location.reload()">Restart Quiz</button>`;
 
 }
 
-load();
 
-</script>
+/* SPA safe start */
+
+setTimeout(load,100);
+
+ </script>
