@@ -1,6 +1,6 @@
 import sqlite3
 
-DATABASE = "pylearn.db"
+DATABASE = "database.db"
 
 
 def get_db():
