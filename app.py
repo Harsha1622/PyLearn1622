@@ -9,7 +9,7 @@ app.secret_key = "pylearn-secret-key"
 
 CORS(app, supports_credentials=True)
 
-# initialize database
+# Initialize database
 init_db()
 
 
@@ -29,7 +29,7 @@ def signup():
         return jsonify({
             "success": False,
             "message": "Missing fields"
-        })
+        }), 400
 
     hashed_password = generate_password_hash(password)
 
@@ -37,7 +37,6 @@ def signup():
     cur = conn.cursor()
 
     try:
-
         cur.execute(
             "INSERT INTO users(name,email,password,joined) VALUES(?,?,?,?)",
             (name, email, hashed_password, str(datetime.date.today()))
@@ -47,12 +46,12 @@ def signup():
 
         return jsonify({"success": True})
 
-    except:
+    except Exception as e:
 
         return jsonify({
             "success": False,
             "message": "Email already exists"
-        })
+        }), 400
 
 
 # =========================
@@ -65,6 +64,12 @@ def login():
 
     email = data.get("email")
     password = data.get("password")
+
+    if not email or not password:
+        return jsonify({
+            "success": False,
+            "message": "Missing email or password"
+        }), 400
 
     conn = get_db()
     cur = conn.cursor()
@@ -86,13 +91,13 @@ def login():
     return jsonify({
         "success": False,
         "message": "Invalid email or password"
-    })
+    }), 401
 
 
 # =========================
 # DASHBOARD DATA
 # =========================
-@app.route("/dashboard")
+@app.route("/dashboard", methods=["GET"])
 def dashboard():
 
     if "user_id" not in session:
@@ -143,6 +148,12 @@ def save_quiz():
     score = data.get("score")
     total = data.get("total")
 
+    if score is None or total is None:
+        return jsonify({
+            "success": False,
+            "message": "Missing quiz data"
+        }), 400
+
     conn = get_db()
     cur = conn.cursor()
 
@@ -178,7 +189,6 @@ def logout():
 if __name__ == "__main__":
 
     app.run(
-        debug=True,
-        host="127.0.0.1",
+        host="0.0.0.0",
         port=5000
     )
