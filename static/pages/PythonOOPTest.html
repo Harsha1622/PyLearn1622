@@ -11,8 +11,8 @@
 <div class="options" id="options"></div>
 
 <div class="buttons">
-<button id="prevBtn" onclick="prevQ()">Previous</button>
-<button id="nextBtn" onclick="nextQ()">Next</button>
+<button id="prevBtn">Previous</button>
+<button id="nextBtn">Next</button>
 </div>
 </div>
 
@@ -23,7 +23,7 @@
 
 <script>
 
-const API="http://127.0.0.1:5000";
+const API="https://pylearn-8niw.onrender.com";
 
 const quiz=[
 
@@ -82,6 +82,14 @@ const quiz=[
 let cur=0;
 let ans=new Array(quiz.length).fill(null);
 
+const progress=document.getElementById("progress");
+const questionText=document.getElementById("questionText");
+const options=document.getElementById("options");
+const prevBtn=document.getElementById("prevBtn");
+const nextBtn=document.getElementById("nextBtn");
+const quizArea=document.getElementById("quizArea");
+const result=document.getElementById("result");
+
 function load(){
 
 progress.innerText=`Question ${cur+1} of ${quiz.length}`;
@@ -99,49 +107,34 @@ nextBtn.innerText=cur===quiz.length-1?"Submit":"Next";
 }
 
 function selectOpt(i){
-
 ans[cur]=i;
-
 load();
-
 }
 
 function nextQ(){
 
-if(cur===quiz.length-1){
-
-if(ans.includes(null)){
-
-alert("Please answer all questions");
-
+if(ans[cur]===null){
+alert("Select an answer first");
 return;
-
 }
 
+if(cur===quiz.length-1){
 showResult();
-
 }else{
-
 cur++;
-
 load();
-
 }
 
 }
 
 function prevQ(){
-
 cur--;
-
 load();
-
 }
 
 function showResult(){
 
 let score=0;
-
 let out="";
 
 quiz.forEach((q,i)=>{
@@ -153,31 +146,17 @@ else out+=`
 <strong>Question:</strong> ${q.q}<br>
 <strong>Your Answer:</strong> ${q.o[ans[i]]}<br>
 <strong>Correct Answer:</strong> ${q.o[q.a]}
-<div class="explain"><strong>Explanation:</strong> ${q.e}</div>
+<div><strong>Explanation:</strong> ${q.e}</div>
 </div>`;
 
 });
 
-
-/* SAVE RESULT TO BACKEND */
-
 fetch(API+"/save-quiz",{
-
 method:"POST",
-
-headers:{
-"Content-Type":"application/json"
-},
-
+headers:{"Content-Type":"application/json"},
 credentials:"include",
-
-body:JSON.stringify({
-score:score,
-total:quiz.length
-})
-
+body:JSON.stringify({score:score,total:quiz.length})
 });
-
 
 quizArea.style.display="none";
 
@@ -188,6 +167,9 @@ result.innerHTML=
 
 }
 
-load();
+nextBtn.onclick=nextQ;
+prevBtn.onclick=prevQ;
+
+setTimeout(load,100);
 
 </script>
