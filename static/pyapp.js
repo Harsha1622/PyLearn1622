@@ -2,11 +2,9 @@
 
 const API = "https://pylearn-8niw.onrender.com";
 
-
 /* ================= PAGE CACHE ================= */
 
 let pageCache = {};
-
 
 /* ================= SPA PAGE LOADER ================= */
 
@@ -51,7 +49,6 @@ document.getElementById("app").innerHTML =
 
 }
 
-
 /* ================= CHECK LOGIN ================= */
 
 function checkLogin(){
@@ -75,7 +72,6 @@ profile.style.display = "flex";
 .catch(()=>{});
 
 }
-
 
 /* ================= LOGIN ================= */
 
@@ -109,11 +105,19 @@ password: password
 
 if(data.success){
 
-alert("Login successful");
+const loginCard = document.getElementById("loginCard");
 
-checkLogin();
+if(loginCard){
+loginCard.style.display = "none";
+}
 
-loadPage("dashboard.html");
+const profile = document.getElementById("profileMenu");
+
+if(profile){
+profile.style.display = "flex";
+}
+
+loadPage("profile.html");
 
 }else{
 
@@ -131,7 +135,6 @@ alert("Server error");
 }
 
 });
-
 
 /* ================= SIGNUP ================= */
 
@@ -188,7 +191,6 @@ alert("Server error");
 
 });
 
-
 /* ================= DASHBOARD ================= */
 
 function loadDashboard(){
@@ -216,7 +218,6 @@ score.innerText = data.avgScore + "%";
 .catch(()=>{});
 
 }
-
 
 /* ================= PROFILE ================= */
 
@@ -251,7 +252,6 @@ join.innerText = data.joined;
 
 }
 
-
 /* ================= LOGOUT ================= */
 
 function logout(){
@@ -268,6 +268,12 @@ if(profile){
 profile.style.display = "none";
 }
 
+const loginCard = document.getElementById("loginCard");
+
+if(loginCard){
+loginCard.style.display = "block";
+}
+
 loadPage("homecontent.html");
 
 })
@@ -278,7 +284,6 @@ alert("Logout failed");
 });
 
 }
-
 
 /* ================= INITIAL LOAD ================= */
 
