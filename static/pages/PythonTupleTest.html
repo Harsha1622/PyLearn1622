@@ -21,7 +21,6 @@
 </div>
 </div>
 
-
 <script>
 
 const API="https://pylearn-8niw.onrender.com";
@@ -62,7 +61,7 @@ let ans=new Array(quiz.length).fill(null);
 let progress,questionText,options,prevBtn,nextBtn,quizArea,result;
 
 
-/* Initialize quiz AFTER page loads */
+/* INIT */
 
 function initQuiz(){
 
@@ -74,12 +73,17 @@ nextBtn=document.getElementById("nextBtn");
 quizArea=document.getElementById("quizArea");
 result=document.getElementById("result");
 
+if(!questionText) return;
+
+prevBtn.addEventListener("click",prevQ);
+nextBtn.addEventListener("click",nextQ);
+
 load();
 
 }
 
 
-/* Load question */
+/* LOAD QUESTION */
 
 function load(){
 
@@ -92,13 +96,12 @@ options.innerHTML=quiz[cur].o.map((op,i)=>
 ).join("");
 
 prevBtn.disabled=cur===0;
-
 nextBtn.innerText=cur===quiz.length-1?"Submit":"Next";
 
 }
 
 
-/* Select option */
+/* SELECT */
 
 function selectOpt(i){
 ans[cur]=i;
@@ -106,7 +109,7 @@ load();
 }
 
 
-/* Next */
+/* NEXT */
 
 function nextQ(){
 
@@ -125,7 +128,7 @@ load();
 }
 
 
-/* Previous */
+/* PREVIOUS */
 
 function prevQ(){
 cur--;
@@ -133,7 +136,7 @@ load();
 }
 
 
-/* Show result */
+/* RESULT */
 
 function showResult(){
 
@@ -154,16 +157,12 @@ else out+=`
 
 });
 
-
 fetch(API+"/save-quiz",{
-
 method:"POST",
 headers:{"Content-Type":"application/json"},
 credentials:"include",
 body:JSON.stringify({score:score,total:quiz.length})
-
 });
-
 
 quizArea.style.display="none";
 
@@ -175,12 +174,8 @@ result.innerHTML=
 }
 
 
-nextBtn.onclick=nextQ;
-prevBtn.onclick=prevQ;
+/* SAFE START */
 
-
-/* Important for SPA */
-
-setTimeout(initQuiz,50);
+document.addEventListener("DOMContentLoaded",initQuiz);
 
 </script>
