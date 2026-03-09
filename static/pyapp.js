@@ -32,7 +32,6 @@ return res.text();
 .then(html => {
 
 pageCache[page] = html;
-
 renderPage(html);
 
 })
@@ -53,6 +52,8 @@ function renderPage(html){
 
 const app = document.getElementById("app");
 
+/* clear old content */
+
 app.innerHTML = html;
 
 window.scrollTo(0,0);
@@ -61,7 +62,7 @@ checkLogin();
 loadDashboard();
 loadProfile();
 
-/* execute scripts inside loaded page */
+/* execute scripts safely */
 
 const scripts = app.querySelectorAll("script");
 
@@ -75,7 +76,9 @@ newScript.src = oldScript.src;
 newScript.textContent = oldScript.textContent;
 }
 
-document.body.appendChild(newScript);
+/* replace instead of append */
+
+oldScript.replaceWith(newScript);
 
 });
 
@@ -207,7 +210,6 @@ password: password
 if(data.success){
 
 alert("Account created successfully");
-
 loadPage("homecontent.html");
 
 }else{
@@ -322,9 +324,9 @@ alert("Logout failed");
 
 /* ================= INITIAL LOAD ================= */
 
-window.onload = function(){
+window.addEventListener("DOMContentLoaded", () => {
 
 loadPage("homecontent.html");
 checkLogin();
 
-};
+});
