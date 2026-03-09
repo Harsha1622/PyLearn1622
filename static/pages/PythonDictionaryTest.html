@@ -21,7 +21,6 @@
 </div>
 </div>
 
-
 <script>
 
 const API = "https://pylearn-8niw.onrender.com";
@@ -61,7 +60,8 @@ let ans = new Array(quiz.length).fill(null);
 
 let progress, questionText, options, prevBtn, nextBtn, quizArea, result;
 
-/* initialize after page loads */
+
+/* INIT */
 
 function initQuiz(){
 
@@ -73,9 +73,19 @@ nextBtn = document.getElementById("nextBtn");
 quizArea = document.getElementById("quizArea");
 result = document.getElementById("result");
 
+if(!questionText) return;
+
+/* attach buttons */
+
+nextBtn.addEventListener("click",nextQ);
+prevBtn.addEventListener("click",prevQ);
+
 load();
 
 }
+
+
+/* LOAD */
 
 function load(){
 
@@ -93,10 +103,12 @@ nextBtn.innerText = cur===quiz.length-1 ? "Submit" : "Next";
 
 }
 
+
 function selectOpt(i){
 ans[cur] = i;
 load();
 }
+
 
 function nextQ(){
 
@@ -114,10 +126,12 @@ load();
 
 }
 
+
 function prevQ(){
 cur--;
 load();
 }
+
 
 function showResult(){
 
@@ -154,7 +168,9 @@ result.innerHTML =
 
 }
 
-/* start quiz safely for SPA */
-setTimeout(initQuiz,50);
 
-  </script>
+/* SAFE START */
+
+document.addEventListener("DOMContentLoaded", initQuiz);
+
+</script>
