@@ -4,8 +4,14 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from database import get_db, init_db
 import datetime
 
+
 app = Flask(__name__)
+
 app.secret_key = "pylearn-secret-key"
+
+# Fix for deployment cookies
+app.config["SESSION_COOKIE_SAMESITE"] = "None"
+app.config["SESSION_COOKIE_SECURE"] = True
 
 CORS(app, supports_credentials=True)
 
@@ -14,7 +20,7 @@ init_db()
 
 
 # =========================
-# HOME ROUTE
+# HOME
 # =========================
 @app.route("/")
 def home():
@@ -45,6 +51,7 @@ def signup():
     cur = conn.cursor()
 
     try:
+
         cur.execute(
             "INSERT INTO users(name,email,password,joined) VALUES(?,?,?,?)",
             (name, email, hashed_password, str(datetime.date.today()))
@@ -55,6 +62,7 @@ def signup():
         return jsonify({"success": True})
 
     except:
+
         return jsonify({
             "success": False,
             "message": "Email already exists"
@@ -102,7 +110,7 @@ def login():
 
 
 # =========================
-# DASHBOARD DATA
+# DASHBOARD
 # =========================
 @app.route("/dashboard", methods=["GET"])
 def dashboard():
@@ -191,11 +199,11 @@ def logout():
 
 
 # =========================
-# START SERVER
+# RUN SERVER
 # =========================
 if __name__ == "__main__":
 
     app.run(
         host="0.0.0.0",
         port=5000
-)
+    )
