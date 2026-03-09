@@ -21,7 +21,6 @@
 </div>
 </div>
 
-
 <script>
 
 const API="https://pylearn-8niw.onrender.com";
@@ -61,7 +60,8 @@ let ans=new Array(quiz.length).fill(null);
 
 let progress,questionText,options,prevBtn,nextBtn,quizArea,result;
 
-/* initialize after page loads */
+
+/* INIT */
 
 function initQuiz(){
 
@@ -73,12 +73,16 @@ nextBtn=document.getElementById("nextBtn");
 quizArea=document.getElementById("quizArea");
 result=document.getElementById("result");
 
-nextBtn.onclick=nextQ;
-prevBtn.onclick=prevQ;
+if(!questionText) return;
+
+nextBtn.addEventListener("click",nextQ);
+prevBtn.addEventListener("click",prevQ);
 
 load();
-
 }
+
+
+/* LOAD QUESTION */
 
 function load(){
 
@@ -91,15 +95,15 @@ options.innerHTML=quiz[cur].o.map((op,i)=>
 ).join("");
 
 prevBtn.disabled=cur===0;
-
 nextBtn.innerText=cur===quiz.length-1?"Submit":"Next";
-
 }
+
 
 function selectOpt(i){
 ans[cur]=i;
 load();
 }
+
 
 function nextQ(){
 
@@ -114,13 +118,14 @@ showResult();
 cur++;
 load();
 }
-
 }
+
 
 function prevQ(){
 cur--;
 load();
 }
+
 
 function showResult(){
 
@@ -157,8 +162,9 @@ result.innerHTML=
 
 }
 
-/* safe start for SPA */
 
-setTimeout(initQuiz,50);
+/* SAFE START */
+
+document.addEventListener("DOMContentLoaded",initQuiz);
 
 </script>
