@@ -1,5 +1,4 @@
 <div class="wrapper">
-
 <div class="quiz-card">
 
 <div class="quiz-top">
@@ -65,7 +64,8 @@ let ans=new Array(quiz.length).fill(null);
 
 let progress,questionText,options,prevBtn,nextBtn,quizArea,result;
 
-/* initialize DOM elements */
+
+/* INITIALIZE QUIZ */
 
 function initQuiz(){
 
@@ -77,12 +77,16 @@ nextBtn=document.getElementById("nextBtn");
 quizArea=document.getElementById("quizArea");
 result=document.getElementById("result");
 
-nextBtn.onclick=nextQ;
-prevBtn.onclick=prevQ;
+if(!questionText) return;
+
+nextBtn.addEventListener("click",nextQ);
+prevBtn.addEventListener("click",prevQ);
 
 load();
-
 }
+
+
+/* LOAD QUESTION */
 
 function load(){
 
@@ -95,15 +99,20 @@ options.innerHTML=quiz[cur].o.map((op,i)=>
 ).join("");
 
 prevBtn.disabled=cur===0;
-
 nextBtn.innerText=cur===quiz.length-1?"Submit":"Next";
 
 }
+
+
+/* SELECT OPTION */
 
 function selectOpt(i){
 ans[cur]=i;
 load();
 }
+
+
+/* NEXT QUESTION */
 
 function nextQ(){
 
@@ -121,10 +130,16 @@ load();
 
 }
 
+
+/* PREVIOUS QUESTION */
+
 function prevQ(){
 cur--;
 load();
 }
+
+
+/* SHOW RESULT */
 
 function showResult(){
 
@@ -145,12 +160,17 @@ else out+=`
 
 });
 
+
 fetch(API+"/save-quiz",{
 method:"POST",
 headers:{ "Content-Type":"application/json" },
 credentials:"include",
-body:JSON.stringify({score:score,total:quiz.length})
+body:JSON.stringify({
+score:score,
+total:quiz.length
+})
 });
+
 
 quizArea.style.display="none";
 
@@ -161,8 +181,9 @@ result.innerHTML=
 
 }
 
-/* SPA safe start */
 
-setTimeout(initQuiz,50);
+/* SAFE START */
+
+document.addEventListener("DOMContentLoaded",initQuiz);
 
 </script>
