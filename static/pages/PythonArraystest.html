@@ -21,9 +21,11 @@
 </div>
 </div>
 
+
 <script>
 
-const API="https://pylearn-8niw.onrender.com";
+const API="";   // IMPORTANT: same server
+
 
 const quiz=[
 
@@ -55,20 +57,37 @@ const quiz=[
 
 ];
 
+
 let cur=0;
 let ans=new Array(quiz.length).fill(null);
 
-const progress=document.getElementById("progress");
-const questionText=document.getElementById("questionText");
-const options=document.getElementById("options");
-const prevBtn=document.getElementById("prevBtn");
-const nextBtn=document.getElementById("nextBtn");
-const quizArea=document.getElementById("quizArea");
-const result=document.getElementById("result");
+let progress,questionText,options,prevBtn,nextBtn,quizArea,result;
+
+
+/* initialize after DOM loads */
+
+function initQuiz(){
+
+progress=document.getElementById("progress");
+questionText=document.getElementById("questionText");
+options=document.getElementById("options");
+prevBtn=document.getElementById("prevBtn");
+nextBtn=document.getElementById("nextBtn");
+quizArea=document.getElementById("quizArea");
+result=document.getElementById("result");
+
+nextBtn.onclick=nextQ;
+prevBtn.onclick=prevQ;
+
+load();
+
+}
+
 
 function load(){
 
 progress.innerText=`Question ${cur+1} of ${quiz.length}`;
+
 questionText.innerText=`${cur+1}. ${quiz[cur].q}`;
 
 options.innerHTML=quiz[cur].o.map((op,i)=>
@@ -76,14 +95,17 @@ options.innerHTML=quiz[cur].o.map((op,i)=>
 ).join("");
 
 prevBtn.disabled=cur===0;
+
 nextBtn.innerText=cur===quiz.length-1?"Submit":"Next";
 
 }
+
 
 function selectOpt(i){
 ans[cur]=i;
 load();
 }
+
 
 function nextQ(){
 
@@ -101,10 +123,12 @@ load();
 
 }
 
+
 function prevQ(){
 cur--;
 load();
 }
+
 
 function showResult(){
 
@@ -125,12 +149,17 @@ else out+=`
 
 });
 
-fetch(API+"/save-quiz",{
+
+fetch(API + "/save-quiz",{
 method:"POST",
 headers:{"Content-Type":"application/json"},
 credentials:"include",
-body:JSON.stringify({score:score,total:quiz.length})
+body:JSON.stringify({
+score:score,
+total:quiz.length
+})
 });
+
 
 quizArea.style.display="none";
 
@@ -141,10 +170,9 @@ result.innerHTML=
 
 }
 
-nextBtn.onclick=nextQ;
-prevBtn.onclick=prevQ;
 
-/* start safely for SPA */
-setTimeout(load,100);
+/* SPA safe start */
+
+setTimeout(initQuiz,50);
 
 </script>
