@@ -24,7 +24,6 @@
 </div>
 </div>
 
-
 <script>
 
 const API="https://pylearn-8niw.onrender.com";
@@ -64,7 +63,7 @@ let ans=new Array(quiz.length).fill(null);
 
 let progress,questionText,options,prevBtn,nextBtn,quizArea,result;
 
-/* initialize after page loads */
+/* INIT */
 
 function initQuiz(){
 
@@ -76,23 +75,30 @@ nextBtn = document.getElementById("nextBtn");
 quizArea = document.getElementById("quizArea");
 result = document.getElementById("result");
 
+if(!questionText) return;
+
+/* attach buttons */
+
+nextBtn.addEventListener("click",nextQ);
+prevBtn.addEventListener("click",prevQ);
+
 load();
 
 }
 
 function load(){
 
-progress.innerText = `Question ${cur+1} of ${quiz.length}`;
+progress.innerText=`Question ${cur+1} of ${quiz.length}`;
 
-questionText.innerText = `${cur+1}. ${quiz[cur].q}`;
+questionText.innerText=`${cur+1}. ${quiz[cur].q}`;
 
-options.innerHTML = quiz[cur].o.map((op,i)=>
+options.innerHTML=quiz[cur].o.map((op,i)=>
 `<div class="${ans[cur]===i?'selected':''}" onclick="selectOpt(${i})">${op}</div>`
 ).join("");
 
-prevBtn.disabled = cur===0;
+prevBtn.disabled=cur===0;
 
-nextBtn.innerText = cur===quiz.length-1 ? "Submit" : "Next";
+nextBtn.innerText=cur===quiz.length-1?"Submit":"Next";
 
 }
 
@@ -152,11 +158,13 @@ quizArea.style.display="none";
 
 result.innerHTML=
 `<h3>Your Score: ${score} / ${quiz.length}</h3>`+
-(out || `<div class="correct">Excellent! All answers are correct 🎉</div>`) +
+(out||`<div class="correct">Excellent! All answers are correct 🎉</div>`)+
 `<br><button onclick="location.reload()">Restart Quiz</button>`;
 
 }
 
-setTimeout(initQuiz,50);
+/* SPA safe start */
+
+document.addEventListener("DOMContentLoaded", initQuiz);
 
 </script>
