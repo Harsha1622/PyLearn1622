@@ -5,11 +5,10 @@ DATABASE = "database.db"
 
 def get_db():
 
-    conn = sqlite3.connect(DATABASE)
+    conn = sqlite3.connect(DATABASE, check_same_thread=False)
 
     conn.row_factory = sqlite3.Row
 
-    # enable foreign keys
     conn.execute("PRAGMA foreign_keys = ON")
 
     return conn
@@ -27,7 +26,7 @@ def init_db():
         name TEXT NOT NULL,
         email TEXT UNIQUE NOT NULL,
         password TEXT NOT NULL,
-        joined TEXT
+        joined TEXT NOT NULL
     )
     """)
 
@@ -36,9 +35,9 @@ def init_db():
     CREATE TABLE IF NOT EXISTS quiz_results(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         user_id INTEGER NOT NULL,
-        score INTEGER,
-        total INTEGER,
-        date TEXT,
+        score INTEGER NOT NULL,
+        total INTEGER NOT NULL,
+        date TEXT NOT NULL,
         FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE
     )
     """)
