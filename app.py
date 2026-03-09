@@ -9,27 +9,25 @@ app = Flask(__name__)
 
 app.secret_key = "pylearn-secret-key"
 
-# Fix for deployment cookies
 app.config["SESSION_COOKIE_SAMESITE"] = "None"
 app.config["SESSION_COOKIE_SECURE"] = True
+app.config["SESSION_COOKIE_HTTPONLY"] = True
+app.config["SESSION_PERMANENT"] = False
 
-CORS(app, supports_credentials=True)
+CORS(
+    app,
+    supports_credentials=True,
+    origins=["https://pylearn-8niw.onrender.com"]
+)
 
-# Initialize database
 init_db()
 
 
-# =========================
-# HOME
-# =========================
 @app.route("/")
 def home():
     return render_template("home.html")
 
 
-# =========================
-# SIGNUP
-# =========================
 @app.route("/signup", methods=["POST"])
 def signup():
 
@@ -40,10 +38,7 @@ def signup():
     password = data.get("password")
 
     if not name or not email or not password:
-        return jsonify({
-            "success": False,
-            "message": "Missing fields"
-        }), 400
+        return jsonify({"success": False}), 400
 
     hashed_password = generate_password_hash(password)
 
@@ -61,17 +56,14 @@ def signup():
 
         return jsonify({"success": True})
 
-    except:
+    except Exception as e:
 
         return jsonify({
             "success": False,
-            "message": "Email already exists"
+            "message": str(e)
         }), 400
 
 
-# =========================
-# LOGIN
-# =========================
 @app.route("/login", methods=["POST"])
 def login():
 
@@ -81,10 +73,7 @@ def login():
     password = data.get("password")
 
     if not email or not password:
-        return jsonify({
-            "success": False,
-            "message": "Missing email or password"
-        }), 400
+        return jsonify({"success": False}), 400
 
     conn = get_db()
     cur = conn.cursor()
@@ -103,16 +92,10 @@ def login():
             "name": user["name"]
         })
 
-    return jsonify({
-        "success": False,
-        "message": "Invalid email or password"
-    }), 401
+    return jsonify({"success": False}), 401
 
 
-# =========================
-# DASHBOARD
-# =========================
-@app.route("/dashboard", methods=["GET"])
+@app.route("/dashboard")
 def dashboard():
 
     if "user_id" not in session:
@@ -128,17 +111,15 @@ def dashboard():
         (uid,)
     ).fetchone()
 
-    quizzes = cur.execute(
-        "SELECT * FROM quiz_results WHERE user_id=?",
+    quiz_count = cur.execute(
+        "SELECT COUNT(*) FROM quiz_results WHERE user_id=?",
         (uid,)
-    ).fetchall()
+    ).fetchone()[0]
 
-    quiz_count = len(quizzes)
-
-    avg_score = 0
-
-    if quiz_count > 0:
-        avg_score = sum([q["score"] for q in quizzes]) / quiz_count
+    avg_score = cur.execute(
+        "SELECT AVG(score) FROM quiz_results WHERE user_id=?",
+        (uid,)
+    ).fetchone()[0] or 0
 
     return jsonify({
         "name": user["name"],
@@ -149,9 +130,6 @@ def dashboard():
     })
 
 
-# =========================
-# SAVE QUIZ RESULT
-# =========================
 @app.route("/save-quiz", methods=["POST"])
 def save_quiz():
 
@@ -164,10 +142,7 @@ def save_quiz():
     total = data.get("total")
 
     if score is None or total is None:
-        return jsonify({
-            "success": False,
-            "message": "Missing quiz data"
-        }), 400
+        return jsonify({"success": False}), 400
 
     conn = get_db()
     cur = conn.cursor()
@@ -187,9 +162,6 @@ def save_quiz():
     return jsonify({"success": True})
 
 
-# =========================
-# LOGOUT
-# =========================
 @app.route("/logout", methods=["POST"])
 def logout():
 
@@ -198,9 +170,6 @@ def logout():
     return jsonify({"success": True})
 
 
-# =========================
-# RUN SERVER
-# =========================
 if __name__ == "__main__":
 
     app.run(
