@@ -32,6 +32,7 @@ return res.text();
 .then(html => {
 
 pageCache[page] = html;
+
 renderPage(html);
 
 })
@@ -52,7 +53,7 @@ function renderPage(html){
 
 const app = document.getElementById("app");
 
-/* clear old content */
+/* insert HTML first */
 
 app.innerHTML = html;
 
@@ -62,7 +63,9 @@ checkLogin();
 loadDashboard();
 loadProfile();
 
-/* execute scripts safely */
+/* wait until DOM is ready before executing scripts */
+
+setTimeout(() => {
 
 const scripts = app.querySelectorAll("script");
 
@@ -76,11 +79,13 @@ newScript.src = oldScript.src;
 newScript.textContent = oldScript.textContent;
 }
 
-/* replace instead of append */
+/* replace script so it runs */
 
 oldScript.replaceWith(newScript);
 
 });
+
+},0);
 
 }
 
@@ -163,9 +168,7 @@ alert("Invalid email or password");
 })
 
 .catch(()=>{
-
 alert("Server error");
-
 });
 
 }
@@ -210,6 +213,7 @@ password: password
 if(data.success){
 
 alert("Account created successfully");
+
 loadPage("homecontent.html");
 
 }else{
@@ -221,9 +225,7 @@ alert("Signup failed");
 })
 
 .catch(()=>{
-
 alert("Server error");
-
 });
 
 }
@@ -314,9 +316,7 @@ loadPage("homecontent.html");
 })
 
 .catch(()=>{
-
 alert("Logout failed");
-
 });
 
 }
