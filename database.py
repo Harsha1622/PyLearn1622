@@ -4,10 +4,12 @@ DATABASE = "database.db"
 
 
 def get_db():
-    conn = sqlite3.connect(DATABASE, check_same_thread=False)
+
+    conn = sqlite3.connect(DATABASE)
+
     conn.row_factory = sqlite3.Row
 
-    # Enable foreign keys
+    # enable foreign keys
     conn.execute("PRAGMA foreign_keys = ON")
 
     return conn
