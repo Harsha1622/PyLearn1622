@@ -21,11 +21,11 @@
 </div>
 </div>
 
-
 <script>
 
-const API="";   // IMPORTANT: same server
+const API = "https://pylearn-8niw.onrender.com";
 
+/* QUIZ DATA */
 
 const quiz=[
 
@@ -58,13 +58,18 @@ const quiz=[
 ];
 
 
+/* STATE */
+
 let cur=0;
 let ans=new Array(quiz.length).fill(null);
+
+
+/* DOM ELEMENTS */
 
 let progress,questionText,options,prevBtn,nextBtn,quizArea,result;
 
 
-/* initialize after DOM loads */
+/* INIT */
 
 function initQuiz(){
 
@@ -76,13 +81,16 @@ nextBtn=document.getElementById("nextBtn");
 quizArea=document.getElementById("quizArea");
 result=document.getElementById("result");
 
-nextBtn.onclick=nextQ;
-prevBtn.onclick=prevQ;
+if(!questionText) return;
+
+nextBtn.addEventListener("click",nextQ);
+prevBtn.addEventListener("click",prevQ);
 
 load();
-
 }
 
+
+/* LOAD QUESTION */
 
 function load(){
 
@@ -97,15 +105,18 @@ options.innerHTML=quiz[cur].o.map((op,i)=>
 prevBtn.disabled=cur===0;
 
 nextBtn.innerText=cur===quiz.length-1?"Submit":"Next";
-
 }
 
+
+/* SELECT OPTION */
 
 function selectOpt(i){
 ans[cur]=i;
 load();
 }
 
+
+/* NEXT */
 
 function nextQ(){
 
@@ -120,15 +131,18 @@ showResult();
 cur++;
 load();
 }
-
 }
 
+
+/* PREVIOUS */
 
 function prevQ(){
 cur--;
 load();
 }
 
+
+/* RESULT */
 
 function showResult(){
 
@@ -146,11 +160,10 @@ else out+=`
 <strong>Correct Answer:</strong> ${q.o[q.a]}
 <div><strong>Explanation:</strong> ${q.e}</div>
 </div>`;
-
 });
 
 
-fetch(API + "/save-quiz",{
+fetch(API+"/save-quiz",{
 method:"POST",
 headers:{"Content-Type":"application/json"},
 credentials:"include",
@@ -167,12 +180,11 @@ result.innerHTML=
 `<h3>Your Score: ${score} / ${quiz.length}</h3>`+
 (out||`<div class="correct">Excellent! All answers are correct 🎉</div>`)+
 `<br><button onclick="location.reload()">Restart Quiz</button>`;
-
 }
 
 
-/* SPA safe start */
+/* SAFE START FOR SPA */
 
-setTimeout(initQuiz,50);
+document.addEventListener("DOMContentLoaded", initQuiz);
 
   </script>
