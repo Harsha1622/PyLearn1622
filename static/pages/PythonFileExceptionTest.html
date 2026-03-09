@@ -21,9 +21,10 @@
 </div>
 </div>
 
+
 <script>
 
-const API = "https://pylearn-8niw.onrender.com";
+const API="https://pylearn-8niw.onrender.com";
 
 const quiz=[
 
@@ -58,17 +59,31 @@ const quiz=[
 let cur=0;
 let ans=new Array(quiz.length).fill(null);
 
-const progress = document.getElementById("progress");
-const questionText = document.getElementById("questionText");
-const options = document.getElementById("options");
-const prevBtn = document.getElementById("prevBtn");
-const nextBtn = document.getElementById("nextBtn");
-const quizArea = document.getElementById("quizArea");
-const result = document.getElementById("result");
+let progress,questionText,options,prevBtn,nextBtn,quizArea,result;
+
+/* initialize after page loads */
+
+function initQuiz(){
+
+progress=document.getElementById("progress");
+questionText=document.getElementById("questionText");
+options=document.getElementById("options");
+prevBtn=document.getElementById("prevBtn");
+nextBtn=document.getElementById("nextBtn");
+quizArea=document.getElementById("quizArea");
+result=document.getElementById("result");
+
+nextBtn.onclick=nextQ;
+prevBtn.onclick=prevQ;
+
+load();
+
+}
 
 function load(){
 
 progress.innerText=`Question ${cur+1} of ${quiz.length}`;
+
 questionText.innerText=`${cur+1}. ${quiz[cur].q}`;
 
 options.innerHTML=quiz[cur].o.map((op,i)=>
@@ -76,6 +91,7 @@ options.innerHTML=quiz[cur].o.map((op,i)=>
 ).join("");
 
 prevBtn.disabled=cur===0;
+
 nextBtn.innerText=cur===quiz.length-1?"Submit":"Next";
 
 }
@@ -87,15 +103,13 @@ load();
 
 function nextQ(){
 
-if(cur===quiz.length-1){
-
-if(ans.includes(null)){
-alert("Please answer all questions");
+if(ans[cur]===null){
+alert("Select an answer first");
 return;
 }
 
+if(cur===quiz.length-1){
 showResult();
-
 }else{
 cur++;
 load();
@@ -116,6 +130,7 @@ let out="";
 quiz.forEach((q,i)=>{
 
 if(ans[i]===q.a) score++;
+
 else out+=`
 <div class="wrong">
 <strong>Question:</strong> ${q.q}<br>
@@ -126,7 +141,7 @@ else out+=`
 
 });
 
-fetch(API + "/save-quiz",{
+fetch(API+"/save-quiz",{
 method:"POST",
 headers:{ "Content-Type":"application/json" },
 credentials:"include",
@@ -137,14 +152,13 @@ quizArea.style.display="none";
 
 result.innerHTML=
 `<h3>Your Score: ${score} / ${quiz.length}</h3>`+
-(out || `<div class="correct">Excellent! All answers are correct 🎉</div>`)+
+(out||`<div class="correct">Excellent! All answers are correct 🎉</div>`)+
 `<br><button onclick="location.reload()">Restart Test</button>`;
 
 }
 
-nextBtn.onclick = nextQ;
-prevBtn.onclick = prevQ;
+/* safe start for SPA */
 
-setTimeout(load,100);
+setTimeout(initQuiz,50);
 
 </script>
