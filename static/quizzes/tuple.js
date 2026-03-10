@@ -1,4 +1,4 @@
-const quizData = [
+window.quizData = [
 
 {q:"What is a tuple in Python?",o:["Mutable collection","Immutable collection","Loop"],a:1,e:"Tuples are immutable collections."},
 
