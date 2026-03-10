@@ -33,21 +33,26 @@ const API = "https://pylearn-8niw.onrender.com";
 
 function startQuiz(){
 
-  if(typeof quizData === "undefined"){
-    console.error("quizData not loaded");
-    return;
-  }
+if(typeof quizData === "undefined"){
+console.error("quizData not loaded");
+return;
+}
 
-  if(typeof QuizEngine === "undefined"){
-    console.error("QuizEngine not loaded");
-    return;
-  }
+if(typeof QuizEngine === "undefined"){
+console.error("QuizEngine not loaded");
+return;
+}
 
-  new QuizEngine(quizData, API);
+new QuizEngine(quizData, API);
 
 }
 
-/* wait for SPA script execution */
-setTimeout(startQuiz,120);
+/* SPA safe start */
+
+if(document.readyState === "loading"){
+document.addEventListener("DOMContentLoaded", startQuiz);
+}else{
+startQuiz();
+}
 
 </script>
