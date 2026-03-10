@@ -1,4 +1,4 @@
-const quizData = [
+window.quizData = [
 
 {q:"What is a dictionary in Python?",o:["Ordered list","Collection of key-value pairs","Loop"],a:1,e:"A dictionary stores data as key-value pairs."},
 
