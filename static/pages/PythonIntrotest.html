@@ -21,10 +21,10 @@
   </div>
 </div>
 
-<!-- Quiz data -->
+<!-- Quiz Data -->
 <script src="/static/quizzes/python-intro.js"></script>
 
-<!-- Shared quiz engine -->
+<!-- Quiz Engine -->
 <script src="/static/js/quiz-engine.js"></script>
 
 <script>
@@ -46,5 +46,10 @@ function startQuiz(){
 }
 
 /* SPA-safe start */
-setTimeout(startQuiz,120);
+
+if(document.readyState === "loading"){
+  document.addEventListener("DOMContentLoaded", startQuiz);
+}else{
+  startQuiz();
+}
 </script>
