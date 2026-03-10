@@ -7,16 +7,13 @@
     </div>
 
     <div id="quizArea">
-
       <div class="question" id="questionText"></div>
-
       <div class="options" id="options"></div>
 
       <div class="buttons">
         <button id="prevBtn">Previous</button>
         <button id="nextBtn">Next</button>
       </div>
-
     </div>
 
     <div id="result" class="result"></div>
@@ -25,38 +22,35 @@
 </div>
 
 
-<!-- Quiz Data -->
+<!-- Load quiz data first -->
 <script src="/static/quizzes/arrays.js"></script>
 
-<!-- Quiz Engine -->
+<!-- Load quiz engine -->
 <script src="/static/js/quiz-engine.js"></script>
 
-<script>
-const API = "https://pylearn-8niw.onrender.com";
 
-/* wait until DOM + scripts are ready */
+<script>
+
+const API = "https://pylearn-8niw.onrender.com";
 
 function startQuiz(){
 
-if(typeof quizData === "undefined"){
-console.error("Quiz data not loaded");
-return;
+  if(typeof quizData === "undefined"){
+    console.error("quizData not loaded");
+    return;
+  }
+
+  if(typeof QuizEngine === "undefined"){
+    console.error("QuizEngine not loaded");
+    return;
+  }
+
+  new QuizEngine(quizData, API);
 }
 
-if(typeof QuizEngine === "undefined"){
-console.error("Quiz engine not loaded");
-return;
-}
 
-new QuizEngine(quizData, API);
+/* Wait a moment for SPA script execution */
 
-}
+setTimeout(startQuiz, 120);
 
-/* SPA safe start */
-
-if(document.readyState === "loading"){
-document.addEventListener("DOMContentLoaded", startQuiz);
-}else{
-startQuiz();
-}
 </script>
