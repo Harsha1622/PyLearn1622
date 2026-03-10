@@ -1,4 +1,4 @@
-const quizData = [
+window.quizData = [
 
 {
 q: "Which module is used to create arrays in Python?",
@@ -175,4 +175,4 @@ a: 0,
 e: "Local variables exist only inside functions."
 }
 
-]
+];
