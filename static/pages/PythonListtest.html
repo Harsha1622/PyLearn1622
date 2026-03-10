@@ -29,5 +29,22 @@
 
 <script>
 const API = "https://pylearn-8niw.onrender.com";
-new QuizEngine(quizData, API);
+
+function startQuiz(){
+
+  if (typeof quizData === "undefined") {
+    console.error("quizData not loaded");
+    return;
+  }
+
+  if (typeof QuizEngine === "undefined") {
+    console.error("QuizEngine not loaded");
+    return;
+  }
+
+  new QuizEngine(quizData, API);
+}
+
+/* small delay so SPA script replacement finishes */
+setTimeout(startQuiz, 120);
 </script>
