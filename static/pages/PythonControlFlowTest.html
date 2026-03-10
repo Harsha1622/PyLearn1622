@@ -7,16 +7,13 @@
     </div>
 
     <div id="quizArea">
-
       <div class="question" id="questionText"></div>
-
       <div class="options" id="options"></div>
 
       <div class="buttons">
         <button id="prevBtn">Previous</button>
         <button id="nextBtn">Next</button>
       </div>
-
     </div>
 
     <div id="result" class="result"></div>
@@ -24,13 +21,33 @@
   </div>
 </div>
 
-<!-- Quiz data -->
+<!-- Quiz Data -->
 <script src="/static/quizzes/control-flow.js"></script>
 
-<!-- Quiz engine -->
+<!-- Quiz Engine -->
 <script src="/static/js/quiz-engine.js"></script>
 
 <script>
+
 const API = "https://pylearn-8niw.onrender.com";
-new QuizEngine(quizData, API);
+
+function startQuiz(){
+
+  if(typeof quizData === "undefined"){
+    console.error("quizData not loaded");
+    return;
+  }
+
+  if(typeof QuizEngine === "undefined"){
+    console.error("QuizEngine not loaded");
+    return;
+  }
+
+  new QuizEngine(quizData, API);
+
+}
+
+/* wait for SPA script execution */
+setTimeout(startQuiz,120);
+
 </script>
