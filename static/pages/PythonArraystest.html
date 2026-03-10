@@ -21,13 +21,11 @@
   </div>
 </div>
 
-
-<!-- Load quiz data first -->
+<!-- Quiz Data -->
 <script src="/static/quizzes/arrays.js"></script>
 
-<!-- Load quiz engine -->
+<!-- Quiz Engine -->
 <script src="/static/js/quiz-engine.js"></script>
-
 
 <script>
 
@@ -35,22 +33,26 @@ const API = "https://pylearn-8niw.onrender.com";
 
 function startQuiz(){
 
-  if(typeof quizData === "undefined"){
-    console.error("quizData not loaded");
-    return;
-  }
-
-  if(typeof QuizEngine === "undefined"){
-    console.error("QuizEngine not loaded");
-    return;
-  }
-
-  new QuizEngine(quizData, API);
+if(typeof quizData === "undefined"){
+console.error("quizData not loaded");
+return;
 }
 
+if(typeof QuizEngine === "undefined"){
+console.error("QuizEngine not loaded");
+return;
+}
 
-/* Wait a moment for SPA script execution */
+new QuizEngine(quizData, API);
 
-setTimeout(startQuiz, 120);
+}
+
+/* SPA safe start */
+
+if(document.readyState === "loading"){
+document.addEventListener("DOMContentLoaded", startQuiz);
+}else{
+startQuiz();
+}
 
 </script>
