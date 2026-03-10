@@ -3,9 +3,14 @@ import sqlite3
 DATABASE = "database.db"
 
 
+# ================= DATABASE CONNECTION =================
+
 def get_db():
 
-    conn = sqlite3.connect(DATABASE, check_same_thread=False)
+    conn = sqlite3.connect(
+        DATABASE,
+        timeout=10
+    )
 
     conn.row_factory = sqlite3.Row
 
@@ -14,39 +19,39 @@ def get_db():
     return conn
 
 
+# ================= INITIALIZE DATABASE =================
+
 def init_db():
 
-    conn = get_db()
-    cur = conn.cursor()
+    with get_db() as conn:
 
-    # ================= USERS TABLE =================
-    cur.execute("""
-    CREATE TABLE IF NOT EXISTS users(
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL,
-        email TEXT UNIQUE NOT NULL,
-        password TEXT NOT NULL,
-        joined TEXT NOT NULL
-    )
-    """)
+        cur = conn.cursor()
 
-    # ================= QUIZ RESULTS TABLE =================
-    cur.execute("""
-    CREATE TABLE IF NOT EXISTS quiz_results(
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        user_id INTEGER NOT NULL,
-        score INTEGER NOT NULL,
-        total INTEGER NOT NULL,
-        date TEXT NOT NULL,
-        FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE
-    )
-    """)
+        # USERS TABLE
+        cur.execute("""
+        CREATE TABLE IF NOT EXISTS users(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            email TEXT UNIQUE NOT NULL,
+            password TEXT NOT NULL,
+            joined TEXT NOT NULL
+        )
+        """)
 
-    # ================= INDEX FOR PERFORMANCE =================
-    cur.execute("""
-    CREATE INDEX IF NOT EXISTS idx_user_quiz
-    ON quiz_results(user_id)
-    """)
+        # QUIZ RESULTS TABLE
+        cur.execute("""
+        CREATE TABLE IF NOT EXISTS quiz_results(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL,
+            score INTEGER NOT NULL,
+            total INTEGER NOT NULL,
+            date TEXT NOT NULL,
+            FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE
+        )
+        """)
 
-    conn.commit()
-    conn.close()
+        # INDEX FOR PERFORMANCE
+        cur.execute("""
+        CREATE INDEX IF NOT EXISTS idx_user_quiz
+        ON quiz_results(user_id)
+        """)
