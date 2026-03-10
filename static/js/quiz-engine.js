@@ -42,8 +42,10 @@ this.load()
 
 load(){
 
+if(this.progress){
 this.progress.innerText =
 `Question ${this.current+1} of ${this.quiz.length}`
+}
 
 let q = this.quiz[this.current]
 
@@ -58,6 +60,7 @@ this.answers[this.current]===i ? "selected":""
 return `<div class="${selected}" data-index="${i}">${op}</div>`
 
 }).join("")
+
 
 /* attach option events */
 
@@ -167,12 +170,16 @@ total:this.quiz.length
 
 }
 
+if(this.quizArea){
 this.quizArea.style.display="none"
+}
 
+if(this.result){
 this.result.innerHTML =
 `<h3>Your Score: ${score} / ${this.quiz.length}</h3>`+
 (out || `<div class="correct">Excellent! All answers are correct 🎉</div>`) +
 `<br><button onclick="location.reload()">Restart Quiz</button>`
+}
 
 }
 
