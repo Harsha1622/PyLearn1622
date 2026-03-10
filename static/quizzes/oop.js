@@ -1,4 +1,4 @@
-const quizData = [
+window.quizData = [
 
 {q:"OOP stands for?",o:["Object Oriented Programming","Object Organized Program","Ordered Object Program"],a:0,e:"OOP stands for Object Oriented Programming."},
 
