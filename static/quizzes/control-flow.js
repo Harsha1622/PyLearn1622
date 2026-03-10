@@ -1,4 +1,4 @@
-window quizData = [
+window.quizData = [
 
 {q:"Which statement is used for decision making?",o:["for","if","while"],a:1,e:"if is used for decision making."},
 
