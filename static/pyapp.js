@@ -95,7 +95,7 @@ app.innerHTML = html;
 window.scrollTo(0,0);
 
 
-/* load user data once */
+/* load user data */
 
 fetchUserData().then(()=>{
 
@@ -106,27 +106,36 @@ loadProfile();
 });
 
 
-/* execute scripts inside loaded page */
+/* ================= FIXED SCRIPT EXECUTION ================= */
 
-setTimeout(()=>{
+const scripts = Array.from(app.querySelectorAll("script"));
 
-const scripts = app.querySelectorAll("script");
+function runScripts(index){
 
-scripts.forEach(oldScript => {
+if(index >= scripts.length) return;
 
+const oldScript = scripts[index];
 const newScript = document.createElement("script");
 
 if(oldScript.src){
+
 newScript.src = oldScript.src;
+
+newScript.onload = () => runScripts(index + 1);
+
 }else{
+
 newScript.textContent = oldScript.textContent;
+
+runScripts(index + 1);
+
 }
 
 oldScript.replaceWith(newScript);
 
-});
+}
 
-},0);
+runScripts(0);
 
 }
 
