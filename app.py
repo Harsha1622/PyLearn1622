@@ -3,16 +3,22 @@ from flask_cors import CORS
 from werkzeug.security import generate_password_hash, check_password_hash
 from database import get_db, init_db
 import datetime
+import os
 
 
 app = Flask(__name__)
 
-app.secret_key = "pylearn-secret-key"
+# ================= SECURITY =================
+
+app.secret_key = os.getenv("SECRET_KEY", "change-this-secret")
 
 app.config["SESSION_COOKIE_SAMESITE"] = "None"
 app.config["SESSION_COOKIE_SECURE"] = True
 app.config["SESSION_COOKIE_HTTPONLY"] = True
 app.config["SESSION_PERMANENT"] = False
+
+
+# ================= CORS =================
 
 CORS(
     app,
@@ -20,32 +26,39 @@ CORS(
     origins=["https://pylearn-8niw.onrender.com"]
 )
 
+
+# ================= DATABASE INIT =================
+
 init_db()
 
+
+# ================= HOME =================
 
 @app.route("/")
 def home():
     return render_template("home.html")
 
 
+# ================= SIGNUP =================
+
 @app.route("/signup", methods=["POST"])
 def signup():
 
-    data = request.json
+    data = request.get_json()
 
     name = data.get("name")
     email = data.get("email")
     password = data.get("password")
 
     if not name or not email or not password:
-        return jsonify({"success": False}), 400
+        return jsonify({"success": False, "message": "Missing fields"}), 400
 
     hashed_password = generate_password_hash(password)
 
-    conn = get_db()
-    cur = conn.cursor()
-
     try:
+
+        conn = get_db()
+        cur = conn.cursor()
 
         cur.execute(
             "INSERT INTO users(name,email,password,joined) VALUES(?,?,?,?)",
@@ -60,14 +73,16 @@ def signup():
 
         return jsonify({
             "success": False,
-            "message": str(e)
+            "message": "User already exists"
         }), 400
 
+
+# ================= LOGIN =================
 
 @app.route("/login", methods=["POST"])
 def login():
 
-    data = request.json
+    data = request.get_json()
 
     email = data.get("email")
     password = data.get("password")
@@ -92,22 +107,24 @@ def login():
             "name": user["name"]
         })
 
-    return jsonify({"success": False}), 401
+    return jsonify({"success": False, "message": "Invalid credentials"}), 401
 
+
+# ================= DASHBOARD =================
 
 @app.route("/dashboard")
 def dashboard():
 
-    if "user_id" not in session:
-        return jsonify({"error": "Unauthorized"}), 401
+    uid = session.get("user_id")
 
-    uid = session["user_id"]
+    if not uid:
+        return jsonify({"error": "Unauthorized"}), 401
 
     conn = get_db()
     cur = conn.cursor()
 
     user = cur.execute(
-        "SELECT * FROM users WHERE id=?",
+        "SELECT name,email,joined FROM users WHERE id=?",
         (uid,)
     ).fetchone()
 
@@ -130,13 +147,17 @@ def dashboard():
     })
 
 
+# ================= SAVE QUIZ =================
+
 @app.route("/save-quiz", methods=["POST"])
 def save_quiz():
 
-    if "user_id" not in session:
+    uid = session.get("user_id")
+
+    if not uid:
         return jsonify({"error": "Unauthorized"}), 401
 
-    data = request.json
+    data = request.get_json()
 
     score = data.get("score")
     total = data.get("total")
@@ -149,18 +170,15 @@ def save_quiz():
 
     cur.execute(
         "INSERT INTO quiz_results(user_id,score,total,date) VALUES(?,?,?,?)",
-        (
-            session["user_id"],
-            score,
-            total,
-            str(datetime.date.today())
-        )
+        (uid, score, total, str(datetime.date.today()))
     )
 
     conn.commit()
 
     return jsonify({"success": True})
 
+
+# ================= LOGOUT =================
 
 @app.route("/logout", methods=["POST"])
 def logout():
@@ -170,9 +188,12 @@ def logout():
     return jsonify({"success": True})
 
 
+# ================= RUN APP =================
+
 if __name__ == "__main__":
 
     app.run(
         host="0.0.0.0",
-        port=5000
+        port=5000,
+        debug=True
     )
