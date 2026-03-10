@@ -1,4 +1,4 @@
-const quizData = [
+window.quizData = [
 
 {q:"Which function is used to open a file?",o:["file()","open()","read()"],a:1,e:"open() is used to open files."},
 
