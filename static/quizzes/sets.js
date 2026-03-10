@@ -1,4 +1,4 @@
-const quizData = [
+window.quizData = [
 
 {q:"What is a set in Python?",o:["Ordered collection","Mutable sequence","Unordered collection of unique elements"],a:2,e:"A set is an unordered collection with unique elements."},
 
