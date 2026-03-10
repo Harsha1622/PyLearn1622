@@ -1,4 +1,4 @@
-const quizData = [
+window.quizData = [
 
 {q:"Which symbol is used to create a list?",o:["()","{}","[]"],a:2,e:"Lists are created using square brackets []."},
 {q:"Which data structure stores multiple values in one variable?",o:["List","Integer","Float"],a:0,e:"Lists store multiple values."},
