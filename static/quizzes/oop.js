@@ -1,0 +1,53 @@
+const quizData = [
+
+{q:"OOP stands for?",o:["Object Oriented Programming","Object Organized Program","Ordered Object Program"],a:0,e:"OOP stands for Object Oriented Programming."},
+
+{q:"Which concept binds data and methods together?",o:["Encapsulation","Inheritance","Polymorphism"],a:0,e:"Encapsulation binds data and methods."},
+
+{q:"Which keyword is used to define a class in Python?",o:["class","object","define"],a:0,e:"class keyword defines a class."},
+
+{q:"An object is?",o:["Instance of class","Function","Variable"],a:0,e:"Objects are instances of classes."},
+
+{q:"Which method initializes object attributes?",o:["__init__","start()","main()"],a:0,e:"__init__ is constructor."},
+
+{q:"Inheritance allows?",o:["Code reuse","Memory deletion","Error handling"],a:0,e:"Inheritance allows code reuse."},
+
+{q:"Which class is inherited from?",o:["Parent class","Child class","Derived class"],a:0,e:"Parent class provides properties."},
+
+{q:"Which type allows multiple parent classes?",o:["Multiple inheritance","Single inheritance","Hierarchical inheritance"],a:0,e:"Multiple inheritance uses multiple parents."},
+
+{q:"Polymorphism means?",o:["Many forms","One function","No methods"],a:0,e:"Polymorphism means many forms."},
+
+{q:"Which operator shows polymorphism?",o:["+","-","*"],a:0,e:"+ works differently for numbers and strings."},
+
+{q:"Method overriding occurs in?",o:["Inheritance","Loop","Condition"],a:0,e:"Overriding occurs in inheritance."},
+
+{q:"Which class method replaces parent method?",o:["Child class method","Parent class method","Global method"],a:0,e:"Child class overrides parent method."},
+
+{q:"Encapsulation protects?",o:["Data","Memory","Compiler"],a:0,e:"Encapsulation protects data."},
+
+{q:"Private variables start with?",o:["__","_","$"],a:0,e:"Private variables start with double underscore."},
+
+{q:"Python hides private variables using?",o:["Name mangling","Loop","Condition"],a:0,e:"Python uses name mangling."},
+
+{q:"Getter method is used to?",o:["Access private data","Delete data","Create loop"],a:0,e:"Getter returns private value."},
+
+{q:"Setter method is used to?",o:["Modify private data","Stop function","Print output"],a:0,e:"Setter updates private value."},
+
+{q:"Which module supports abstraction?",o:["abc","math","sys"],a:0,e:"abc module supports abstraction."},
+
+{q:"Which decorator defines abstract method?",o:["@abstractmethod","@staticmethod","@classmethod"],a:0,e:"@abstractmethod defines abstract method."},
+
+{q:"Abstract class cannot be?",o:["Instantiated","Imported","Defined"],a:0,e:"Abstract class cannot create objects."},
+
+{q:"Method overloading in Python is achieved using?",o:["Default arguments","Loop","Constructor"],a:0,e:"Python uses default parameters."},
+
+{q:"Which concept hides internal implementation?",o:["Abstraction","Encapsulation","Inheritance"],a:0,e:"Abstraction hides complexity."},
+
+{q:"Child class is also called?",o:["Derived class","Parent class","Base class"],a:0,e:"Child class is derived class."},
+
+{q:"Which concept improves code reuse?",o:["Inheritance","Loop","Operator"],a:0,e:"Inheritance improves reuse."},
+
+{q:"OOP helps programs become?",o:["Modular","Random","Unstructured"],a:0,e:"OOP makes programs modular."}
+
+];
