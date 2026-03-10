@@ -25,12 +25,38 @@
 </div>
 
 
-<!-- Quiz Scripts -->
+<!-- Quiz Data -->
 <script src="/static/quizzes/arrays.js"></script>
+
+<!-- Quiz Engine -->
 <script src="/static/js/quiz-engine.js"></script>
 
 <script>
 const API = "https://pylearn-8niw.onrender.com";
 
+/* wait until DOM + scripts are ready */
+
+function startQuiz(){
+
+if(typeof quizData === "undefined"){
+console.error("Quiz data not loaded");
+return;
+}
+
+if(typeof QuizEngine === "undefined"){
+console.error("Quiz engine not loaded");
+return;
+}
+
 new QuizEngine(quizData, API);
+
+}
+
+/* SPA safe start */
+
+if(document.readyState === "loading"){
+document.addEventListener("DOMContentLoaded", startQuiz);
+}else{
+startQuiz();
+}
 </script>
