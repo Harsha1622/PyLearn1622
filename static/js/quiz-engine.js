@@ -2,7 +2,7 @@ class QuizEngine {
 
 constructor(quizData, apiUrl=null){
 
-if(!quizData || !quizData.length){
+if(!quizData || !Array.isArray(quizData) || quizData.length === 0){
 console.error("Quiz data missing");
 return;
 }
@@ -30,8 +30,15 @@ console.error("Quiz DOM not found");
 return;
 }
 
-if(this.prevBtn) this.prevBtn.onclick = () => this.prev();
-if(this.nextBtn) this.nextBtn.onclick = () => this.next();
+/* buttons */
+
+if(this.prevBtn){
+this.prevBtn.onclick = () => this.prev();
+}
+
+if(this.nextBtn){
+this.nextBtn.onclick = () => this.next();
+}
 
 this.load();
 
@@ -47,25 +54,27 @@ this.progress.innerText =
 `Question ${this.current+1} of ${this.quiz.length}`;
 }
 
-let q = this.quiz[this.current];
+const q = this.quiz[this.current];
 
 this.questionText.innerText =
 `${this.current+1}. ${q.q}`;
 
 this.options.innerHTML = q.o.map((op,i)=>{
 
-let selected =
-this.answers[this.current]===i ? "selected":"";
+const selected =
+this.answers[this.current] === i ? "selected" : "";
 
 return `<div class="${selected}" data-index="${i}">${op}</div>`;
 
 }).join("");
 
+/* attach option events */
+
 Array.from(this.options.children).forEach(el=>{
 
-el.onclick = ()=>{
+el.onclick = () => {
 
-let index = Number(el.dataset.index);
+const index = Number(el.dataset.index);
 
 this.answers[this.current] = index;
 
@@ -74,6 +83,8 @@ this.load();
 };
 
 });
+
+/* buttons */
 
 if(this.prevBtn){
 this.prevBtn.disabled = this.current === 0;
@@ -92,10 +103,8 @@ this.current === this.quiz.length-1 ? "Submit" : "Next";
 next(){
 
 if(this.answers[this.current] === null){
-
 alert("Select an answer first");
 return;
-
 }
 
 if(this.current === this.quiz.length-1){
@@ -139,10 +148,13 @@ score++;
 
 }else{
 
+const userAnswer =
+this.answers[i] !== null ? q.o[this.answers[i]] : "Not answered";
+
 out += `
 <div class="wrong">
 <strong>Question:</strong> ${q.q}<br>
-<strong>Your Answer:</strong> ${q.o[this.answers[i]]}<br>
+<strong>Your Answer:</strong> ${userAnswer}<br>
 <strong>Correct Answer:</strong> ${q.o[q.a]}
 <div><strong>Explanation:</strong> ${q.e}</div>
 </div>`;
@@ -164,20 +176,26 @@ body:JSON.stringify({
 score:score,
 total:this.quiz.length
 })
-});
+}).catch(()=>{});
 
 }
 
+
+/* hide quiz */
 
 if(this.quizArea){
 this.quizArea.style.display="none";
 }
 
+/* show result */
+
 if(this.result){
+
 this.result.innerHTML =
 `<h3>Your Score: ${score} / ${this.quiz.length}</h3>`+
 (out || `<div class="correct">Excellent! All answers are correct 🎉</div>`) +
 `<br><button onclick="location.reload()">Restart Quiz</button>`;
+
 }
 
 }
