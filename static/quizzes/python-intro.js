@@ -1,4 +1,4 @@
-const quizData = [
+window.quizData = [
 
 {q:"Who developed Python?",o:["Guido van Rossum","Dennis Ritchie","James Gosling"],a:0,e:"Python was developed by Guido van Rossum."},
 
