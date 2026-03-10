@@ -2,6 +2,11 @@ class QuizEngine {
 
 constructor(quizData, apiUrl=null){
 
+if(!quizData || !quizData.length){
+console.error("Quiz data missing")
+return
+}
+
 this.quiz = quizData
 this.api = apiUrl
 
@@ -18,8 +23,15 @@ this.nextBtn = document.getElementById("nextBtn")
 this.quizArea = document.getElementById("quizArea")
 this.result = document.getElementById("result")
 
-this.prevBtn.onclick = () => this.prev()
-this.nextBtn.onclick = () => this.next()
+/* safety check */
+
+if(!this.questionText || !this.options){
+console.error("Quiz DOM not found")
+return
+}
+
+if(this.prevBtn) this.prevBtn.onclick = () => this.prev()
+if(this.nextBtn) this.nextBtn.onclick = () => this.next()
 
 this.load()
 
@@ -30,22 +42,24 @@ this.load()
 
 load(){
 
-this.progress.innerText = `Question ${this.current+1} of ${this.quiz.length}`
+this.progress.innerText =
+`Question ${this.current+1} of ${this.quiz.length}`
 
 let q = this.quiz[this.current]
 
-this.questionText.innerText = `${this.current+1}. ${q.q}`
+this.questionText.innerText =
+`${this.current+1}. ${q.q}`
 
 this.options.innerHTML = q.o.map((op,i)=>{
 
-let selected = this.answers[this.current]===i ? "selected":""
+let selected =
+this.answers[this.current]===i ? "selected":""
 
 return `<div class="${selected}" data-index="${i}">${op}</div>`
 
 }).join("")
 
-
-/* attach click events */
+/* attach option events */
 
 Array.from(this.options.children).forEach(el=>{
 
@@ -61,11 +75,14 @@ this.load()
 
 })
 
-
+if(this.prevBtn){
 this.prevBtn.disabled = this.current === 0
+}
 
+if(this.nextBtn){
 this.nextBtn.innerText =
 this.current === this.quiz.length-1 ? "Submit" : "Next"
+}
 
 }
 
@@ -99,8 +116,10 @@ this.load()
 
 prev(){
 
+if(this.current > 0){
 this.current--
 this.load()
+}
 
 }
 
@@ -132,7 +151,6 @@ out += `
 
 })
 
-
 /* SAVE RESULT */
 
 if(this.api){
@@ -148,7 +166,6 @@ total:this.quiz.length
 })
 
 }
-
 
 this.quizArea.style.display="none"
 
