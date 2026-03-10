@@ -21,10 +21,10 @@
   </div>
 </div>
 
-<!-- Quiz data -->
+<!-- Quiz Data -->
 <script src="/static/quizzes/dictionary.js"></script>
 
-<!-- Quiz engine -->
+<!-- Quiz Engine -->
 <script src="/static/js/quiz-engine.js"></script>
 
 <script>
@@ -46,6 +46,11 @@ function startQuiz(){
 
 }
 
-/* wait for SPA scripts */
-setTimeout(startQuiz,120);
+/* SPA-safe start */
+
+if(document.readyState === "loading"){
+  document.addEventListener("DOMContentLoaded", startQuiz);
+}else{
+  startQuiz();
+}
 </script>
