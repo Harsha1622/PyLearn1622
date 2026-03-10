@@ -1,4 +1,4 @@
-const quizData = [
+window.quizData = [
 
 {q:"What is a function in Python?",o:["Block of reusable code","Loop structure","Variable"],a:0,e:"Functions are reusable blocks of code."},
 
