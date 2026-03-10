@@ -1,170 +1,36 @@
 <div class="wrapper">
-<div class="quiz-card">
+  <div class="quiz-card">
 
-<div class="quiz-top">
-<h3>Python Control Flow & Jump Statements</h3>
-<div id="progress"></div>
+    <div class="quiz-top">
+      <h3>Python Control Flow & Jump Statements</h3>
+      <div id="progress"></div>
+    </div>
+
+    <div id="quizArea">
+
+      <div class="question" id="questionText"></div>
+
+      <div class="options" id="options"></div>
+
+      <div class="buttons">
+        <button id="prevBtn">Previous</button>
+        <button id="nextBtn">Next</button>
+      </div>
+
+    </div>
+
+    <div id="result" class="result"></div>
+
+  </div>
 </div>
 
-<div id="quizArea">
+<!-- Quiz data -->
+<script src="/static/quizzes/control-flow.js"></script>
 
-<div class="question" id="questionText"></div>
-
-<div class="options" id="options"></div>
-
-<div class="buttons">
-<button id="prevBtn">Previous</button>
-<button id="nextBtn">Next</button>
-</div>
-
-</div>
-
-<div id="result" class="result"></div>
-
-</div>
-</div>
+<!-- Quiz engine -->
+<script src="/static/js/quiz-engine.js"></script>
 
 <script>
-
-const API="https://pylearn-8niw.onrender.com";
-
-const quiz = [
-
-{q:"Which statement is used for decision making?",o:["for","if","while"],a:1,e:"if is used for decision making."},
-{q:"Which keyword is used for multiple conditions?",o:["elif","else","then"],a:0,e:"elif handles multiple conditions."},
-{q:"Which block runs when condition is false?",o:["if","else","loop"],a:1,e:"else runs when condition is false."},
-{q:"Which statement is optional in if?",o:["if","else","condition"],a:1,e:"else is optional."},
-{q:"Which statement can be nested?",o:["if","loop","both"],a:2,e:"Both can be nested."},
-{q:"Which loop is used when count is known?",o:["while","for","if"],a:1,e:"for loop is used when count is known."},
-{q:"Which loop executes based on condition?",o:["for","while","switch"],a:1,e:"while loop depends on condition."},
-{q:"Which loop may not execute?",o:["for","while","both"],a:1,e:"while may not run if condition is false."},
-{q:"Which loop can become infinite?",o:["while","for","if"],a:0,e:"while can become infinite."},
-{q:"Which function generates a sequence?",o:["range()","list()","tuple()"],a:0,e:"range() generates sequences."},
-{q:"Which keyword exits a loop?",o:["continue","break","pass"],a:1,e:"break exits loop."},
-{q:"Which keyword skips iteration?",o:["break","continue","pass"],a:1,e:"continue skips iteration."},
-{q:"Which keyword does nothing?",o:["stop","pass","skip"],a:1,e:"pass does nothing."},
-{q:"Which keyword is placeholder?",o:["pass","continue","break"],a:0,e:"pass is placeholder."},
-{q:"Which avoids empty block error?",o:["skip","pass","stop"],a:1,e:"pass avoids error."},
-{q:"continue transfers control to?",o:["next iteration","loop end","program end"],a:0,e:"continue jumps to next iteration."},
-{q:"break transfers control to?",o:["next iteration","outside loop","function"],a:1,e:"break exits the loop."},
-{q:"Which statement stops function execution?",o:["break","return","pass"],a:1,e:"return stops function execution."},
-{q:"return sends value to?",o:["loop","caller","condition"],a:1,e:"return sends value to caller."},
-{q:"Which statement can be used without value?",o:["return","break","continue"],a:0,e:"return can be used without value."},
-{q:"Which keyword sends output from function?",o:["print","return","pass"],a:1,e:"return sends output."},
-{q:"Which is NOT loop-specific?",o:["break","continue","return"],a:2,e:"return relates to functions."},
-{q:"Jump statements control?",o:["data","execution flow","memory"],a:1,e:"They control execution flow."},
-{q:"Which statement skips remaining code in loop?",o:["break","continue","pass"],a:1,e:"continue skips remaining loop code."},
-{q:"Which keyword exits nested loop immediately?",o:["continue","break","pass"],a:1,e:"break exits loop immediately."}
-
-];
-
-let cur=0;
-let ans=new Array(quiz.length).fill(null);
-
-let progress,questionText,options,prevBtn,nextBtn,quizArea,result;
-
-/* INIT */
-
-function initQuiz(){
-
-progress = document.getElementById("progress");
-questionText = document.getElementById("questionText");
-options = document.getElementById("options");
-prevBtn = document.getElementById("prevBtn");
-nextBtn = document.getElementById("nextBtn");
-quizArea = document.getElementById("quizArea");
-result = document.getElementById("result");
-
-if(!questionText) return;
-
-/* attach buttons */
-
-nextBtn.addEventListener("click",nextQ);
-prevBtn.addEventListener("click",prevQ);
-
-load();
-
-}
-
-function load(){
-
-progress.innerText=`Question ${cur+1} of ${quiz.length}`;
-
-questionText.innerText=`${cur+1}. ${quiz[cur].q}`;
-
-options.innerHTML=quiz[cur].o.map((op,i)=>
-`<div class="${ans[cur]===i?'selected':''}" onclick="selectOpt(${i})">${op}</div>`
-).join("");
-
-prevBtn.disabled=cur===0;
-
-nextBtn.innerText=cur===quiz.length-1?"Submit":"Next";
-
-}
-
-function selectOpt(i){
-ans[cur]=i;
-load();
-}
-
-function nextQ(){
-
-if(ans[cur]===null){
-alert("Select an answer first");
-return;
-}
-
-if(cur===quiz.length-1){
-showResult();
-}else{
-cur++;
-load();
-}
-
-}
-
-function prevQ(){
-cur--;
-load();
-}
-
-function showResult(){
-
-let score=0;
-let out="";
-
-quiz.forEach((q,i)=>{
-
-if(ans[i]===q.a) score++;
-
-else out+=`
-<div class="wrong">
-<strong>Question:</strong> ${q.q}<br>
-<strong>Your Answer:</strong> ${q.o[ans[i]]}<br>
-<strong>Correct Answer:</strong> ${q.o[q.a]}
-<div><strong>Explanation:</strong> ${q.e}</div>
-</div>`;
-
-});
-
-fetch(API+"/save-quiz",{
-method:"POST",
-headers:{ "Content-Type":"application/json" },
-credentials:"include",
-body:JSON.stringify({score:score,total:quiz.length})
-});
-
-quizArea.style.display="none";
-
-result.innerHTML=
-`<h3>Your Score: ${score} / ${quiz.length}</h3>`+
-(out||`<div class="correct">Excellent! All answers are correct 🎉</div>`)+
-`<br><button onclick="location.reload()">Restart Quiz</button>`;
-
-}
-
-/* SPA safe start */
-
-document.addEventListener("DOMContentLoaded", initQuiz);
-
+const API = "https://pylearn-8niw.onrender.com";
+new QuizEngine(quizData, API);
 </script>
