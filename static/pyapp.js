@@ -7,7 +7,37 @@ window.API = window.API || "https://pylearn-8niw.onrender.com";
 
 let pageCache = {};
 let userData = null;
+/* ================= SIDEBAR ================= */
 
+function toggleSidebar(){
+const sidebar = document.getElementById("sidebar");
+if(sidebar){
+sidebar.classList.toggle("open");
+}
+}
+
+function closeSidebar(){
+const sidebar = document.getElementById("sidebar");
+if(sidebar){
+sidebar.classList.remove("open");
+}
+}
+
+
+/* CLOSE SIDEBAR WHEN CLICKING OUTSIDE */
+
+document.addEventListener("click", function(e){
+
+const sidebar = document.getElementById("sidebar");
+const hamburger = document.querySelector(".hamburger");
+
+if(!sidebar || !hamburger) return;
+
+if(!sidebar.contains(e.target) && !hamburger.contains(e.target)){
+sidebar.classList.remove("open");
+}
+
+});
 
 /* ================= FETCH USER DATA ================= */
 
