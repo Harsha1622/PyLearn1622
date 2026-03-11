@@ -1,0 +1,71 @@
+<div class="compiler-container">
+
+<h2>Python Compiler</h2>
+
+<div class="editor-box">
+
+<textarea id="codeEditor">
+print("Hello from PyLearn")
+</textarea>
+
+</div>
+
+<button class="run-btn" onclick="runCode()">Run Code</button>
+
+<div class="output-box">
+
+<h3>Output</h3>
+
+<pre id="outputArea">Click Run to execute code</pre>
+
+</div>
+
+</div>
+
+<script>
+
+function runCode(){
+
+const code = document.getElementById("codeEditor").value;
+const output = document.getElementById("outputArea");
+
+output.innerText = "Running...";
+
+fetch(API + "/run",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body: JSON.stringify({
+code: code
+})
+
+})
+
+.then(res => res.json())
+
+.then(data => {
+
+if(data.output){
+output.innerText = data.output;
+}
+else if(data.error){
+output.innerText = data.error;
+}
+else{
+output.innerText = "No output";
+}
+
+})
+
+.catch(err=>{
+console.error(err);
+output.innerText = "Server error";
+});
+
+}
+
+</script>
