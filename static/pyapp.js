@@ -1,6 +1,6 @@
 /* ================= API BASE ================= */
 
-const API = "https://pylearn-8niw.onrender.com";
+window.API = window.API || "https://pylearn-8niw.onrender.com";
 
 
 /* ================= PAGE CACHE ================= */
@@ -76,8 +76,12 @@ renderPage(html);
 
 console.error(err);
 
-document.getElementById("app").innerHTML =
+const app = document.getElementById("app");
+
+if(app){
+app.innerHTML =
 "<p style='padding:40px;text-align:center;'>Page not found.</p>";
+}
 
 });
 
@@ -89,6 +93,8 @@ document.getElementById("app").innerHTML =
 function renderPage(html){
 
 const app = document.getElementById("app");
+
+if(!app) return;
 
 app.innerHTML = html;
 
@@ -208,7 +214,9 @@ password
 
 if(data.success){
 
+fetchUserData().then(()=>{
 loadPage("profile.html");
+});
 
 }else{
 
