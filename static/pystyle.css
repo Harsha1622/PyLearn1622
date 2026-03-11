@@ -1682,3 +1682,201 @@ padding:22px;
 }
 
 }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f5f7fb;
+color:#1f2937;
+}
+
+
+/* HEADER */
+
+header{
+background:white;
+padding:12px 25px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 4px 8px rgba(0,0,0,0.08);
+position:sticky;
+top:0;
+z-index:100;
+}
+
+header h2{
+color:#2563eb;
+}
+
+.header-left{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+
+/* HAMBURGER */
+
+.hamburger{
+font-size:24px;
+background:none;
+border:none;
+cursor:pointer;
+color:#374151;
+}
+
+
+/* NAV */
+
+nav{
+display:flex;
+align-items:center;
+}
+
+nav a{
+margin-left:25px;
+text-decoration:none;
+color:#374151;
+font-weight:500;
+cursor:pointer;
+}
+
+nav a:hover{
+color:#2563eb;
+}
+
+
+/* SIDEBAR */
+
+.sidebar{
+position:fixed;
+top:0;
+left:-250px;
+width:250px;
+height:100%;
+background:white;
+box-shadow:4px 0 20px rgba(0,0,0,0.15);
+padding-top:80px;
+display:flex;
+flex-direction:column;
+transition:0.3s;
+z-index:999;
+}
+
+.sidebar.open{
+left:0;
+}
+
+
+/* SIDEBAR ITEMS */
+
+.sidebar a{
+display:flex;
+align-items:center;
+gap:12px;
+padding:15px 25px;
+text-decoration:none;
+color:#374151;
+font-weight:500;
+cursor:pointer;
+}
+
+.sidebar a:hover{
+background:#f3f4f6;
+color:#2563eb;
+}
+
+
+/* ICON */
+
+.sidebar img{
+width:20px;
+height:20px;
+}
+
+
+/* LOGOUT */
+
+.logout-btn{
+margin-top:auto;
+border-top:1px solid #e5e7eb;
+color:#dc2626;
+}
+
+.logout-btn:hover{
+background:#fee2e2;
+color:#dc2626;
+}
+
+
+/* PROFILE */
+
+.profile{
+display:flex;
+align-items:center;
+margin-left:25px;
+position:relative;
+cursor:pointer;
+}
+
+.profile img{
+width:34px;
+height:34px;
+border-radius:50%;
+}
+
+.profile-menu{
+position:absolute;
+top:45px;
+right:0;
+background:white;
+border-radius:8px;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+width:170px;
+display:none;
+flex-direction:column;
+overflow:hidden;
+}
+
+.profile:hover .profile-menu{
+display:flex;
+}
+
+.profile-menu a,
+.profile-menu button{
+padding:12px 15px;
+background:none;
+border:none;
+text-align:left;
+cursor:pointer;
+font-size:14px;
+}
+
+.profile-menu a:hover,
+.profile-menu button:hover{
+background:#f3f4f6;
+}
+
+
+/* APP CONTENT */
+
+#app{
+padding:30px;
+min-height:80vh;
+}
+
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+nav a{
+display:none;
+}
+
+}
