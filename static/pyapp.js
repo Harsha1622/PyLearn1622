@@ -7,6 +7,8 @@ window.API = window.API || "https://pylearn-8niw.onrender.com";
 
 let pageCache = {};
 let userData = null;
+
+
 /* ================= SIDEBAR ================= */
 
 function toggleSidebar(){
@@ -38,6 +40,7 @@ sidebar.classList.remove("open");
 }
 
 });
+
 
 /* ================= FETCH USER DATA ================= */
 
@@ -76,12 +79,15 @@ return null;
 
 /* ================= SPA PAGE LOADER ================= */
 
-function loadPage(page){
+function loadPage(page, addHistory = true){
+
+closeSidebar();
+
+/* LOAD FROM CACHE */
 
 if(pageCache[page]){
 renderPage(pageCache[page]);
-return;
-}
+}else{
 
 fetch("/static/pages/" + page)
 
@@ -118,6 +124,15 @@ app.innerHTML =
 }
 
 
+/* ADD PAGE TO BROWSER HISTORY */
+
+if(addHistory){
+history.pushState({page:page}, "", "#" + page);
+}
+
+}
+
+
 /* ================= RENDER PAGE ================= */
 
 function renderPage(html){
@@ -131,7 +146,7 @@ app.innerHTML = html;
 window.scrollTo(0,0);
 
 
-/* load user data */
+/* LOAD USER DATA */
 
 fetchUserData().then(()=>{
 
@@ -154,8 +169,6 @@ const oldScript = scripts[index];
 const newScript = document.createElement("script");
 
 if(oldScript.src){
-
-/* prevent loading same script twice */
 
 if(document.querySelector(`script[src="${oldScript.src}"]`)){
 runScript(index + 1);
@@ -184,6 +197,17 @@ runScript(index + 1);
 runScript(0);
 
 }
+
+
+/* ================= HANDLE BROWSER BACK BUTTON ================= */
+
+window.addEventListener("popstate", function(event){
+
+if(event.state && event.state.page){
+loadPage(event.state.page, false);
+}
+
+});
 
 
 /* ================= LOGIN STATUS ================= */
@@ -327,6 +351,7 @@ if(!userData) return;
 
 const quiz = document.getElementById("quizCount");
 const score = document.getElementById("avgScore");
+const topic = document.getElementById("topicProgress");
 
 if(quiz && userData.quizCount !== undefined){
 quiz.innerText = userData.quizCount;
@@ -334,6 +359,18 @@ quiz.innerText = userData.quizCount;
 
 if(score && userData.avgScore !== undefined){
 score.innerText = userData.avgScore + "%";
+}
+
+/* TOPIC COMPLETION */
+
+if(topic && userData.totalTopics){
+
+let percent = Math.round(
+(userData.completedTopics / userData.totalTopics) * 100
+);
+
+topic.innerText = percent + "%";
+
 }
 
 }
@@ -387,6 +424,8 @@ alert("Logout failed");
 
 window.addEventListener("DOMContentLoaded", ()=>{
 
-loadPage("homecontent.html");
+const page = location.hash.replace("#","") || "homecontent.html";
+
+loadPage(page, false);
 
 });
