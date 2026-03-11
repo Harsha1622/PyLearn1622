@@ -87,18 +87,16 @@ document.getElementById("app").innerHTML =
 /* ================= RENDER PAGE ================= */
 
 function renderPage(html){
-function renderPage(html){
 
 const app = document.getElementById("app");
 
-/* insert page */
-
+/* Insert HTML */
 app.innerHTML = html;
 
 window.scrollTo(0,0);
 
 
-/* load user data */
+/* Load user data */
 
 fetchUserData().then(()=>{
 
@@ -109,7 +107,7 @@ loadProfile();
 });
 
 
-/* ================= RUN PAGE SCRIPTS ================= */
+/* ================= EXECUTE PAGE SCRIPTS ================= */
 
 const scripts = app.querySelectorAll("script");
 
@@ -124,11 +122,17 @@ script.async = false;
 
 }else{
 
-script.innerHTML = oldScript.innerHTML;
+script.textContent = oldScript.textContent;
 
 }
 
+/* append script so browser executes it */
+
 document.body.appendChild(script);
+
+/* remove original */
+
+oldScript.remove();
 
 });
 
