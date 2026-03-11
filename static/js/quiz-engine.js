@@ -12,6 +12,7 @@ this.api = apiUrl;
 
 this.current = 0;
 this.answers = new Array(quizData.length).fill(null);
+this.finished = false;
 
 /* DOM */
 
@@ -23,14 +24,14 @@ this.nextBtn = document.getElementById("nextBtn");
 this.quizArea = document.getElementById("quizArea");
 this.result = document.getElementById("result");
 
-/* safety check */
+/* DOM safety */
 
 if(!this.questionText || !this.options){
 console.error("Quiz DOM not found");
 return;
 }
 
-/* buttons */
+/* button events */
 
 if(this.prevBtn){
 this.prevBtn.onclick = () => this.prev();
@@ -39,6 +40,21 @@ this.prevBtn.onclick = () => this.prev();
 if(this.nextBtn){
 this.nextBtn.onclick = () => this.next();
 }
+
+/* option event delegation */
+
+this.options.onclick = (e)=>{
+
+const el = e.target.closest("[data-index]");
+if(!el) return;
+
+const index = Number(el.dataset.index);
+
+this.answers[this.current] = index;
+
+this.load();
+
+};
 
 this.load();
 
@@ -68,24 +84,6 @@ return `<div class="${selected}" data-index="${i}">${op}</div>`;
 
 }).join("");
 
-/* attach option events */
-
-Array.from(this.options.children).forEach(el=>{
-
-el.onclick = () => {
-
-const index = Number(el.dataset.index);
-
-this.answers[this.current] = index;
-
-this.load();
-
-};
-
-});
-
-/* buttons */
-
 if(this.prevBtn){
 this.prevBtn.disabled = this.current === 0;
 }
@@ -108,14 +106,10 @@ return;
 }
 
 if(this.current === this.quiz.length-1){
-
 this.showResult();
-
 }else{
-
 this.current++;
 this.load();
-
 }
 
 }
@@ -137,6 +131,9 @@ this.load();
 
 showResult(){
 
+if(this.finished) return;
+this.finished = true;
+
 let score = 0;
 let out = "";
 
@@ -156,7 +153,7 @@ out += `
 <strong>Question:</strong> ${q.q}<br>
 <strong>Your Answer:</strong> ${userAnswer}<br>
 <strong>Correct Answer:</strong> ${q.o[q.a]}
-<div><strong>Explanation:</strong> ${q.e}</div>
+${q.e ? `<div><strong>Explanation:</strong> ${q.e}</div>` : ""}
 </div>`;
 
 }
@@ -164,7 +161,7 @@ out += `
 });
 
 
-/* SAVE RESULT */
+/* save result */
 
 if(this.api){
 
@@ -186,6 +183,7 @@ total:this.quiz.length
 if(this.quizArea){
 this.quizArea.style.display="none";
 }
+
 
 /* show result */
 
