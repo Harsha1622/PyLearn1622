@@ -33,7 +33,7 @@ const API = "https://pylearn-8niw.onrender.com";
 
 function startQuiz(){
 
-  if(typeof quizData === "undefined"){
+  if(typeof window.quizData === "undefined"){
     console.error("quizData not loaded");
     return;
   }
@@ -43,7 +43,7 @@ function startQuiz(){
     return;
   }
 
-  new QuizEngine(quizData, API);
+  new QuizEngine(window.quizData, API);
 
 }
 
