@@ -4,9 +4,11 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from database import get_db, init_db
 import datetime
 import os
+import subprocess
 
 
 app = Flask(__name__)
+
 
 # ================= SECURITY =================
 
@@ -69,7 +71,7 @@ def signup():
 
         return jsonify({"success": True})
 
-    except Exception as e:
+    except Exception:
 
         return jsonify({
             "success": False,
@@ -176,6 +178,36 @@ def save_quiz():
     conn.commit()
 
     return jsonify({"success": True})
+
+
+# ================= PYTHON COMPILER =================
+
+@app.route("/run", methods=["POST"])
+def run_code():
+
+    data = request.get_json()
+    code = data.get("code")
+
+    if not code:
+        return jsonify({"error": "No code provided"}), 400
+
+    try:
+
+        result = subprocess.check_output(
+            ["python3", "-c", code],
+            stderr=subprocess.STDOUT,
+            timeout=5
+        ).decode()
+
+        return jsonify({"output": result})
+
+    except subprocess.CalledProcessError as e:
+
+        return jsonify({"error": e.output.decode()})
+
+    except subprocess.TimeoutExpired:
+
+        return jsonify({"error": "Execution timed out"})
 
 
 # ================= LOGOUT =================
