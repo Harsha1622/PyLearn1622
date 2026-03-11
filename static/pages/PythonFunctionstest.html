@@ -28,7 +28,9 @@
 <script src="/static/js/quiz-engine.js"></script>
 
 <script>
-const API = "https://pylearn-8niw.onrender.com";
+
+/* Global API (safe) */
+window.API = window.API || "https://pylearn-8niw.onrender.com";
 
 function startQuiz(){
 
@@ -42,14 +44,15 @@ function startQuiz(){
     return;
   }
 
-  new QuizEngine(window.quizData, API);
+  new QuizEngine(window.quizData, window.API);
 }
 
-/* SPA-safe start */
+/* Start quiz safely */
 
 if(document.readyState === "loading"){
   document.addEventListener("DOMContentLoaded", startQuiz);
 }else{
   startQuiz();
 }
+
 </script>
