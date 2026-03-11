@@ -87,8 +87,11 @@ document.getElementById("app").innerHTML =
 /* ================= RENDER PAGE ================= */
 
 function renderPage(html){
+function renderPage(html){
 
 const app = document.getElementById("app");
+
+/* insert page */
 
 app.innerHTML = html;
 
@@ -106,36 +109,28 @@ loadProfile();
 });
 
 
-/* ================= FIXED SCRIPT EXECUTION ================= */
+/* ================= RUN PAGE SCRIPTS ================= */
 
-const scripts = Array.from(app.querySelectorAll("script"));
+const scripts = app.querySelectorAll("script");
 
-function runScripts(index){
+scripts.forEach(oldScript => {
 
-if(index >= scripts.length) return;
-
-const oldScript = scripts[index];
-const newScript = document.createElement("script");
+const script = document.createElement("script");
 
 if(oldScript.src){
 
-newScript.src = oldScript.src;
-
-newScript.onload = () => runScripts(index + 1);
+script.src = oldScript.src;
+script.async = false;
 
 }else{
 
-newScript.textContent = oldScript.textContent;
-
-runScripts(index + 1);
+script.innerHTML = oldScript.innerHTML;
 
 }
 
-oldScript.replaceWith(newScript);
+document.body.appendChild(script);
 
-}
-
-runScripts(0);
+});
 
 }
 
