@@ -31,26 +31,30 @@
 
 <script>
 
-const API = "https://pylearn-8niw.onrender.com";
+/* Prevent redeclaration */
+window.API = window.API || "https://pylearn-8niw.onrender.com";
 
 function startQuiz(){
 
+  /* check quiz data */
   if(typeof window.quizData === "undefined"){
     console.error("quizData not loaded");
     return;
   }
 
+  /* check engine */
   if(typeof QuizEngine === "undefined"){
     console.error("QuizEngine not loaded");
     return;
   }
 
-  new QuizEngine(window.quizData, API);
+  /* start quiz */
+  new QuizEngine(window.quizData, window.API);
 
 }
 
 
-/* SPA-safe start */
+/* SPA safe start */
 
 if(document.readyState === "loading"){
   document.addEventListener("DOMContentLoaded", startQuiz);
