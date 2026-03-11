@@ -16,9 +16,52 @@
 
 <body>
 
+<!-- SIDEBAR -->
+
+<div class="sidebar" id="sidebar">
+
+<a onclick="loadPage('homecontent.html')">
+<img src="https://cdn-icons-png.flaticon.com/512/1946/1946488.png">
+<span>Home</span>
+</a>
+
+<a onclick="loadPage('Pythonsyllabus.html')">
+<img src="https://cdn-icons-png.flaticon.com/512/2721/2721267.png">
+<span>Course</span>
+</a>
+
+<a onclick="loadPage('compiler.html')">
+<img src="https://cdn-icons-png.flaticon.com/512/1157/1157109.png">
+<span>Compiler</span>
+</a>
+
+<a onclick="loadPage('dashboard.html')">
+<img src="https://cdn-icons-png.flaticon.com/512/1828/1828919.png">
+<span>Dashboard</span>
+</a>
+
+<a onclick="loadPage('profile.html')">
+<img src="https://cdn-icons-png.flaticon.com/512/847/847969.png">
+<span>Profile</span>
+</a>
+
+<a onclick="logout()" class="logout-btn">
+<img src="https://cdn-icons-png.flaticon.com/512/1828/1828479.png">
+<span>Logout</span>
+</a>
+
+</div>
+
+
 <header>
 
+<div class="header-left">
+
+<button class="hamburger" onclick="toggleSidebar()">☰</button>
+
 <h2>PyLearn</h2>
+
+</div>
 
 <nav>
 
@@ -46,11 +89,21 @@
 
 </header>
 
-<!-- Dynamic Content Container -->
+
+<!-- SPA CONTENT -->
+
 <div id="app"></div>
+
 
 <script src="/static/pyapp.js"></script>
 
-</body>
+<script>
 
+function toggleSidebar(){
+document.getElementById("sidebar").classList.toggle("open");
+}
+
+</script>
+
+</body>
 </html>
