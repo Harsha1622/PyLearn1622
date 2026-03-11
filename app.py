@@ -140,12 +140,25 @@ def dashboard():
         (uid,)
     ).fetchone()[0] or 0
 
+
+    # ================= TOPIC PROGRESS =================
+
+    completed_topics = cur.execute(
+        "SELECT COUNT(*) FROM completed_topics WHERE user_id=?",
+        (uid,)
+    ).fetchone()[0]
+
+    total_topics = 20   # change this to your real number of lessons
+
+
     return jsonify({
         "name": user["name"],
         "email": user["email"],
         "joined": user["joined"],
         "quizCount": quiz_count,
-        "avgScore": round(avg_score, 2)
+        "avgScore": round(avg_score, 2),
+        "completedTopics": completed_topics,
+        "totalTopics": total_topics
     })
 
 
