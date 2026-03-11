@@ -29,7 +29,8 @@
 
 <script>
 
-const API = "https://pylearn-8niw.onrender.com";
+/* define API safely */
+window.API = window.API || "https://pylearn-8niw.onrender.com";
 
 function startQuiz(){
 
@@ -43,11 +44,11 @@ function startQuiz(){
     return;
   }
 
-  new QuizEngine(window.quizData, API);
+  new QuizEngine(window.quizData, window.API);
 
 }
 
-/* SPA-safe start */
+/* SPA safe start */
 
 if(document.readyState === "loading"){
   document.addEventListener("DOMContentLoaded", startQuiz);
