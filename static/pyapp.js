@@ -90,13 +90,12 @@ function renderPage(html){
 
 const app = document.getElementById("app");
 
-/* Insert HTML */
 app.innerHTML = html;
 
 window.scrollTo(0,0);
 
 
-/* Load user data */
+/* load user data */
 
 fetchUserData().then(()=>{
 
@@ -109,32 +108,44 @@ loadProfile();
 
 /* ================= EXECUTE PAGE SCRIPTS ================= */
 
-const scripts = app.querySelectorAll("script");
+const scripts = Array.from(app.querySelectorAll("script"));
 
-scripts.forEach(oldScript => {
+function runScript(index){
 
-const script = document.createElement("script");
+if(index >= scripts.length) return;
+
+const oldScript = scripts[index];
+const newScript = document.createElement("script");
 
 if(oldScript.src){
 
-script.src = oldScript.src;
-script.async = false;
+/* prevent loading same script twice */
+
+if(document.querySelector(`script[src="${oldScript.src}"]`)){
+runScript(index + 1);
+return;
+}
+
+newScript.src = oldScript.src;
+newScript.async = false;
+
+newScript.onload = () => runScript(index + 1);
+
+document.body.appendChild(newScript);
 
 }else{
 
-script.textContent = oldScript.textContent;
+newScript.textContent = oldScript.textContent;
+
+document.body.appendChild(newScript);
+
+runScript(index + 1);
 
 }
 
-/* append script so browser executes it */
+}
 
-document.body.appendChild(script);
-
-/* remove original */
-
-oldScript.remove();
-
-});
+runScript(0);
 
 }
 
