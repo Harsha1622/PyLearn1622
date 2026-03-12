@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify, session, render_template
 from flask_cors import CORS
+from flask_session import Session
 from werkzeug.security import generate_password_hash, check_password_hash
 from database import get_db, init_db
 import datetime
@@ -14,11 +15,17 @@ app = Flask(__name__)
 
 app.secret_key = os.getenv("SECRET_KEY", "change-this-secret")
 
-# session cookies for cross-site requests
+# Server-side session storage
+app.config["SESSION_TYPE"] = "filesystem"
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_USE_SIGNER"] = True
+
+# Cookie settings for HTTPS (Render)
 app.config["SESSION_COOKIE_SAMESITE"] = "None"
 app.config["SESSION_COOKIE_SECURE"] = True
 app.config["SESSION_COOKIE_HTTPONLY"] = True
-app.config["SESSION_PERMANENT"] = False
+
+Session(app)
 
 
 # ================= CORS =================
@@ -28,7 +35,6 @@ CORS(
     supports_credentials=True,
     origins=[
         "https://pylearn-8niw.onrender.com",
-        "https://pylearn.onrender.com",
         "http://localhost:5000",
         "http://127.0.0.1:5000"
     ]
@@ -78,6 +84,7 @@ def signup():
         return jsonify({"success": True})
 
     except Exception:
+
         return jsonify({
             "success": False,
             "message": "User already exists"
@@ -146,7 +153,7 @@ def dashboard():
     ).fetchone()[0] or 0
 
 
-    # ===== TOPIC PROGRESS (safe if table missing) =====
+    # ===== TOPIC PROGRESS =====
 
     try:
         completed_topics = cur.execute(
@@ -239,7 +246,7 @@ def logout():
     return jsonify({"success": True})
 
 
-# ================= RUN APP =================
+# ================= RUN SERVER =================
 
 if __name__ == "__main__":
 
