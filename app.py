@@ -15,12 +15,10 @@ app = Flask(__name__)
 
 app.secret_key = os.getenv("SECRET_KEY", "change-this-secret")
 
-# Server-side session storage
 app.config["SESSION_TYPE"] = "filesystem"
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_USE_SIGNER"] = True
 
-# Cookie settings for HTTPS (Render)
 app.config["SESSION_COOKIE_SAMESITE"] = "None"
 app.config["SESSION_COOKIE_SECURE"] = True
 app.config["SESSION_COOKIE_HTTPONLY"] = True
@@ -153,7 +151,7 @@ def dashboard():
     ).fetchone()[0] or 0
 
 
-    # ===== TOPIC PROGRESS =====
+    # ===== COMPLETED TOPICS =====
 
     try:
         completed_topics = cur.execute(
@@ -163,8 +161,6 @@ def dashboard():
     except:
         completed_topics = 0
 
-    total_topics = 20
-
 
     return jsonify({
         "name": user["name"],
@@ -172,9 +168,37 @@ def dashboard():
         "joined": user["joined"],
         "quizCount": quiz_count,
         "avgScore": round(avg_score, 2),
-        "completedTopics": completed_topics,
-        "totalTopics": total_topics
+        "completedTopics": completed_topics
     })
+
+
+# ================= COMPLETE TOPIC =================
+
+@app.route("/complete-topic", methods=["POST"])
+def complete_topic():
+
+    uid = session.get("user_id")
+
+    if not uid:
+        return jsonify({"error": "Unauthorized"}), 401
+
+    data = request.get_json()
+    topic = data.get("topic")
+
+    if not topic:
+        return jsonify({"error": "Missing topic"}), 400
+
+    conn = get_db()
+    cur = conn.cursor()
+
+    cur.execute(
+        "INSERT OR IGNORE INTO completed_topics(user_id,topic_name,date) VALUES(?,?,?)",
+        (uid, topic, str(datetime.date.today()))
+    )
+
+    conn.commit()
+
+    return jsonify({"success": True})
 
 
 # ================= SAVE QUIZ =================
