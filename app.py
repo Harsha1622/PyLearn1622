@@ -14,6 +14,7 @@ app = Flask(__name__)
 
 app.secret_key = os.getenv("SECRET_KEY", "change-this-secret")
 
+# session cookies for cross-site requests
 app.config["SESSION_COOKIE_SAMESITE"] = "None"
 app.config["SESSION_COOKIE_SECURE"] = True
 app.config["SESSION_COOKIE_HTTPONLY"] = True
@@ -25,7 +26,12 @@ app.config["SESSION_PERMANENT"] = False
 CORS(
     app,
     supports_credentials=True,
-    origins=["https://pylearn-8niw.onrender.com"]
+    origins=[
+        "https://pylearn-8niw.onrender.com",
+        "https://pylearn.onrender.com",
+        "http://localhost:5000",
+        "http://127.0.0.1:5000"
+    ]
 )
 
 
@@ -72,7 +78,6 @@ def signup():
         return jsonify({"success": True})
 
     except Exception:
-
         return jsonify({
             "success": False,
             "message": "User already exists"
@@ -141,14 +146,17 @@ def dashboard():
     ).fetchone()[0] or 0
 
 
-    # ================= TOPIC PROGRESS =================
+    # ===== TOPIC PROGRESS (safe if table missing) =====
 
-    completed_topics = cur.execute(
-        "SELECT COUNT(*) FROM completed_topics WHERE user_id=?",
-        (uid,)
-    ).fetchone()[0]
+    try:
+        completed_topics = cur.execute(
+            "SELECT COUNT(*) FROM completed_topics WHERE user_id=?",
+            (uid,)
+        ).fetchone()[0]
+    except:
+        completed_topics = 0
 
-    total_topics = 20   # change this to your real number of lessons
+    total_topics = 20
 
 
     return jsonify({
@@ -215,11 +223,9 @@ def run_code():
         return jsonify({"output": result})
 
     except subprocess.CalledProcessError as e:
-
         return jsonify({"error": e.output.decode()})
 
     except subprocess.TimeoutExpired:
-
         return jsonify({"error": "Execution timed out"})
 
 
