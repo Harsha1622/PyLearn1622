@@ -27,7 +27,8 @@ def init_db():
 
         cur = conn.cursor()
 
-        # USERS TABLE
+        # ================= USERS TABLE =================
+
         cur.execute("""
         CREATE TABLE IF NOT EXISTS users(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -38,7 +39,9 @@ def init_db():
         )
         """)
 
-        # QUIZ RESULTS TABLE
+
+        # ================= QUIZ RESULTS =================
+
         cur.execute("""
         CREATE TABLE IF NOT EXISTS quiz_results(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -50,8 +53,32 @@ def init_db():
         )
         """)
 
-        # INDEX FOR PERFORMANCE
+
+        # ================= COMPLETED TOPICS =================
+
+        cur.execute("""
+        CREATE TABLE IF NOT EXISTS completed_topics(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL,
+            topic_name TEXT NOT NULL,
+            date TEXT NOT NULL,
+            UNIQUE(user_id, topic_name),
+            FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE
+        )
+        """)
+
+
+        # ================= INDEXES =================
+
         cur.execute("""
         CREATE INDEX IF NOT EXISTS idx_user_quiz
         ON quiz_results(user_id)
         """)
+
+        cur.execute("""
+        CREATE INDEX IF NOT EXISTS idx_user_topics
+        ON completed_topics(user_id)
+        """)
+
+
+        conn.commit()
