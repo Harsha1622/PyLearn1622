@@ -25,9 +25,6 @@ sidebar.classList.remove("open");
 }
 }
 
-
-/* CLOSE SIDEBAR WHEN CLICKING OUTSIDE */
-
 document.addEventListener("click", function(e){
 
 const sidebar = document.getElementById("sidebar");
@@ -44,35 +41,31 @@ sidebar.classList.remove("open");
 
 /* ================= FETCH USER DATA ================= */
 
-function fetchUserData(){
+async function fetchUserData(){
 
-return fetch(API + "/dashboard",{
+try{
+
+const res = await fetch(API + "/dashboard",{
 credentials:"include"
-})
+});
 
-.then(res => {
-
-if(!res.ok){
+if(res.status === 401){
 userData = null;
 return null;
 }
 
-return res.json();
-
-})
-
-.then(data => {
-
-if(data) userData = data;
+const data = await res.json();
+userData = data;
 
 return data;
 
-})
+}catch(err){
 
-.catch(err => {
 console.error("User fetch error:", err);
+userData = null;
 return null;
-});
+
+}
 
 }
 
@@ -82,8 +75,6 @@ return null;
 function loadPage(page, addHistory = true){
 
 closeSidebar();
-
-/* LOAD FROM CACHE */
 
 if(pageCache[page]){
 renderPage(pageCache[page]);
@@ -123,9 +114,6 @@ app.innerHTML =
 
 }
 
-
-/* ADD PAGE TO BROWSER HISTORY */
-
 if(addHistory){
 history.pushState({page:page}, "", "#" + page);
 }
@@ -146,60 +134,42 @@ app.innerHTML = html;
 window.scrollTo(0,0);
 
 
-/* LOAD USER DATA */
+/* Load user session */
 
 fetchUserData().then(()=>{
 
 updateLoginUI();
+
+if(userData){
 loadDashboard();
 loadProfile();
+}
 
 });
 
 
-/* ================= EXECUTE PAGE SCRIPTS ================= */
+/* Run page scripts */
 
 const scripts = Array.from(app.querySelectorAll("script"));
 
-function runScript(index){
+scripts.forEach(oldScript => {
 
-if(index >= scripts.length) return;
-
-const oldScript = scripts[index];
 const newScript = document.createElement("script");
 
 if(oldScript.src){
-
-if(document.querySelector(`script[src="${oldScript.src}"]`)){
-runScript(index + 1);
-return;
-}
-
 newScript.src = oldScript.src;
-newScript.async = false;
-
-newScript.onload = () => runScript(index + 1);
-
-document.body.appendChild(newScript);
-
 }else{
-
 newScript.textContent = oldScript.textContent;
+}
 
 document.body.appendChild(newScript);
 
-runScript(index + 1);
-
-}
-
-}
-
-runScript(0);
+});
 
 }
 
 
-/* ================= HANDLE BROWSER BACK BUTTON ================= */
+/* ================= BACK BUTTON ================= */
 
 window.addEventListener("popstate", function(event){
 
@@ -255,34 +225,32 @@ headers:{
 
 credentials:"include",
 
-body: JSON.stringify({
-email,
-password
-})
+body: JSON.stringify({email,password})
 
 })
 
-.then(res => res.json())
+.then(async res => {
 
-.then(data => {
+const data = await res.json();
 
-if(data.success){
+if(!res.ok){
+throw new Error(data.message || "Login failed");
+}
+
+return data;
+
+})
+
+.then(() => {
 
 fetchUserData().then(()=>{
 loadPage("profile.html");
 });
 
-}else{
-
-alert("Invalid email or password");
-
-}
-
 })
 
 .catch(err=>{
-console.error(err);
-alert("Server error");
+alert(err.message);
 });
 
 }
@@ -308,34 +276,31 @@ headers:{
 
 credentials:"include",
 
-body: JSON.stringify({
-name,
-email,
-password
-})
+body: JSON.stringify({name,email,password})
 
 })
 
-.then(res => res.json())
+.then(async res => {
 
-.then(data => {
+const data = await res.json();
 
-if(data.success){
+if(!res.ok){
+throw new Error(data.message || "Signup failed");
+}
+
+return data;
+
+})
+
+.then(()=>{
 
 alert("Account created successfully");
 loadPage("homecontent.html");
 
-}else{
-
-alert("Signup failed");
-
-}
-
 })
 
 .catch(err=>{
-console.error(err);
-alert("Server error");
+alert(err.message);
 });
 
 }
@@ -353,21 +318,22 @@ const quiz = document.getElementById("quizCount");
 const score = document.getElementById("avgScore");
 const topic = document.getElementById("topicProgress");
 
-if(quiz && userData.quizCount !== undefined){
-quiz.innerText = userData.quizCount;
-}
+if(quiz) quiz.innerText = userData.quizCount ?? 0;
 
-if(score && userData.avgScore !== undefined){
-score.innerText = userData.avgScore + "%";
-}
+if(score) score.innerText = (userData.avgScore ?? 0) + "%";
 
-/* TOPIC COMPLETION */
+
+/* Topic completion */
 
 if(topic && userData.totalTopics){
 
-let percent = Math.round(
+let percent = 0;
+
+if(userData.totalTopics > 0){
+percent = Math.round(
 (userData.completedTopics / userData.totalTopics) * 100
 );
+}
 
 topic.innerText = percent + "%";
 
