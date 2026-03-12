@@ -8,6 +8,10 @@ window.API = window.API || "https://pylearn-8niw.onrender.com";
 let pageCache = {};
 let userData = null;
 
+/* ================= COURSE TOPICS ================= */
+
+let courseTopics = new Set();
+
 
 /* ================= SIDEBAR ================= */
 
@@ -134,7 +138,7 @@ app.innerHTML = html;
 window.scrollTo(0,0);
 
 
-/* Load user session */
+/* load user session */
 
 fetchUserData().then(()=>{
 
@@ -148,7 +152,7 @@ loadProfile();
 });
 
 
-/* Run page scripts */
+/* execute page scripts */
 
 const scripts = Array.from(app.querySelectorAll("script"));
 
@@ -165,6 +169,11 @@ newScript.textContent = oldScript.textContent;
 document.body.appendChild(newScript);
 
 });
+
+
+/* mark topic complete if page is topic */
+
+markTopicComplete();
 
 }
 
@@ -323,19 +332,21 @@ if(quiz) quiz.innerText = userData.quizCount ?? 0;
 if(score) score.innerText = (userData.avgScore ?? 0) + "%";
 
 
-/* Topic completion */
+/* topic progress */
 
-if(topic && userData.totalTopics){
+if(topic){
 
-let percent = 0;
+const totalTopics = courseTopics.size;
 
-if(userData.totalTopics > 0){
-percent = Math.round(
-(userData.completedTopics / userData.totalTopics) * 100
+if(totalTopics > 0){
+
+let percent = Math.round(
+(userData.completedTopics / totalTopics) * 100
 );
-}
 
 topic.innerText = percent + "%";
+
+}
 
 }
 
@@ -355,6 +366,41 @@ const join = document.getElementById("joinDate");
 if(name) name.innerText = userData.name || "";
 if(email) email.innerText = userData.email || "";
 if(join) join.innerText = userData.joined || "";
+
+}
+
+
+/* ================= TOPIC COMPLETION ================= */
+
+function markTopicComplete(){
+
+const topicPage = document.querySelector("[data-topic]");
+
+if(!topicPage) return;
+
+const topic = topicPage.dataset.topic;
+
+/* register topic */
+
+courseTopics.add(topic);
+
+/* send completion */
+
+if(!userData) return;
+
+fetch(API + "/complete-topic",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+credentials:"include",
+
+body: JSON.stringify({topic})
+
+});
 
 }
 
